@@ -629,7 +629,7 @@
             </p>
             <div class="cta-buttons">
                 <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                <a href="https://github.com/logesh-GIT001/loki/blob/main/Logeshwaran_S_Resume.pdf" class="btn btn-secondary" id="resumeBtn">Download Resume</a>
+                <a href="https://raw.githubusercontent.com/logesh-GIT001/loki/main/Logeshwaran_S_Resume.pdf" class="btn btn-secondary" download target="_blank">Download Resume</a>
                 <a href="https://github.com/logesh-GIT001" class="btn btn-secondary" target="_blank">View GitHub</a>
             </div>
         </section>
@@ -887,17 +887,6 @@
             if (bg) {
                 bg.style.transform = `translateY(${scrolled * 0.5}px)`;
             }
-        });
-
-        // Resume download functionality
-        document.getElementById('resumeBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            // Link to resume PDF - Make sure to place your resume PDF in the same folder as this HTML file
-            // and name it 'Logeshwaran_S_Resume.pdf' or update the filename below
-            const link = document.createElement('a');
-            link.href = 'Logeshwaran_S_Resume.pdf';
-            link.download = 'Logeshwaran_S_Resume.pdf';
-            link.click();
         });
     </script>
 </body>
