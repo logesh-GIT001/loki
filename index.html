@@ -629,6 +629,7 @@
             </p>
             <div class="cta-buttons">
                 <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="https://github.com/logesh-GIT001/loki/blob/main/Logeshwaran_S_Resume.pdf" class="btn btn-secondary" id="resumeBtn">Download Resume</a>
                 <a href="https://github.com/logesh-GIT001" class="btn btn-secondary" target="_blank">View GitHub</a>
             </div>
         </section>
@@ -799,11 +800,11 @@
                 <p class="section-description">Let's connect and discuss cybersecurity opportunities</p>
             </div>
             <div class="contact-info">
-                <a href="mailto:logesh.spy@gmail.com" class="contact-item">
+                <a href="/cdn-cgi/l/email-protection#f79b989092849fd984878eb7909a969e9bd994989a" class="contact-item">
                     <div class="contact-icon">✉</div>
                     <div>
                         <strong>Email</strong><br>
-                        <span style="color: var(--text-secondary);">logesh.spy@gmail.com</span>
+                        <span style="color: var(--text-secondary);"><span class="__cf_email__" data-cfemail="ff9390989a8c97d18c8f86bf98929e9693d19c9092">[email&#160;protected]</span></span>
                     </div>
                 </a>
                 <a href="tel:+917418549258" class="contact-item">
@@ -811,6 +812,13 @@
                     <div>
                         <strong>Phone</strong><br>
                         <span style="color: var(--text-secondary);">+91 7418549258</span>
+                    </div>
+                </a>
+                <a href="https://linkedin.com/in/logeshwaran-s-b5aa5b27b" target="_blank" class="contact-item">
+                    <div class="contact-icon">💼</div>
+                    <div>
+                        <strong>LinkedIn</strong><br>
+                        <span style="color: var(--text-secondary);">logeshwaran-s</span>
                     </div>
                 </a>
                 <a href="https://github.com/logesh-GIT001" target="_blank" class="contact-item">
@@ -835,7 +843,7 @@
         </footer>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -874,11 +882,22 @@
 
         // Parallax effect for background
         window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
+            const            const scrolled = window.pageYOffset;
             const bg = document.querySelector('.bg-animation');
             if (bg) {
                 bg.style.transform = `translateY(${scrolled * 0.5}px)`;
             }
+        });
+
+        // Resume download functionality
+        document.getElementById('resumeBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            // Link to resume PDF - Make sure to place your resume PDF in the same folder as this HTML file
+            // and name it 'Logeshwaran_S_Resume.pdf' or update the filename below
+            const link = document.createElement('a');
+            link.href = 'Logeshwaran_S_Resume.pdf';
+            link.download = 'Logeshwaran_S_Resume.pdf';
+            link.click();
         });
     </script>
 </body>
