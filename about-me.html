@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More About Me | Logeshwaran S</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0e27;
+            --bg-secondary: #121829;
+            --bg-card: #1a1f3a;
+            --accent-primary: #00ff9f;
+            --accent-secondary: #00d4ff;
+            --text-primary: #e8edf4;
+            --text-secondary: #a0aec0;
+            --border-color: rgba(0, 255, 159, 0.2);
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.4;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 159, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background-image: 
+                linear-gradient(rgba(0, 255, 159, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 159, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 0;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: rgba(26, 31, 58, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 4rem 0 3rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .page-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(0, 255, 159, 0.1);
+            border: 1px solid var(--accent-primary);
+            border-radius: 50px;
+            color: var(--accent-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, var(--accent-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-tag {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-primary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Hockey Achievements Grid */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .achievement-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 20px 40px rgba(0, 255, 159, 0.2);
+        }
+
+        .achievement-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .achievement-content {
+            padding: 1.5rem;
+        }
+
+        .achievement-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-primary);
+        }
+
+        .achievement-content p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Gallery Grid */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            border-color: var(--accent-primary);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay p {
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+
+        /* Interests Grid */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .interest-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .interest-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+        }
+
+        .interest-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .interest-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .interest-card ul {
+            list-style: none;
+            color: var(--text-secondary);
+        }
+
+        .interest-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .interest-card li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+        }
+
+        /* Quote Section */
+        .quote-section {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(0, 255, 159, 0.1), rgba(0, 212, 255, 0.1));
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            margin: 3rem 0;
+        }
+
+        .quote-section blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .quote-author {
+            color: var(--accent-primary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 5rem;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .achievements-grid,
+            .photo-gallery,
+            .interests-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quote-section blockquote {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="grid-overlay"></div>
+
+    <div class="container">
+        <header>
+            <nav>
+                <a href="portfolio.html" class="logo">&lt;/LOGESH&gt;</a>
+                <ul class="nav-links">
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="portfolio.html#skills">Skills</a></li>
+                    <li><a href="portfolio.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="page-header">
+            <div class="page-tag">Beyond the Code</div>
+            <h1>More About Me</h1>
+            <p class="page-subtitle">
+                When I'm not hunting threats or analyzing security logs, you'll find me on the hockey field,
+                diving into a good book, or exploring new adventures.
+            </p>
+        </div>
+
+        <!-- Hockey Achievements -->
+        <section id="hockey">
+            <div class="section-header">
+                <div class="section-tag">&lt;sports/&gt;</div>
+                <h2>Hockey Achievements</h2>
+                <p class="section-description">Competitive hockey player with championship wins and team leadership</p>
+            </div>
+
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <img src="trophy-closeup.jpg" alt="Hockey Championship Trophy" class="achievement-image">
+                    <div class="achievement-content">
+                        <h3>🏆 Championship Winner</h3>
+                        <p>Secured championship trophy and medal in competitive hockey tournament. A testament to teamwork, dedication, and countless hours of practice.</p>
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <img src="hockey-trophy-2.jpg" alt="Hockey Tournament Winner" class="achievement-image">
+                    <div class="achievement-content">
+                        <h3>🥇 Tournament Champion</h3>
+                        <p>Led the team to victory in inter-college hockey championship. Proud moment representing my college and bringing home the trophy.</p>
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <img src="team-photo.jpg" alt="Team Victory" class="achievement-image">
+                    <div class="achievement-content">
+                        <h3>👥 Team Captain</h3>
+                        <p>Part of an incredible team that worked together to achieve greatness. Team spirit and coordination made all the difference.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="photo-gallery">
+                <div class="gallery-item">
+                    <img src="jersey.jpg" alt="Jersey Number 17">
+                    <div class="gallery-overlay">
+                        <p>#17 LOGESH - My jersey, my pride</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote Section -->
+        <div class="quote-section">
+            <blockquote>
+                "The same discipline, strategy, and teamwork that win championships also defend networks."
+            </blockquote>
+            <p class="quote-author">- My Philosophy</p>
+        </div>
+
+        <!-- Interests -->
+        <section id="interests">
+            <div class="section-header">
+                <div class="section-tag">&lt;interests/&gt;</div>
+                <h2>What I Love</h2>
+                <p class="section-description">Beyond cybersecurity and hockey</p>
+            </div>
+
+            <div class="interests-grid">
+                <div class="interest-card">
+                    <div class="interest-icon">📚</div>
+                    <h3>Favorite Books</h3>
+                    <ul>
+                        <li>Atomic Habits - James Clear</li>
+                        <li>The Subtle Art of Not Giving a F*ck - Mark Manson</li>
+                        <li>Rich Dad Poor Dad - Robert Kiyosaki</li>
+                        <li>The 48 Laws of Power - Robert Greene</li>
+                    </ul>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon">🎮</div>
+                    <h3>Favorite Games</h3>
+                    <ul>
+                        <li>Red Dead Redemption 2</li>
+                        <li>God of War</li>
+                        <li>Detroit: Become Human</li>
+                        <li>GTA V</li>
+                        <li>WWE 2K25</li>
+                        <li>Cricket 26</li>
+                    </ul>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon">🏃</div>
+                    <h3>Other Hobbies</h3>
+                    <ul>
+                        <li>Hockey (Competitive)</li>
+                        <li>Calisthenics & Fitness</li>
+                        <li>CTF Challenges</li>
+                        <li>Bug Hunting</li>
+                        <li>Marathon Running</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Personal Photo -->
+        <section id="lifestyle">
+            <div class="section-header">
+                <div class="section-tag">&lt;lifestyle/&gt;</div>
+                <h2>Life Beyond Code</h2>
+            </div>
+
+            <div class="photo-gallery">
+                <div class="gallery-item">
+                    <img src="beach-photo.jpg" alt="Beach Sunset" style="height: 400px;">
+                    <div class="gallery-overlay">
+                        <p>Finding peace and inspiration in nature 🌊</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&lt;/&gt; Crafted with passion • © 2026 Logeshwaran S</p>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const bg = document.querySelector('.bg-animation');
+            if (bg) {
+                bg.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Fade in on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.8s ease-out';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
