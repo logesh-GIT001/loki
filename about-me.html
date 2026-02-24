@@ -3,561 +3,560 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>More About Me | Logeshwaran S</title>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>About Me | Logeshwaran S</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg-primary: #0a0e27;
-            --bg-secondary: #121829;
-            --bg-card: #1a1f3a;
-            --accent-primary: #00ff9f;
-            --accent-secondary: #00d4ff;
-            --text-primary: #e8edf4;
-            --text-secondary: #a0aec0;
-            --border-color: rgba(0, 255, 159, 0.2);
+            --bg: #060b18;
+            --bg2: #0d1425;
+            --bg3: #111827;
+            --g1: #00ffa3;
+            --g2: #00c3ff;
+            --g3: #7b61ff;
+            --gold: #f9c846;
+            --text: #e2e8f4;
+            --muted: #6b7a99;
+            --border: rgba(0,255,163,0.13);
+            --glow: rgba(0,255,163,0.06);
         }
 
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Outfit', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
             overflow-x: hidden;
+            cursor: none;
         }
 
-        /* Animated Background */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            opacity: 0.4;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(0, 255, 159, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
-        }
+        /* ── Cursor ── */
+        .cursor { position: fixed; top: 0; left: 0; width: 10px; height: 10px; background: var(--g1); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); mix-blend-mode: screen; }
+        .cursor-ring { position: fixed; top: 0; left: 0; width: 36px; height: 36px; border: 1.5px solid rgba(0,255,163,0.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: width 0.3s cubic-bezier(.22,1,.36,1), height 0.3s cubic-bezier(.22,1,.36,1); }
 
-        .grid-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            background-image: 
-                linear-gradient(rgba(0, 255, 159, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 159, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
-        }
+        /* ── Background ── */
+        .bg-canvas { position: fixed; inset: 0; z-index: 0; overflow: hidden; }
+        .orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.15; animation: orbFloat 14s ease-in-out infinite; }
+        .o1 { width: 600px; height: 600px; background: var(--g1); top: -200px; left: -150px; animation-delay: 0s; }
+        .o2 { width: 400px; height: 400px; background: var(--gold); bottom: -100px; right: -100px; animation-delay: -5s; }
+        .o3 { width: 350px; height: 350px; background: var(--g3); top: 40%; left: 60%; animation-delay: -9s; }
+        @keyframes orbFloat { 0%,100% { transform: translate(0,0) scale(1); } 40% { transform: translate(25px,-35px) scale(1.05); } 70% { transform: translate(-15px,20px) scale(0.97); } }
 
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
+        .particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+        .particle { position: absolute; width: 2px; height: 2px; border-radius: 50%; opacity: 0; animation: pfly var(--d,8s) var(--dl,0s) ease-in infinite; }
+        @keyframes pfly { 0% { transform: translateY(100vh); opacity: 0; } 10% { opacity: 0.5; } 90% { opacity: 0.2; } 100% { transform: translateY(-10vh) translateX(var(--dx,0px)); opacity: 0; } }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 1;
-        }
+        /* ── Nav ── */
+        nav { position: fixed; top: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 100; width: calc(100% - 4rem); max-width: 860px; padding: 0.8rem 1.8rem; background: rgba(13,20,37,0.75); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 100px; display: flex; align-items: center; justify-content: space-between; animation: navIn 0.8s cubic-bezier(.22,1,.36,1) both; }
+        @keyframes navIn { from { transform: translateX(-50%) translateY(-80px); opacity: 0; } to { transform: translateX(-50%) translateY(0); opacity: 1; } }
+        .logo { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1rem; background: linear-gradient(135deg, var(--g1), var(--g2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; }
+        .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+        .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--g1); }
+        .nav-back { padding: 0.5rem 1.2rem; border-radius: 100px; border: 1px solid var(--border); color: var(--text); text-decoration: none; font-size: 0.82rem; font-weight: 500; transition: all 0.3s; }
+        .nav-back:hover { border-color: var(--g1); color: var(--g1); }
 
-        /* Header */
-        header {
-            padding: 2rem 0;
-            animation: fadeInDown 0.8s ease-out;
-        }
+        /* ── Wrap ── */
+        .wrap { max-width: 1140px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 2; }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            background: rgba(26, 31, 58, 0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 50px;
-            border: 1px solid var(--border-color);
-        }
+        /* ── Hero ── */
+        .hero { min-height: 100vh; display: flex; align-items: center; padding: 9rem 0 5rem; }
+        .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
 
-        .logo {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.3rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-        }
+        .hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--g1); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.8rem; animation: fadeUp 0.7s 0.3s both; }
+        .eyebrow-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--g1), transparent); max-width: 60px; }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
+        h1 { font-family: 'Syne', sans-serif; font-size: 4rem; font-weight: 800; line-height: 1.05; animation: fadeUp 0.7s 0.5s both; }
+        h1 em { display: block; font-style: normal; background: linear-gradient(135deg, var(--gold) 0%, #ffda7a 50%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; background-size: 200%; animation: fadeUp 0.7s 0.5s both, shimmer 3s ease infinite; }
+        @keyframes shimmer { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
+        .hero-para { color: var(--muted); font-size: 1.05rem; line-height: 1.9; margin: 1.8rem 0 2.5rem; animation: fadeUp 0.7s 0.7s both; }
+        .hero-para strong { color: var(--text); font-weight: 500; }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-primary);
-            transition: width 0.3s ease;
-        }
+        /* Stat pills */
+        .stat-row { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.7s 0.9s both; }
+        .stat-pill { display: flex; flex-direction: column; padding: 1rem 1.5rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; min-width: 110px; transition: all 0.3s; }
+        .stat-pill:hover { border-color: var(--gold); transform: translateY(-3px); }
+        .stat-n { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--gold); line-height: 1; }
+        .stat-l { font-size: 0.72rem; color: var(--muted); margin-top: 0.3rem; font-weight: 500; }
 
-        .nav-links a:hover {
-            color: var(--accent-primary);
-        }
+        /* Hero right — identity card */
+        .id-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.5); animation: fadeUp 0.8s 0.6s both; }
+        .id-card-top { padding: 2rem 2rem 1.5rem; background: linear-gradient(135deg, rgba(249,200,70,0.08), rgba(0,255,163,0.04)); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 1.5rem; }
+        .avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), #ff9a3c); display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0; box-shadow: 0 0 0 3px var(--bg2), 0 0 0 5px rgba(249,200,70,0.3); }
+        .id-name { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; }
+        .id-role { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--g1); margin-top: 0.2rem; }
+        .id-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
+        .badge { padding: 0.2rem 0.7rem; border-radius: 100px; font-size: 0.7rem; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+        .badge-gold { background: rgba(249,200,70,0.12); color: var(--gold); border: 1px solid rgba(249,200,70,0.3); }
+        .badge-green { background: rgba(0,255,163,0.08); color: var(--g1); border: 1px solid rgba(0,255,163,0.25); }
+        .badge-blue { background: rgba(0,195,255,0.08); color: var(--g2); border: 1px solid rgba(0,195,255,0.25); }
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+        .id-body { padding: 1.5rem 2rem; }
+        .id-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 0.85rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .id-row:last-child { border: none; }
+        .id-key { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--muted); }
+        .id-val { font-size: 0.88rem; font-weight: 500; text-align: right; max-width: 58%; }
+        .id-val.gold { color: var(--gold); }
+        .id-val.green { color: var(--g1); }
 
-        /* Page Header */
-        .page-header {
-            text-align: center;
-            padding: 4rem 0 3rem;
-            animation: fadeInUp 1s ease-out;
-        }
+        /* ── Section commons ── */
+        section { padding: 5.5rem 0; }
+        .s-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--g1); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.7rem; }
+        h2 { font-family: 'Syne', sans-serif; font-size: 2.6rem; font-weight: 700; margin-bottom: 1rem; }
+        .s-sub { color: var(--muted); font-size: 1rem; max-width: 520px; }
+        .s-head { margin-bottom: 3.5rem; }
 
-        .page-tag {
-            display: inline-block;
-            padding: 0.5rem 1.5rem;
-            background: rgba(0, 255, 159, 0.1);
-            border: 1px solid var(--accent-primary);
-            border-radius: 50px;
-            color: var(--accent-primary);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-        }
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(.22,1,.36,1), transform 0.8s cubic-bezier(.22,1,.36,1); }
+        .reveal.vis { opacity: 1; transform: translateY(0); }
+        .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
 
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ffffff, var(--accent-primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        /* ── Sports Captain Section ── */
+        .captain-banner {
+            background: linear-gradient(135deg, rgba(249,200,70,0.06) 0%, rgba(0,255,163,0.04) 100%);
+            border: 1px solid rgba(249,200,70,0.2);
+            border-radius: 24px; padding: 3rem; margin-bottom: 3.5rem;
+            display: flex; align-items: center; gap: 3rem;
+            position: relative; overflow: hidden;
         }
+        .captain-banner::before { content: ''; position: absolute; top: -50%; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(249,200,70,0.08) 0%, transparent 70%); pointer-events: none; }
+        .captain-icon { font-size: 4.5rem; flex-shrink: 0; }
+        .captain-text h3 { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .captain-text h3 span { color: var(--gold); }
+        .captain-text p { color: var(--muted); font-size: 0.98rem; line-height: 1.8; max-width: 560px; }
+        .captain-tags { display: flex; gap: 0.7rem; margin-top: 1.2rem; flex-wrap: wrap; }
+        .ctag { padding: 0.35rem 0.9rem; border-radius: 100px; font-size: 0.78rem; font-weight: 600; }
+        .ctag-gold { background: rgba(249,200,70,0.12); color: var(--gold); border: 1px solid rgba(249,200,70,0.3); }
+        .ctag-green { background: rgba(0,255,163,0.08); color: var(--g1); border: 1px solid rgba(0,255,163,0.25); }
 
-        .page-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Section Styles */
-        section {
-            padding: 4rem 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-tag {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--accent-primary);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .section-description {
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Hockey Achievements Grid */
-        .achievements-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .achievement-card {
-            background: var(--bg-card);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-
-        .achievement-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-primary);
-            box-shadow: 0 20px 40px rgba(0, 255, 159, 0.2);
-        }
-
-        .achievement-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-bottom: 2px solid var(--border-color);
-        }
-
-        .achievement-content {
-            padding: 1.5rem;
-        }
-
-        .achievement-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--accent-primary);
-        }
-
-        .achievement-content p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-        }
-
-        /* Gallery Grid */
-        .photo-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-            border-color: var(--accent-primary);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-            padding: 1rem;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
-        }
-
-        .gallery-overlay p {
-            color: var(--text-primary);
-            font-size: 0.9rem;
-        }
-
-        /* Interests Grid */
-        .interests-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .interest-card {
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-
-        .interest-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-primary);
-        }
-
-        .interest-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .interest-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .interest-card ul {
-            list-style: none;
-            color: var(--text-secondary);
-        }
-
-        .interest-card li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
+        /* Trophy cards */
+        .trophies-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+        .trophy-card {
+            background: var(--bg2); border: 1px solid var(--border);
+            border-radius: 20px; overflow: hidden;
+            transition: all 0.35s cubic-bezier(.22,1,.36,1);
             position: relative;
         }
+        .trophy-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 25px 60px rgba(0,0,0,0.4), 0 0 40px rgba(249,200,70,0.07); }
+        .trophy-img { width: 100%; height: 240px; object-fit: cover; display: block; }
+        .trophy-img-placeholder { width: 100%; height: 240px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(249,200,70,0.06), rgba(0,255,163,0.04)); }
+        .trophy-img-placeholder .big-em { font-size: 4rem; margin-bottom: 0.5rem; }
+        .trophy-img-placeholder span { font-size: 0.75rem; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+        .trophy-label { padding: 1.3rem 1.5rem; }
+        .trophy-label h4 { font-family: 'Syne', sans-serif; font-size: 1.05rem; margin-bottom: 0.3rem; color: var(--gold); }
+        .trophy-label p { color: var(--muted); font-size: 0.85rem; line-height: 1.6; }
 
-        .interest-card li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--accent-primary);
+        /* Jersey card */
+        .jersey-section { display: grid; grid-template-columns: 1fr 2fr; gap: 2.5rem; align-items: center; margin-top: 2rem; }
+        .jersey-card {
+            background: var(--bg2); border: 1px solid rgba(249,200,70,0.2);
+            border-radius: 24px; padding: 2.5rem; text-align: center;
+            transition: all 0.3s;
         }
+        .jersey-card:hover { border-color: var(--gold); box-shadow: 0 20px 50px rgba(249,200,70,0.08); }
+        .jersey-number { font-family: 'Syne', sans-serif; font-size: 7rem; font-weight: 800; color: var(--gold); line-height: 1; text-shadow: 0 0 60px rgba(249,200,70,0.3); }
+        .jersey-sub { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase; }
+        .jersey-name { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text); margin-top: 0.8rem; }
+        .field-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .fstat { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; text-align: center; transition: all 0.3s; }
+        .fstat:hover { border-color: var(--gold); transform: translateY(-3px); }
+        .fstat-n { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--gold); }
+        .fstat-l { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; font-weight: 500; }
 
-        /* Quote Section */
-        .quote-section {
-            text-align: center;
-            padding: 3rem;
-            background: linear-gradient(135deg, rgba(0, 255, 159, 0.1), rgba(0, 212, 255, 0.1));
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
-            margin: 3rem 0;
+        /* ── Sports Secretary ── */
+        .sec-card {
+            background: linear-gradient(135deg, rgba(123,97,255,0.06), rgba(0,195,255,0.04));
+            border: 1px solid rgba(123,97,255,0.25);
+            border-radius: 24px; padding: 3rem;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
         }
+        .sec-icon-wrap { text-align: center; }
+        .sec-icon-big { font-size: 5rem; }
+        .sec-icon-label { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--g3); margin-top: 1rem; }
+        .sec-icon-sub { font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem; }
+        .sec-content h3 { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; }
+        .sec-content h3 span { color: var(--g3); }
+        .sec-content p { color: var(--muted); font-size: 0.95rem; line-height: 1.85; margin-bottom: 1.2rem; }
+        .sec-list { list-style: none; }
+        .sec-list li { color: var(--muted); font-size: 0.9rem; padding: 0.35rem 0 0.35rem 1.3rem; position: relative; }
+        .sec-list li::before { content: '›'; position: absolute; left: 0; color: var(--g3); font-weight: bold; font-size: 1.1rem; }
 
-        .quote-section blockquote {
-            font-size: 1.5rem;
-            font-style: italic;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            line-height: 1.8;
+        /* ── Parallel quote ── */
+        .parallel-section { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .quote-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; }
+        .quote-mark { font-size: 4rem; color: var(--g1); line-height: 0.8; margin-bottom: 1rem; font-family: 'Syne', sans-serif; }
+        .quote-text { font-size: 1.15rem; font-weight: 500; line-height: 1.7; margin-bottom: 1rem; font-style: italic; color: var(--text); }
+        .quote-attr { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--g1); }
+        .mindset-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; }
+        .mindset-title { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; }
+        .mindset-row { display: flex; align-items: center; gap: 1rem; padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .mindset-row:last-child { border: none; }
+        .m-ico { font-size: 1.4rem; }
+        .m-text { font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
+        .m-text strong { color: var(--text); font-weight: 500; }
+
+        /* ── Interests ── */
+        .interests-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+        .int-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 18px; padding: 2rem; transition: all 0.3s; }
+        .int-card:hover { transform: translateY(-4px); border-color: var(--g1); }
+        .int-ico { font-size: 2.2rem; margin-bottom: 1.2rem; }
+        .int-card h3 { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; }
+        .int-list { list-style: none; }
+        .int-list li { color: var(--muted); font-size: 0.88rem; padding: 0.3rem 0 0.3rem 1.1rem; position: relative; }
+        .int-list li::before { content: '›'; position: absolute; left: 0; color: var(--g1); }
+
+        /* ── Footer ── */
+        footer { padding: 2.5rem 0; text-align: center; border-top: 1px solid var(--border); margin-top: 4rem; }
+        footer p { color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; }
+
+        /* ── Life Beyond Code ── */
+        .life-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+        .life-big { grid-column: span 3; display: grid; grid-template-columns: auto 1fr; align-items: start; gap: 1.8rem; }
+        .life-big .life-icon { font-size: 3.5rem; padding-top: 0.3rem; }
+        .life-big h3 { font-size: 1.5rem; margin-bottom: 0.6rem; }
+        .life-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; transition: all 0.35s cubic-bezier(.22,1,.36,1); }
+        .life-card:hover { transform: translateY(-5px); border-color: var(--g1); box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 30px rgba(0,255,163,0.06); }
+        .life-icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+        .life-card h3 { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.7rem; }
+        .life-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.8; margin-bottom: 1.2rem; }
+        .life-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .ltag { padding: 0.22rem 0.7rem; border-radius: 100px; font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; background: var(--bg3); border: 1px solid var(--border); color: var(--muted); }
+        .life-closing { display: flex; align-items: center; gap: 1.5rem; margin-top: 3.5rem; }
+        .lc-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+        .life-closing p { font-style: italic; color: var(--muted); font-size: 1rem; white-space: nowrap; }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 900px) {
+            .life-grid { grid-template-columns: 1fr 1fr; }
+            .life-big { grid-column: span 2; }
+            .hero-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 2.8rem; }
+            .trophies-grid { grid-template-columns: 1fr 1fr; }
+            .jersey-section { grid-template-columns: 1fr; }
+            .sec-card { grid-template-columns: 1fr; gap: 1.5rem; }
+            .parallel-section { grid-template-columns: 1fr; }
+            .interests-grid { grid-template-columns: 1fr 1fr; }
+            .captain-banner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+            nav .nav-links { display: none; }
         }
-
-        .quote-author {
-            color: var(--accent-primary);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        /* Footer */
-        footer {
-            padding: 3rem 0;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-            margin-top: 5rem;
-        }
-
-        footer p {
-            color: var(--text-secondary);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .achievements-grid,
-            .photo-gallery,
-            .interests-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .quote-section blockquote {
-                font-size: 1.2rem;
-            }
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 2rem; }
+            .trophies-grid { grid-template-columns: 1fr; }
+            .interests-grid { grid-template-columns: 1fr; }
+            .field-stats { grid-template-columns: 1fr 1fr; }
+            .life-grid { grid-template-columns: 1fr; }
+            .life-big { grid-column: span 1; grid-template-columns: 1fr; }
+            .life-closing p { white-space: normal; text-align: center; }
         }
     </style>
 </head>
 <body>
-    <div class="bg-animation"></div>
-    <div class="grid-overlay"></div>
 
-    <div class="container">
-        <header>
-            <nav>
-                <a href="index.html" class="logo">&lt;/LOGESH&gt;</a>
-                <ul class="nav-links">
-                    <li><a href="index.html">Portfolio</a></li>
-                    <li><a href="index.html#skills">Skills</a></li>
-                    <li><a href="index.html#experience">Experience</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div class="bg-canvas">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+</div>
+<div class="particles" id="particles"></div>
+
+<!-- NAV -->
+<nav>
+    <a href="index.html" class="logo">&lt;/LOGESH&gt;</a>
+    <ul class="nav-links">
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="index.html" class="nav-back">← Portfolio</a>
+</nav>
+
+<div class="wrap">
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-grid">
+            <div>
+                <div class="hero-eyebrow">
+                    <span class="eyebrow-line"></span>
+                    Beyond the terminal
+                </div>
+                <h1>
+                    More Than<br>Just a
+                    <em>Hacker.</em>
+                </h1>
+                <p class="hero-para">
+                    I'm <strong>Logeshwaran S</strong> — a cybersecurity analyst who leads on the field just as much as behind a screen. 
+                    <strong>Sports Secretary</strong> of my college, <strong>Hockey Captain</strong>, marathon runner, 
+                    and someone who believes the discipline of sport and security are the same game with different tools.
+                </p>
+                <div class="stat-row">
+                    <div class="stat-pill">
+                        <span class="stat-n">#17</span>
+                        <span class="stat-l">Jersey No.</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="stat-n">3+</span>
+                        <span class="stat-l">Championships</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="stat-n">2x</span>
+                        <span class="stat-l">Sports Sec.</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="stat-n">∞</span>
+                        <span class="stat-l">Drive</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ID Card -->
+            <div class="id-card">
+                <div class="id-card-top">
+                    <div class="avatar">🏑</div>
+                    <div>
+                        <div class="id-name">Logeshwaran S</div>
+                        <div class="id-role">// Player Profile</div>
+                        <div class="id-badges">
+                            <span class="badge badge-gold">Captain</span>
+                            <span class="badge badge-green">Sports Secretary</span>
+                            <span class="badge badge-blue">Analyst</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="id-body">
+                    <div class="id-row">
+                        <span class="id-key">SPORT</span>
+                        <span class="id-val">Field Hockey</span>
+                    </div>
+                    <div class="id-row">
+                        <span class="id-key">JERSEY</span>
+                        <span class="id-val gold">#17 LOGESH</span>
+                    </div>
+                    <div class="id-row">
+                        <span class="id-key">ROLE</span>
+                        <span class="id-val gold">Captain · Forward</span>
+                    </div>
+                    <div class="id-row">
+                        <span class="id-key">COLLEGE ROLE</span>
+                        <span class="id-val">Sports Secretary, ESEC</span>
+                    </div>
+                    <div class="id-row">
+                        <span class="id-key">TITLES WON</span>
+                        <span class="id-val green">Inter-College Champion ✓</span>
+                    </div>
+                    <div class="id-row">
+                        <span class="id-key">OTHER</span>
+                        <span class="id-val">Marathon · Calisthenics</span>
+                    </div>
+                    <div class="id-row">
+                        <span class="id-key">STATUS</span>
+                        <span class="id-val green">Active · Competing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOCKEY / CAPTAIN -->
+    <section id="hockey">
+        <div class="s-head reveal">
+            <div class="s-tag">// on the field</div>
+            <h2>Captain on the Field</h2>
+            <p class="s-sub">Leading from the front — in hockey and in life.</p>
+        </div>
+
+        <!-- Captain Banner -->
+        <div class="captain-banner reveal">
+            <div class="captain-icon">🏆</div>
+            <div class="captain-text">
+                <h3>Hockey <span>Captain</span> — Erode Sengunthar Engineering College</h3>
+                <p>
+                    As captain, my job is never just to score — it's to read the game, elevate my teammates, and make hard decisions under pressure. 
+                    The same qualities I bring to incident response and security operations. Leadership isn't a title, it's a commitment you prove every match.
+                </p>
+                <div class="captain-tags">
+                    <span class="ctag ctag-gold">🏑 Hockey Captain</span>
+                    <span class="ctag ctag-gold">🏅 Inter-College Winner</span>
+                    <span class="ctag ctag-green">📋 Sports Secretary (College)</span>
+                    <span class="ctag ctag-green">🏃 Marathon Runner</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trophy Cards -->
+        <div class="trophies-grid">
+            <div class="trophy-card reveal">
+                <div class="trophy-img-placeholder">
+                    <div class="big-em">🥇</div>
+                    <span>trophy-closeup.jpeg</span>
+                </div>
+                <div class="trophy-label">
+                    <h4>Championship Trophy</h4>
+                    <p>Secured the championship trophy in inter-college competition — the result of months of training, strategy, and team cohesion.</p>
+                </div>
+            </div>
+            <div class="trophy-card reveal d1">
+                <div class="trophy-img-placeholder">
+                    <div class="big-em">🏆</div>
+                    <span>hockey-trophy-2.jpeg</span>
+                </div>
+                <div class="trophy-label">
+                    <h4>Tournament Champion</h4>
+                    <p>Led the team as captain to tournament victory. Proud to represent ESEC and bring home the gold.</p>
+                </div>
+            </div>
+            <div class="trophy-card reveal d2">
+                <div class="trophy-img-placeholder">
+                    <div class="big-em">👥</div>
+                    <span>team-photo.jpeg</span>
+                </div>
+                <div class="trophy-label">
+                    <h4>The Team Behind It</h4>
+                    <p>No captain wins alone. Every trophy is a team trophy — built on trust, discipline, and showing up for each other.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jersey + Stats -->
+        <div class="jersey-section" style="margin-top: 2.5rem;">
+            <div class="jersey-card reveal">
+                <div class="jersey-number">17</div>
+                <div class="jersey-sub">Jersey Number</div>
+                <div class="jersey-name">LOGESH</div>
+            </div>
+            <div class="field-stats reveal d1">
+                <div class="fstat">
+                    <div class="fstat-n">3+</div>
+                    <div class="fstat-l">Championships Won</div>
+                </div>
+                <div class="fstat">
+                    <div class="fstat-n">⚡</div>
+                    <div class="fstat-l">Forward Position</div>
+                </div>
+                <div class="fstat">
+                    <div class="fstat-n">100%</div>
+                    <div class="fstat-l">Field Presence</div>
+                </div>
+                <div class="fstat">
+                    <div class="fstat-n">∞</div>
+                    <div class="fstat-l">Competitive Drive</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPORTS SECRETARY -->
+    <section id="secretary">
+        <div class="s-head reveal">
+            <div class="s-tag">// leadership</div>
+            <h2>Sports Secretary</h2>
+            <p class="s-sub">Managing college-wide sports as the elected Sports Secretary of ESEC.</p>
+        </div>
+        <div class="sec-card reveal">
+            <div class="sec-icon-wrap">
+                <div class="sec-icon-big">📋</div>
+                <div class="sec-icon-label">Sports Secretary</div>
+                <div class="sec-icon-sub">Erode Sengunthar Engineering College</div>
+            </div>
+            <div class="sec-content">
+                <h3>Running Sport <span>College-Wide</span></h3>
+                <p>
+                    As Sports Secretary, I don't just play — I organize, coordinate, and lead the sports ecosystem across the entire college. 
+                    From scheduling inter-department tournaments to liaising with college management for facilities and budgets, 
+                    I run operations that keep hundreds of student-athletes competing.
+                </p>
+                <ul class="sec-list">
+                    <li>Coordinate inter-college and inter-department tournaments</li>
+                    <li>Manage team registrations, schedules, and logistics</li>
+                    <li>Liaise with college management for sports funding and facilities</li>
+                    <li>Represent student athletes in college administrative decisions</li>
+                    <li>Organize college sports events and cultural meets</li>
+                    <li>Captain of the college hockey team simultaneously</li>
                 </ul>
-            </nav>
-        </header>
-
-        <div class="page-header">
-            <div class="page-tag">Beyond the Code</div>
-            <h1>More About Me</h1>
-            <p class="page-subtitle">
-                When I'm not hunting threats or analyzing security logs, you'll find me on the hockey field,
-                pushing my limits with calisthenics, or diving into a good book.
-            </p>
+            </div>
         </div>
+    </section>
 
-        <!-- Hockey Achievements -->
-        <section id="hockey">
-            <div class="section-header">
-                <div class="section-tag">&lt;sports/&gt;</div>
-                <h2>Hockey Achievements</h2>
-                <p class="section-description">Competitive hockey player with championship wins and team leadership</p>
+    <!-- QUOTE + MINDSET -->
+    <section>
+        <div class="parallel-section">
+            <div class="quote-card reveal">
+                <div class="quote-mark">"</div>
+                <div class="quote-text">The same discipline, strategy, and pressure management that wins championships — also defends networks at 3AM.</div>
+                <div class="quote-attr">— My philosophy on sport & security</div>
             </div>
-
-            <div class="achievements-grid">
-                <div class="achievement-card">
-                    <img src="assets/images/trophy-closeup.jpeg" alt="Hockey Championship Trophy" class="achievement-image">
-                    <div class="achievement-content">
-                        <h3>🏆 Championship Winner</h3>
-                        <p>Secured championship trophy and medal in competitive hockey tournament. A testament to teamwork, dedication, and countless hours of practice.</p>
-                    </div>
+            <div class="mindset-card reveal d1">
+                <div class="mindset-title">How sport shaped my security mindset</div>
+                <div class="mindset-row">
+                    <span class="m-ico">🎯</span>
+                    <div class="m-text"><strong>Pattern Recognition</strong> — Reading opponents' moves is the same skill as reading attack patterns in logs.</div>
                 </div>
-
-                <div class="achievement-card">
-                    <img src="assets/images/hockey-trophy-2.jpeg" alt="Hockey Tournament Winner" class="achievement-image">
-                    <div class="achievement-content">
-                        <h3>🥇 Tournament Champion</h3>
-                        <p>Led the team to victory in inter-college hockey championship. Proud moment representing my college and bringing home the trophy.</p>
-                    </div>
+                <div class="mindset-row">
+                    <span class="m-ico">⚡</span>
+                    <div class="m-text"><strong>Fast Decision-Making</strong> — Seconds matter in hockey and in incident response.</div>
                 </div>
-
-                <div class="achievement-card">
-                    <img src="assets/images/team-photo.jpeg" alt="Team Victory" class="achievement-image">
-                    <div class="achievement-content">
-                        <h3>👥 Team Captain</h3>
-                        <p>Part of an incredible team that worked together to achieve greatness. Team spirit and coordination made all the difference.</p>
-                    </div>
+                <div class="mindset-row">
+                    <span class="m-ico">🧠</span>
+                    <div class="m-text"><strong>Calm Under Pressure</strong> — A penalty shootout trains you for high-stakes SOC alerts.</div>
+                </div>
+                <div class="mindset-row">
+                    <span class="m-ico">🤝</span>
+                    <div class="m-text"><strong>Team Trust</strong> — No captain succeeds alone. Neither does a SOC analyst.</div>
                 </div>
             </div>
-
-            <div class="photo-gallery">
-                <div class="gallery-item">
-                    <img src="assets/images/jersey.jpeg" alt="Jersey Number 17">
-                    <div class="gallery-overlay">
-                        <p>#17 LOGESH - My jersey, my pride</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Quote Section -->
-        <div class="quote-section">
-            <blockquote>
-                "The same discipline, strategy, and teamwork that win championships also defend networks."
-            </blockquote>
-            <p class="quote-author">- My Philosophy</p>
         </div>
+    </section>
 
-        <!-- Interests -->
-        <section id="interests">
-            <div class="section-header">
-                <div class="section-tag">&lt;interests/&gt;</div>
-                <h2>What I Love</h2>
-                <p class="section-description">Beyond cybersecurity and hockey</p>
+    <!-- INTERESTS -->
+    <section id="interests">
+        <div class="s-head center reveal" style="text-align:center;">
+            <div class="s-tag">// off the field</div>
+            <h2>What I'm Into</h2>
+        </div>
+        <div class="interests-grid">
+            <div class="int-card reveal">
+                <div class="int-ico">📚</div>
+                <h3>Books I Live By</h3>
+                <ul class="int-list">
+                    <li>Atomic Habits — James Clear</li>
+                    <li>The Subtle Art of Not Giving a F*ck</li>
+                    <li>Rich Dad Poor Dad — Kiyosaki</li>
+                    <li>The 48 Laws of Power — R. Greene</li>
+                </ul>
             </div>
-
-            <div class="interests-grid">
-                <div class="interest-card">
-                    <div class="interest-icon">📚</div>
-                    <h3>Favorite Books</h3>
-                    <ul>
-                        <li>Atomic Habits - James Clear</li>
-                        <li>The Subtle Art of Not Giving a F*ck</li>
-                        <li>Rich Dad Poor Dad - Robert Kiyosaki</li>
-                        <li>The 48 Laws of Power - Robert Greene</li>
-                    </ul>
-                </div>
-
-                <div class="interest-card">
-                    <div class="interest-icon">🎮</div>
-                    <h3>Favorite Games</h3>
-                    <ul>
-                        <li>Red Dead Redemption 2</li>
-                        <li>God of War</li>
-                        <li>Detroit: Become Human</li>
-                        <li>GTA V</li>
-                        <li>WWE 2K25</li>
-                        <li>Cricket 26</li>
-                    </ul>
-                </div>
-
-                <div class="interest-card">
-                    <div class="interest-icon">🏃</div>
-                    <h3>Other Hobbies</h3>
-                    <ul>
-                        <li>Hockey (Competitive)</li>
-                        <li>Calisthenics & Fitness</li>
-                        <li>CTF Challenges</li>
-                        <li>Bug Hunting</li>
-                        <li>Marathon Running</li>
-                    </ul>
-                </div>
+            <div class="int-card reveal d1">
+                <div class="int-ico">🎮</div>
+                <h3>Games I Love</h3>
+                <ul class="int-list">
+                    <li>Red Dead Redemption 2</li>
+                    <li>God of War</li>
+                    <li>Detroit: Become Human</li>
+                    <li>GTA V · WWE 2K25 · Cricket 26</li>
+                </ul>
             </div>
-        </section>
+            <div class="int-card reveal d2">
+                <div class="int-ico">🏃</div>
+                <h3>How I Stay Sharp</h3>
+                <ul class="int-list">
+                    <li>Hockey — competitive & training</li>
+                    <li>Calisthenics & fitness training</li>
+                    <li>Marathon running</li>
+                    <li>CTF challenges & bug bounty</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-        <!-- Personal Photo -->
-        <section id="lifestyle">
+    <!-- LIFE BEYOND CODE -->
+     <section id="lifestyle">
             <div class="section-header">
                 <div class="section-tag">&lt;lifestyle/&gt;</div>
                 <h2>Life Beyond Code</h2>
@@ -578,51 +577,66 @@
         </footer>
     </div>
 
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+   
+        <!-- Closing line -->
+        <div class="life-closing reveal">
+            <span class="lc-line"></span>
+            <p>Security analyst by trade. Captain by choice. Human by design.</p>
+            <span class="lc-line"></span>
+        </div>
+    </section>
 
-        // Parallax effect
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const bg = document.querySelector('.bg-animation');
-            if (bg) {
-                bg.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        });
+    <footer>
+        <p>&lt;/&gt; Built by Logeshwaran S · © 2026 · Athlete · Analyst · Leader</p>
+    </footer>
 
-        // Fade in on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+</div>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+<script>
+// ── Cursor ──
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function loop(){
+    cursor.style.left=mx+'px';cursor.style.top=my+'px';
+    rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;
+    ring.style.left=rx+'px';ring.style.top=ry+'px';
+    requestAnimationFrame(loop);
+})();
 
-        document.querySelectorAll('section').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(30px)';
-            section.style.transition = 'all 0.8s ease-out';
-            observer.observe(section);
-        });
-    </script>
+// ── Particles ──
+const pc=document.getElementById('particles');
+const colors=['#00ffa3','#f9c846','#7b61ff'];
+for(let i=0;i<30;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    p.style.cssText=`left:${Math.random()*100}%;--d:${6+Math.random()*10}s;--dl:${Math.random()*10}s;--dx:${(Math.random()-.5)*100}px;background:${colors[Math.floor(Math.random()*3)]}`;
+    pc.appendChild(p);
+}
+
+// ── Reveal on scroll ──
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Replace placeholder images with real ones if they exist
+// Trophy images load from assets/images/
+const imgMap = {
+    0: 'assets/images/trophy-closeup.jpeg',
+    1: 'assets/images/hockey-trophy-2.jpeg',
+    2: 'assets/images/team-photo.jpeg',
+};
+document.querySelectorAll('.trophy-img-placeholder').forEach((ph, i) => {
+    const img = new Image();
+    img.src = imgMap[i];
+    img.onload = () => {
+        const el = document.createElement('img');
+        el.className = 'trophy-img';
+        el.src = imgMap[i];
+        el.alt = ph.querySelector('span')?.textContent || 'Hockey';
+        ph.parentNode.replaceChild(el, ph);
+    };
+});
+</script>
 </body>
 </html>
