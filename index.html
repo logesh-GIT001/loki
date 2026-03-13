@@ -87,54 +87,25 @@
         .section-head.center { text-align: center; }
         .section-head.center .section-sub { margin: 0 auto; }
 
-        /* ════ ENHANCED SKILLS ════ */
+        /* ════ SKILLS ════ */
         .domain-tabs { display: flex; gap: 0.5rem; margin-bottom: 2.5rem; flex-wrap: wrap; background: rgba(13,20,37,0.7); border: 1px solid var(--border); border-radius: 14px; padding: 0.45rem; width: fit-content; }
         .tab-btn { padding: 0.58rem 1.35rem; border-radius: 10px; border: none; background: transparent; color: var(--muted); font-size: 0.86rem; font-weight: 500; cursor: pointer; transition: all 0.3s; font-family: 'DM Sans', sans-serif; }
         .tab-btn.active { background: linear-gradient(135deg, rgba(0,255,163,0.14), rgba(0,195,255,0.12)); border: 1px solid rgba(0,255,163,0.28); color: var(--g1); box-shadow: 0 0 14px rgba(0,255,163,0.07); }
         .tab-btn:not(.active):hover { color: var(--g1); background: rgba(0,255,163,0.05); }
-
         .tab-panel { display: none; }
         .tab-panel.active { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.4rem; animation: panelIn 0.45s cubic-bezier(.22,1,.36,1); }
         @keyframes panelIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-
-        .skill-card {
-            background: var(--bg2); border: 1px solid var(--border); border-radius: 20px;
-            padding: 0; position: relative; overflow: hidden;
-            transition: transform 0.4s cubic-bezier(.22,1,.36,1), border-color 0.4s, box-shadow 0.4s;
-            cursor: none;
-        }
-        /* top sweep bar */
-        .skill-card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 100%; height: 2px;
-            background: linear-gradient(90deg, var(--c1,var(--g1)), var(--c2,var(--g2)));
-            transition: right 0.55s cubic-bezier(.22,1,.36,1);
-        }
+        .skill-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 0; position: relative; overflow: hidden; transition: transform 0.4s cubic-bezier(.22,1,.36,1), border-color 0.4s, box-shadow 0.4s; cursor: none; }
+        .skill-card::before { content: ''; position: absolute; top: 0; left: 0; right: 100%; height: 2px; background: linear-gradient(90deg, var(--c1,var(--g1)), var(--c2,var(--g2))); transition: right 0.55s cubic-bezier(.22,1,.36,1); }
         .skill-card:hover::before { right: 0; }
-        /* radial cursor glow */
-        .skill-card::after {
-            content: ''; position: absolute; inset: 0; border-radius: 20px;
-            background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(var(--cr,0),var(--cg,255),var(--cb,163),0.07), transparent 55%);
-            opacity: 0; transition: opacity 0.35s; pointer-events: none;
-        }
+        .skill-card::after { content: ''; position: absolute; inset: 0; border-radius: 20px; background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(var(--cr,0),var(--cg,255),var(--cb,163),0.07), transparent 55%); opacity: 0; transition: opacity 0.35s; pointer-events: none; }
         .skill-card:hover::after { opacity: 1; }
-        .skill-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--c1, var(--g1));
-            box-shadow: 0 28px 70px rgba(0,0,0,0.45), 0 0 0 1px rgba(var(--cr,0),var(--cg,255),var(--cb,163),0.1), 0 0 45px rgba(var(--cr,0),var(--cg,255),var(--cb,163),0.07);
-        }
+        .skill-card:hover { transform: translateY(-8px); border-color: var(--c1, var(--g1)); box-shadow: 0 28px 70px rgba(0,0,0,0.45), 0 0 0 1px rgba(var(--cr,0),var(--cg,255),var(--cb,163),0.1), 0 0 45px rgba(var(--cr,0),var(--cg,255),var(--cb,163),0.07); }
         .card-inner { position: relative; z-index: 1; padding: 1.8rem 1.8rem 1.4rem; }
-
-        .skill-icon-wrap {
-            width: 46px; height: 46px; border-radius: 12px; margin-bottom: 1.2rem;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 700; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace;
-            background: linear-gradient(135deg, var(--c1,var(--g1)), var(--c2,var(--g2))); color: var(--bg);
-            position: relative; transition: transform 0.4s cubic-bezier(.34,1.56,.64,1);
-        }
+        .skill-icon-wrap { width: 46px; height: 46px; border-radius: 12px; margin-bottom: 1.2rem; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; background: linear-gradient(135deg, var(--c1,var(--g1)), var(--c2,var(--g2))); color: var(--bg); position: relative; transition: transform 0.4s cubic-bezier(.34,1.56,.64,1); }
         .skill-card:hover .skill-icon-wrap { transform: scale(1.18) rotate(-5deg); }
         .skill-icon-wrap::after { content: ''; position: absolute; inset: -4px; border-radius: 16px; background: linear-gradient(135deg, var(--c1,var(--g1)), var(--c2,var(--g2))); opacity: 0; filter: blur(9px); z-index: -1; transition: opacity 0.4s; }
         .skill-card:hover .skill-icon-wrap::after { opacity: 0.45; }
-
         .skill-card h3 { font-family: 'Syne', sans-serif; font-size: 1.08rem; margin-bottom: 0.95rem; transition: color 0.3s; }
         .skill-card:hover h3 { color: var(--c1, var(--g1)); }
         .skill-card ul { list-style: none; }
@@ -142,71 +113,12 @@
         .skill-card li::before { content: '›'; position: absolute; left: 0; color: var(--c1,var(--g1)); font-weight: bold; transition: transform 0.25s; }
         .skill-card:hover li:hover { color: var(--text); transform: translateX(4px); }
         .skill-card:hover li:hover::before { transform: translateX(2px); }
-
-        /* progress bar */
         .skill-bar-strip { height: 3px; margin: 1.4rem 1.8rem 0; border-radius: 3px; background: rgba(255,255,255,0.04); overflow: hidden; }
         .skill-bar-fill { height: 100%; width: 0; border-radius: 3px; background: linear-gradient(90deg, var(--c1,var(--g1)), var(--c2,var(--g2))); transition: width 1.1s cubic-bezier(.22,1,.36,1); }
         .skill-card.bar-on .skill-bar-fill { width: var(--pct,80%); }
         .skill-bar-label { display: flex; justify-content: flex-end; padding: 0.35rem 1.8rem 1.4rem; }
         .skill-bar-label span { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: var(--muted); transition: color 0.3s; }
         .skill-card:hover .skill-bar-label span { color: var(--c1, var(--g1)); }
-
-        /* ════ ENHANCED PROJECTS ════ */
-        .projects-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.8rem; }
-
-        .proj-card {
-            background: var(--bg2); border: 1px solid var(--border); border-radius: 22px;
-            overflow: hidden; position: relative;
-            transition: transform 0.45s cubic-bezier(.22,1,.36,1), border-color 0.4s, box-shadow 0.4s;
-            cursor: none;
-        }
-        /* top sweep */
-        .proj-card::before { content: ''; position: absolute; top: 0; left: -100%; right: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--g1), transparent); transition: left 0.6s ease, right 0.6s ease; z-index: 3; }
-        .proj-card:hover::before { left: 0; right: 0; }
-        /* bottom sweep */
-        .proj-card::after { content: ''; position: absolute; bottom: 0; left: 50%; right: 50%; height: 1px; background: linear-gradient(90deg, transparent, var(--g2), transparent); transition: left 0.6s 0.08s ease, right 0.6s 0.08s ease; z-index: 3; }
-        .proj-card:hover::after { left: 0; right: 0; }
-
-        .proj-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(0,255,163,0.32);
-            box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,255,163,0.1), 0 0 60px rgba(0,255,163,0.06);
-        }
-
-        .proj-num { position: absolute; top: 1.4rem; right: 1.6rem; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: rgba(107,122,153,0.45); font-weight: 700; letter-spacing: 0.1em; transition: color 0.3s; z-index: 2; }
-        .proj-card:hover .proj-num { color: rgba(0,255,163,0.4); }
-
-        .proj-top { padding: 1.8rem 1.8rem 1.5rem; background: linear-gradient(135deg, rgba(0,255,163,0.06), rgba(0,195,255,0.04)); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
-        /* shimmer sweep on top area */
-        .proj-top::before { content: ''; position: absolute; top: 0; left: -100%; width: 55%; height: 100%; background: linear-gradient(90deg, transparent, rgba(0,255,163,0.06), transparent); transform: skewX(-20deg); transition: left 0.7s ease; }
-        .proj-card:hover .proj-top::before { left: 160%; }
-
-        .proj-icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; transition: transform 0.4s cubic-bezier(.34,1.56,.64,1); }
-        .proj-card:hover .proj-icon { transform: scale(1.22) rotate(-6deg); }
-
-        .proj-card h3 { font-family: 'Syne', sans-serif; font-size: 1.28rem; margin-bottom: 0.4rem; transition: color 0.3s; }
-        .proj-card:hover h3 { color: var(--g1); }
-
-        .proj-type { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; }
-        .proj-type span { padding: 0.25rem 0.75rem; border-radius: 100px; margin-right: 0.4rem; font-size: 0.72rem; display: inline-block; transition: background 0.3s; }
-        .tag-soc { color: var(--g1); border: 1px solid rgba(0,255,163,0.3); background: rgba(0,255,163,0.06); }
-        .tag-vapt { color: var(--g2); border: 1px solid rgba(0,195,255,0.3); background: rgba(0,195,255,0.06); }
-        .tag-eng { color: var(--g3); border: 1px solid rgba(123,97,255,0.3); background: rgba(123,97,255,0.06); }
-        .proj-card:hover .tag-soc { background: rgba(0,255,163,0.14); }
-        .proj-card:hover .tag-vapt { background: rgba(0,195,255,0.14); }
-        .proj-card:hover .tag-eng { background: rgba(123,97,255,0.14); }
-
-        .proj-body { padding: 1.6rem 1.8rem 1.8rem; }
-        .proj-body p { color: var(--muted); font-size: 0.92rem; margin-bottom: 1.5rem; line-height: 1.8; transition: color 0.3s; }
-        .proj-card:hover .proj-body p { color: rgba(226,232,244,0.72); }
-
-        .proj-footer { display: flex; align-items: center; justify-content: space-between; }
-        .proj-stack { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .tech-pill { padding: 0.22rem 0.75rem; background: var(--bg3); border: 1px solid var(--border); border-radius: 100px; font-size: 0.72rem; color: var(--muted); font-family: 'JetBrains Mono', monospace; transition: border-color 0.3s, color 0.3s; }
-        .proj-card:hover .tech-pill { border-color: rgba(0,255,163,0.2); color: rgba(226,232,244,0.65); }
-
-        .proj-link { color: var(--g1); text-decoration: none; font-size: 0.87rem; font-weight: 600; display: flex; align-items: center; gap: 0.35rem; padding: 0.42rem 1rem; border-radius: 100px; border: 1px solid rgba(0,255,163,0.25); background: rgba(0,255,163,0.05); transition: all 0.3s; white-space: nowrap; }
-        .proj-link:hover { background: rgba(0,255,163,0.15); border-color: var(--g1); box-shadow: 0 0 18px rgba(0,255,163,0.2); gap: 0.6rem; }
 
         /* ════ EXPERIENCE ════ */
         .timeline { max-width: 780px; }
@@ -222,13 +134,142 @@
         .tl-points li { color: var(--muted); font-size: 0.92rem; padding: 0.3rem 0 0.3rem 1.2rem; position: relative; }
         .tl-points li::before { content: '•'; position: absolute; left: 0; color: var(--g1); }
 
-        /* ════ CERTS ════ */
-        .certs-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.2rem; }
-        .cert-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; text-align: center; transition: all 0.3s; }
-        .cert-card:hover { border-color: var(--g1); transform: translateY(-3px); }
-        .cert-card h4 { font-size: 0.92rem; margin-bottom: 0.6rem; line-height: 1.4; }
-        .cert-status { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; }
-        .status-done { color: var(--g1); } .status-wip { color: #ffb547; }
+        /* ════ ENHANCED PROJECTS ════ */
+        .projects-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.8rem; }
+
+        .proj-card {
+            background: var(--bg2); border: 1px solid var(--border); border-radius: 22px;
+            overflow: hidden; position: relative;
+            transition: transform 0.45s cubic-bezier(.22,1,.36,1), border-color 0.4s, box-shadow 0.4s;
+            cursor: none;
+        }
+        .proj-card::before { content: ''; position: absolute; top: 0; left: -100%; right: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--g1), transparent); transition: left 0.6s ease, right 0.6s ease; z-index: 3; }
+        .proj-card:hover::before { left: 0; right: 0; }
+        .proj-card::after { content: ''; position: absolute; bottom: 0; left: 50%; right: 50%; height: 1px; background: linear-gradient(90deg, transparent, var(--g2), transparent); transition: left 0.6s 0.08s ease, right 0.6s 0.08s ease; z-index: 3; }
+        .proj-card:hover::after { left: 0; right: 0; }
+        .proj-card:hover { transform: translateY(-8px); border-color: rgba(0,255,163,0.32); box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,255,163,0.1), 0 0 60px rgba(0,255,163,0.06); }
+
+        /* project number — subtle, top right */
+        .proj-num { position: absolute; top: 1.4rem; right: 1.6rem; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: rgba(107,122,153,0.4); font-weight: 700; letter-spacing: 0.1em; transition: color 0.3s; z-index: 2; }
+        .proj-card:hover .proj-num { color: rgba(0,255,163,0.38); }
+
+        .proj-top { padding: 1.8rem 1.8rem 1.5rem; background: linear-gradient(135deg, rgba(0,255,163,0.05), rgba(0,195,255,0.03)); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; display: flex; align-items: center; gap: 1.2rem; }
+        /* shimmer sweep */
+        .proj-top::before { content: ''; position: absolute; top: 0; left: -100%; width: 55%; height: 100%; background: linear-gradient(90deg, transparent, rgba(0,255,163,0.05), transparent); transform: skewX(-20deg); transition: left 0.7s ease; }
+        .proj-card:hover .proj-top::before { left: 160%; }
+
+        /* ── project icon: clean SVG badge, no emoji ── */
+        .proj-icon-badge {
+            width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--bg3);
+            border: 1px solid var(--proj-color, rgba(0,255,163,0.25));
+            position: relative; overflow: hidden;
+            transition: border-color 0.35s, box-shadow 0.35s;
+        }
+        .proj-icon-badge::after {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle at 40% 35%, rgba(var(--proj-rgb, 0,255,163),0.12), transparent 65%);
+            transition: opacity 0.35s;
+        }
+        .proj-card:hover .proj-icon-badge {
+            border-color: rgba(var(--proj-rgb, 0,255,163), 0.55);
+            box-shadow: 0 0 18px rgba(var(--proj-rgb, 0,255,163), 0.18);
+        }
+        .proj-icon-badge svg { width: 22px; height: 22px; position: relative; z-index: 1; }
+
+        .proj-top-text { flex: 1; min-width: 0; }
+        .proj-card h3 { font-family: 'Syne', sans-serif; font-size: 1.15rem; margin-bottom: 0.35rem; transition: color 0.3s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .proj-card:hover h3 { color: var(--g1); }
+
+        .proj-type { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; }
+        .proj-type span { padding: 0.22rem 0.65rem; border-radius: 100px; margin-right: 0.35rem; font-size: 0.68rem; display: inline-block; transition: background 0.3s; }
+        .tag-soc { color: var(--g1); border: 1px solid rgba(0,255,163,0.3); background: rgba(0,255,163,0.06); }
+        .tag-vapt { color: var(--g2); border: 1px solid rgba(0,195,255,0.3); background: rgba(0,195,255,0.06); }
+        .tag-eng { color: var(--g3); border: 1px solid rgba(123,97,255,0.3); background: rgba(123,97,255,0.06); }
+        .proj-card:hover .tag-soc { background: rgba(0,255,163,0.13); }
+        .proj-card:hover .tag-vapt { background: rgba(0,195,255,0.13); }
+        .proj-card:hover .tag-eng { background: rgba(123,97,255,0.13); }
+
+        .proj-body { padding: 1.5rem 1.8rem 1.8rem; }
+        .proj-body p { color: var(--muted); font-size: 0.92rem; margin-bottom: 1.4rem; line-height: 1.8; transition: color 0.3s; }
+        .proj-card:hover .proj-body p { color: rgba(226,232,244,0.72); }
+        .proj-footer { display: flex; align-items: center; justify-content: space-between; }
+        .proj-stack { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .tech-pill { padding: 0.22rem 0.75rem; background: var(--bg3); border: 1px solid var(--border); border-radius: 100px; font-size: 0.72rem; color: var(--muted); font-family: 'JetBrains Mono', monospace; transition: border-color 0.3s, color 0.3s; }
+        .proj-card:hover .tech-pill { border-color: rgba(0,255,163,0.2); color: rgba(226,232,244,0.65); }
+        .proj-link { color: var(--g1); text-decoration: none; font-size: 0.86rem; font-weight: 600; display: flex; align-items: center; gap: 0.35rem; padding: 0.42rem 1rem; border-radius: 100px; border: 1px solid rgba(0,255,163,0.25); background: rgba(0,255,163,0.05); transition: all 0.3s; white-space: nowrap; }
+        .proj-link:hover { background: rgba(0,255,163,0.15); border-color: var(--g1); box-shadow: 0 0 18px rgba(0,255,163,0.2); gap: 0.6rem; }
+
+        /* ════ CERTS — minimal animated ════ */
+        .certs-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; }
+
+        .cert-card {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.4rem 1.5rem;
+            position: relative; overflow: hidden;
+            transition: border-color 0.4s, transform 0.4s cubic-bezier(.22,1,.36,1), box-shadow 0.4s;
+            opacity: 0; transform: translateY(20px);
+        }
+        .cert-card.cert-vis {
+            opacity: 1; transform: translateY(0);
+        }
+        /* left accent line */
+        .cert-card::before {
+            content: ''; position: absolute; left: 0; top: 20%; bottom: 20%;
+            width: 2px; border-radius: 2px;
+            background: linear-gradient(180deg, var(--g1), var(--g2));
+            opacity: 0; transform: scaleY(0);
+            transform-origin: center;
+            transition: opacity 0.35s, transform 0.45s cubic-bezier(.22,1,.36,1);
+        }
+        .cert-card:hover::before { opacity: 1; transform: scaleY(1); }
+        /* subtle bg sheen */
+        .cert-card::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(0,255,163,0.04) 0%, transparent 60%);
+            opacity: 0; transition: opacity 0.35s;
+        }
+        .cert-card:hover::after { opacity: 1; }
+
+        .cert-card:hover {
+            border-color: rgba(0,255,163,0.28);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.35), 0 0 0 1px rgba(0,255,163,0.08);
+        }
+
+        .cert-icon {
+            width: 32px; height: 32px; border-radius: 8px; margin-bottom: 0.85rem;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(0,255,163,0.07); border: 1px solid rgba(0,255,163,0.15);
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .cert-card:hover .cert-icon { background: rgba(0,255,163,0.12); border-color: rgba(0,255,163,0.3); }
+        .cert-icon svg { width: 16px; height: 16px; }
+
+        .cert-card h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.5rem; line-height: 1.4; color: var(--text); transition: color 0.3s; }
+        .cert-card:hover h4 { color: #fff; }
+        .cert-status { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; display: flex; align-items: center; gap: 0.4rem; }
+        .cert-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+        .status-done { color: var(--g1); } .status-done .cert-dot { background: var(--g1); box-shadow: 0 0 6px var(--g1); }
+        .status-wip { color: #ffb547; } .status-wip .cert-dot { background: #ffb547; }
+
+        /* wide cert card */
+        .cert-wide { grid-column: span 2; }
+        .cert-wide .cert-card-inner { display: flex; align-items: flex-start; gap: 1.2rem; }
+        .cert-wide .cert-icon { flex-shrink: 0; margin-bottom: 0; width: 38px; height: 38px; margin-top: 0.1rem; }
+        .cert-wide .cert-text h4 { font-size: 0.92rem; }
+        .cert-wide .cert-text .cert-sub { font-size: 0.78rem; color: var(--muted); margin: 0.25rem 0 0.5rem; line-height: 1.5; }
+
+        /* progress ring for done certs */
+        .cert-ring-wrap { position: absolute; top: 1rem; right: 1rem; }
+        .cert-ring { transform: rotate(-90deg); }
+        .cert-ring-bg { fill: none; stroke: rgba(255,255,255,0.05); stroke-width: 2; }
+        .cert-ring-fill { fill: none; stroke: var(--g1); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 50.27; stroke-dashoffset: 50.27; transition: stroke-dashoffset 1.2s cubic-bezier(.22,1,.36,1); }
+        .cert-card.cert-vis .cert-ring-fill { stroke-dashoffset: 0; }
+        .cert-ring-wip .cert-ring-fill { stroke: #ffb547; stroke-dashoffset: 25 !important; }
 
         /* ════ MORE ABOUT ════ */
         .about-preview-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.5rem; margin-bottom: 3rem; }
@@ -280,17 +321,21 @@
         .reveal-delay-2 { transition-delay: 0.2s; }
         .reveal-delay-3 { transition-delay: 0.3s; }
 
+        /* cert card stagger */
+        .cert-card { transition: opacity 0.55s ease, transform 0.55s cubic-bezier(.22,1,.36,1), border-color 0.4s, box-shadow 0.4s; }
+
         @media (max-width: 900px) {
             .hero-inner { grid-template-columns: 1fr; } .hero-visual { display: none; } h1 { font-size: 3rem; }
             .tab-panel.active { grid-template-columns: 1fr 1fr; }
             .projects-grid { grid-template-columns: 1fr; }
             .certs-grid { grid-template-columns: repeat(2,1fr); }
+            .cert-wide { grid-column: span 2; }
             .contact-grid { grid-template-columns: 1fr; }
             nav .nav-links { display: none; }
             .tl-item { grid-template-columns: 1fr; gap: 0.5rem; } .tl-left { text-align: left; }
             .about-preview-grid { grid-template-columns: 1fr; }
         }
-        @media (max-width: 600px) { h1 { font-size: 2.2rem; } h2 { font-size: 2rem; } .tab-panel.active { grid-template-columns: 1fr; } .certs-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 600px) { h1 { font-size: 2.2rem; } h2 { font-size: 2rem; } .tab-panel.active { grid-template-columns: 1fr; } .certs-grid { grid-template-columns: 1fr 1fr; } .cert-wide { grid-column: span 2; } }
     </style>
 </head>
 <body>
@@ -368,36 +413,12 @@
         <button class="tab-btn" data-tab="eng">Security Engineering</button>
     </div>
     <div class="tab-panel active" id="tab-all">
-        <div class="skill-card" style="--c1:#00ffa3;--c2:#00c3ff;--cr:0;--cg:255;--cb:163;--pct:88%">
-            <div class="card-inner"><div class="skill-icon-wrap">SOC</div><h3>SOC Operations</h3><ul><li>Security Event Monitoring</li><li>Alert Triage & Prioritization</li><li>Multi-source Log Analysis</li><li>Incident Investigation & Response</li><li>Phishing & Malware Analysis</li></ul></div>
-            <div class="skill-bar-strip"><div class="skill-bar-fill"></div></div>
-            <div class="skill-bar-label"><span>88%</span></div>
-        </div>
-        <div class="skill-card" style="--c1:#ff4e50;--c2:#f9d423;--cr:255;--cg:78;--cb:80;--pct:82%">
-            <div class="card-inner"><div class="skill-icon-wrap" style="background:linear-gradient(135deg,#ff4e50,#f9d423)">VAPT</div><h3>VAPT & Pentesting</h3><ul><li>Web App Penetration Testing</li><li>Vulnerability Assessment</li><li>Burp Suite — Manual Exploitation</li><li>Bug Bounty (Google, NVIDIA, CERT-In)</li><li>OWASP Top 10</li></ul></div>
-            <div class="skill-bar-strip"><div class="skill-bar-fill"></div></div>
-            <div class="skill-bar-label"><span>82%</span></div>
-        </div>
-        <div class="skill-card" style="--c1:#7b61ff;--c2:#00c3ff;--cr:123;--cg:97;--cb:255;--pct:75%">
-            <div class="card-inner"><div class="skill-icon-wrap" style="background:linear-gradient(135deg,#7b61ff,#00c3ff)">ENG</div><h3>Security Engineering</h3><ul><li>SIEM (Splunk, Microsoft Sentinel)</li><li>Python Security Automation</li><li>Bash Scripting</li><li>Honeypot & Deception Tools</li><li>Security Tool Development</li></ul></div>
-            <div class="skill-bar-strip"><div class="skill-bar-fill"></div></div>
-            <div class="skill-bar-label"><span>75%</span></div>
-        </div>
-        <div class="skill-card" style="--c1:#00c3ff;--c2:#0080ff;--cr:0;--cg:195;--cb:255;--pct:78%">
-            <div class="card-inner"><div class="skill-icon-wrap">NET</div><h3>Network & Infrastructure</h3><ul><li>Network Traffic Analysis (Wireshark)</li><li>TCP/IP · DNS · HTTP(S)</li><li>Firewall & IDS/IPS Concepts</li><li>Lateral Movement Detection</li></ul></div>
-            <div class="skill-bar-strip"><div class="skill-bar-fill"></div></div>
-            <div class="skill-bar-label"><span>78%</span></div>
-        </div>
-        <div class="skill-card" style="--c1:#00ffa3;--c2:#7b61ff;--cr:0;--cg:255;--cb:163;--pct:72%">
-            <div class="card-inner"><div class="skill-icon-wrap">OS</div><h3>OS & Forensics</h3><ul><li>Linux Security & Hardening</li><li>Linux-based Forensics</li><li>Log Forensics</li><li>Malware Analysis (Linux env)</li></ul></div>
-            <div class="skill-bar-strip"><div class="skill-bar-fill"></div></div>
-            <div class="skill-bar-label"><span>72%</span></div>
-        </div>
-        <div class="skill-card" style="--c1:#f9d423;--c2:#ff4e50;--cr:249;--cg:212;--cb:35;--pct:70%">
-            <div class="card-inner"><div class="skill-icon-wrap" style="background:linear-gradient(135deg,#f9d423,#ff4e50)">TH</div><h3>Threat Intelligence</h3><ul><li>MITRE ATT&CK Framework</li><li>Threat Hunting Basics</li><li>IOC Analysis</li><li>Brute Force & Lateral Movement</li></ul></div>
-            <div class="skill-bar-strip"><div class="skill-bar-fill"></div></div>
-            <div class="skill-bar-label"><span>70%</span></div>
-        </div>
+        <div class="skill-card" style="--c1:#00ffa3;--c2:#00c3ff;--cr:0;--cg:255;--cb:163;--pct:88%"><div class="card-inner"><div class="skill-icon-wrap">SOC</div><h3>SOC Operations</h3><ul><li>Security Event Monitoring</li><li>Alert Triage & Prioritization</li><li>Multi-source Log Analysis</li><li>Incident Investigation & Response</li><li>Phishing & Malware Analysis</li></ul></div><div class="skill-bar-strip"><div class="skill-bar-fill"></div></div><div class="skill-bar-label"><span>88%</span></div></div>
+        <div class="skill-card" style="--c1:#ff4e50;--c2:#f9d423;--cr:255;--cg:78;--cb:80;--pct:82%"><div class="card-inner"><div class="skill-icon-wrap" style="background:linear-gradient(135deg,#ff4e50,#f9d423)">VAPT</div><h3>VAPT & Pentesting</h3><ul><li>Web App Penetration Testing</li><li>Vulnerability Assessment</li><li>Burp Suite — Manual Exploitation</li><li>Bug Bounty (Google, NVIDIA, CERT-In)</li><li>OWASP Top 10</li></ul></div><div class="skill-bar-strip"><div class="skill-bar-fill"></div></div><div class="skill-bar-label"><span>82%</span></div></div>
+        <div class="skill-card" style="--c1:#7b61ff;--c2:#00c3ff;--cr:123;--cg:97;--cb:255;--pct:75%"><div class="card-inner"><div class="skill-icon-wrap" style="background:linear-gradient(135deg,#7b61ff,#00c3ff)">ENG</div><h3>Security Engineering</h3><ul><li>SIEM (Splunk, Microsoft Sentinel)</li><li>Python Security Automation</li><li>Bash Scripting</li><li>Honeypot & Deception Tools</li><li>Security Tool Development</li></ul></div><div class="skill-bar-strip"><div class="skill-bar-fill"></div></div><div class="skill-bar-label"><span>75%</span></div></div>
+        <div class="skill-card" style="--c1:#00c3ff;--c2:#0080ff;--cr:0;--cg:195;--cb:255;--pct:78%"><div class="card-inner"><div class="skill-icon-wrap">NET</div><h3>Network & Infrastructure</h3><ul><li>Network Traffic Analysis (Wireshark)</li><li>TCP/IP · DNS · HTTP(S)</li><li>Firewall & IDS/IPS Concepts</li><li>Lateral Movement Detection</li></ul></div><div class="skill-bar-strip"><div class="skill-bar-fill"></div></div><div class="skill-bar-label"><span>78%</span></div></div>
+        <div class="skill-card" style="--c1:#00ffa3;--c2:#7b61ff;--cr:0;--cg:255;--cb:163;--pct:72%"><div class="card-inner"><div class="skill-icon-wrap">OS</div><h3>OS & Forensics</h3><ul><li>Linux Security & Hardening</li><li>Linux-based Forensics</li><li>Log Forensics</li><li>Malware Analysis (Linux env)</li></ul></div><div class="skill-bar-strip"><div class="skill-bar-fill"></div></div><div class="skill-bar-label"><span>72%</span></div></div>
+        <div class="skill-card" style="--c1:#f9d423;--c2:#ff4e50;--cr:249;--cg:212;--cb:35;--pct:70%"><div class="card-inner"><div class="skill-icon-wrap" style="background:linear-gradient(135deg,#f9d423,#ff4e50)">TH</div><h3>Threat Intelligence</h3><ul><li>MITRE ATT&CK Framework</li><li>Threat Hunting Basics</li><li>IOC Analysis</li><li>Brute Force & Lateral Movement</li></ul></div><div class="skill-bar-strip"><div class="skill-bar-fill"></div></div><div class="skill-bar-label"><span>70%</span></div></div>
     </div>
     <div class="tab-panel" id="tab-soc">
         <div class="skill-card" style="--c1:#00ffa3;--c2:#00c3ff;--pct:88%"><div class="card-inner"><div class="skill-icon-wrap">SOC</div><h3>SOC Operations</h3><ul><li>Security Event Monitoring</li><li>Alert Triage & Prioritization</li><li>Multi-source Log Analysis</li><li>Incident Investigation & Response</li><li>Phishing & Malware Analysis</li></ul></div><div class="skill-bar-strip"><div class="skill-bar-fill"></div></div><div class="skill-bar-label"><span>88%</span></div></div>
@@ -453,44 +474,147 @@
 <section id="projects">
     <div class="section-head reveal"><div class="section-tag">// projects</div><h2>Featured Projects</h2><p class="section-sub">Security tools and automation built from real-world scenarios</p></div>
     <div class="projects-grid">
-        <div class="proj-card reveal">
+
+        <!-- Signal-Flare: honeypot / breach detection icon -->
+        <div class="proj-card reveal" style="--proj-color:rgba(0,255,163,0.28);--proj-rgb:0,255,163">
             <span class="proj-num">01</span>
-            <div class="proj-top"><span class="proj-icon">🔥</span><h3>Signal-Flare</h3><div class="proj-type"><span class="tag-soc">SOC</span><span class="tag-eng">Security Engineering</span></div></div>
+            <div class="proj-top">
+                <div class="proj-icon-badge" style="--proj-rgb:0,255,163">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#00ffa3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L12 6"/><path d="M4.93 4.93L7.76 7.76"/><path d="M2 12H6"/><path d="M4.93 19.07L7.76 16.24"/><path d="M12 18V22"/><path d="M16.24 16.24L19.07 19.07"/><path d="M18 12H22"/><path d="M16.24 7.76L19.07 4.93"/>
+                        <circle cx="12" cy="12" r="4"/>
+                    </svg>
+                </div>
+                <div class="proj-top-text">
+                    <h3>Signal-Flare</h3>
+                    <div class="proj-type"><span class="tag-soc">SOC</span><span class="tag-eng">Security Engineering</span></div>
+                </div>
+            </div>
             <div class="proj-body"><p>Automated post-exploitation breach detection by planting honey credentials across systems. Provides real-time alerts the moment stolen credentials are used in the wild — dramatically minimizing false positives and alert fatigue in SOC environments.</p>
             <div class="proj-footer"><div class="proj-stack"><span class="tech-pill">Python</span><span class="tech-pill">Automation</span><span class="tech-pill">Honeypot</span></div><a href="https://github.com/logesh-GIT001" class="proj-link" target="_blank">GitHub →</a></div></div>
         </div>
-        <div class="proj-card reveal reveal-delay-1">
+
+        <!-- VAPT Lab Reports: crosshair / target icon -->
+        <div class="proj-card reveal reveal-delay-1" style="--proj-color:rgba(0,195,255,0.28);--proj-rgb:0,195,255">
             <span class="proj-num">02</span>
-            <div class="proj-top"><span class="proj-icon">🎯</span><h3>VAPT Lab Reports</h3><div class="proj-type"><span class="tag-vapt">VAPT</span></div></div>
+            <div class="proj-top">
+                <div class="proj-icon-badge" style="--proj-rgb:0,195,255">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#00c3ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/>
+                        <line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/>
+                        <line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/>
+                    </svg>
+                </div>
+                <div class="proj-top-text">
+                    <h3>VAPT Lab Reports</h3>
+                    <div class="proj-type"><span class="tag-vapt">VAPT</span></div>
+                </div>
+            </div>
             <div class="proj-body"><p>Collection of structured penetration testing lab writeups from TryHackMe and real-world bug bounty findings. Includes proof-of-concept exploits, CVSS scoring, and professional remediation documentation matching industry standards.</p>
             <div class="proj-footer"><div class="proj-stack"><span class="tech-pill">Burp Suite</span><span class="tech-pill">Linux</span><span class="tech-pill">OWASP</span></div><a href="https://github.com/logesh-GIT001" class="proj-link" target="_blank">GitHub →</a></div></div>
         </div>
-        <div class="proj-card reveal reveal-delay-2">
+
+        <!-- SOC Playbook: layered shield / book icon -->
+        <div class="proj-card reveal reveal-delay-2" style="--proj-color:rgba(123,97,255,0.28);--proj-rgb:123,97,255">
             <span class="proj-num">03</span>
-            <div class="proj-top"><span class="proj-icon">📊</span><h3>SOC Playbook Collection</h3><div class="proj-type"><span class="tag-soc">SOC</span><span class="tag-eng">Blue Team</span></div></div>
+            <div class="proj-top">
+                <div class="proj-icon-badge" style="--proj-rgb:123,97,255">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#7b61ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <polyline points="9 12 11 14 15 10"/>
+                    </svg>
+                </div>
+                <div class="proj-top-text">
+                    <h3>SOC Playbook Collection</h3>
+                    <div class="proj-type"><span class="tag-soc">SOC</span><span class="tag-eng">Blue Team</span></div>
+                </div>
+            </div>
             <div class="proj-body"><p>Custom incident response playbooks built from LetsDefend simulations — covering phishing triage, malware sandboxing workflows, brute-force detection, and lateral movement investigation with MITRE ATT&CK mappings.</p>
             <div class="proj-footer"><div class="proj-stack"><span class="tech-pill">Splunk</span><span class="tech-pill">Sentinel</span><span class="tech-pill">MITRE</span></div><a href="https://github.com/logesh-GIT001" class="proj-link" target="_blank">GitHub →</a></div></div>
         </div>
-        <div class="proj-card reveal reveal-delay-3">
+
+        <!-- Python Toolkit: terminal / code icon -->
+        <div class="proj-card reveal reveal-delay-3" style="--proj-color:rgba(0,255,163,0.22);--proj-rgb:0,255,163">
             <span class="proj-num">04</span>
-            <div class="proj-top"><span class="proj-icon">🐍</span><h3>Python Security Toolkit</h3><div class="proj-type"><span class="tag-eng">Security Engineering</span><span class="tag-vapt">Automation</span></div></div>
+            <div class="proj-top">
+                <div class="proj-icon-badge" style="--proj-rgb:0,255,163">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#00ffa3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 18 22 12 16 6"/>
+                        <polyline points="8 6 2 12 8 18"/>
+                    </svg>
+                </div>
+                <div class="proj-top-text">
+                    <h3>Python Security Toolkit</h3>
+                    <div class="proj-type"><span class="tag-eng">Security Engineering</span><span class="tag-vapt">Automation</span></div>
+                </div>
+            </div>
             <div class="proj-body"><p>Growing collection of Python scripts for security tasks — automated recon, log parsing, IOC extraction, and vulnerability scanning helpers. Designed to support both red team recon and blue team triage workflows.</p>
             <div class="proj-footer"><div class="proj-stack"><span class="tech-pill">Python</span><span class="tech-pill">Bash</span><span class="tech-pill">Scripting</span></div><a href="https://github.com/logesh-GIT001" class="proj-link" target="_blank">GitHub →</a></div></div>
         </div>
+
     </div>
 </section>
 
 <!-- CERTIFICATIONS -->
 <section id="certifications">
     <div class="section-head center reveal"><div class="section-tag">// credentials</div><h2>Certifications & Education</h2></div>
-    <div class="certs-grid reveal">
-        <div class="cert-card"><h4>Cisco Networking Basics</h4><div class="cert-status status-done">✓ Completed</div></div>
-        <div class="cert-card"><h4>Cybersecurity Fundamentals</h4><div class="cert-status status-done">✓ Completed</div></div>
-        <div class="cert-card"><h4>Cisco Endpoint Security</h4><div class="cert-status status-wip">⟳ In Progress</div></div>
-        <div class="cert-card"><h4>Python for Security Automation</h4><div class="cert-status status-wip">⟳ Self-learning</div></div>
-        <div class="cert-card" style="grid-column:span 2"><h4>M.Tech — Computer Science Engineering</h4><div style="color:var(--muted);font-size:0.82rem;margin:0.4rem 0">Erode Sengunthar Engineering College · 2022–2027 (5 Year Integrated)</div><div class="cert-status status-wip">⟳ Ongoing</div></div>
-        <div class="cert-card"><h4>eJPT / CEH</h4><div class="cert-status status-wip">⟳ Target 2025</div></div>
-        <div class="cert-card"><h4>CompTIA Security+</h4><div class="cert-status status-wip">⟳ Planned</div></div>
+    <div class="certs-grid" id="certsGrid">
+
+        <div class="cert-card" data-delay="0">
+            <div class="cert-ring-wrap"><svg class="cert-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="cert-ring-bg" cx="10" cy="10" r="8"/><circle class="cert-ring-fill" cx="10" cy="10" r="8"/></svg></div>
+            <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00ffa3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+            <h4>Cisco Networking Basics</h4>
+            <div class="cert-status status-done"><span class="cert-dot"></span>Completed</div>
+        </div>
+
+        <div class="cert-card" data-delay="80">
+            <div class="cert-ring-wrap"><svg class="cert-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="cert-ring-bg" cx="10" cy="10" r="8"/><circle class="cert-ring-fill" cx="10" cy="10" r="8"/></svg></div>
+            <div class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#00ffa3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+            <h4>Cybersecurity Fundamentals</h4>
+            <div class="cert-status status-done"><span class="cert-dot"></span>Completed</div>
+        </div>
+
+        <div class="cert-card" data-delay="160">
+            <div class="cert-ring-wrap cert-ring-wip"><svg class="cert-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="cert-ring-bg" cx="10" cy="10" r="8"/><circle class="cert-ring-fill" cx="10" cy="10" r="8"/></svg></div>
+            <div class="cert-icon" style="background:rgba(255,181,71,0.07);border-color:rgba(255,181,71,0.2)"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb547" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <h4>Cisco Endpoint Security</h4>
+            <div class="cert-status status-wip"><span class="cert-dot"></span>In Progress</div>
+        </div>
+
+        <div class="cert-card" data-delay="240">
+            <div class="cert-ring-wrap cert-ring-wip"><svg class="cert-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="cert-ring-bg" cx="10" cy="10" r="8"/><circle class="cert-ring-fill" cx="10" cy="10" r="8"/></svg></div>
+            <div class="cert-icon" style="background:rgba(255,181,71,0.07);border-color:rgba(255,181,71,0.2)"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb547" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+            <h4>Python for Security Automation</h4>
+            <div class="cert-status status-wip"><span class="cert-dot"></span>Self-learning</div>
+        </div>
+
+        <div class="cert-card cert-wide" data-delay="320">
+            <div class="cert-card-inner">
+                <div class="cert-icon" style="width:38px;height:38px;flex-shrink:0;margin-bottom:0;background:rgba(123,97,255,0.08);border-color:rgba(123,97,255,0.2)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#7b61ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                </div>
+                <div class="cert-text">
+                    <h4>M.Tech — Computer Science Engineering</h4>
+                    <div class="cert-sub">Erode Sengunthar Engineering College · 2022–2027 (5 Year Integrated)</div>
+                    <div class="cert-status status-wip"><span class="cert-dot"></span>Ongoing</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cert-card" data-delay="400">
+            <div class="cert-ring-wrap cert-ring-wip"><svg class="cert-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="cert-ring-bg" cx="10" cy="10" r="8"/><circle class="cert-ring-fill" cx="10" cy="10" r="8"/></svg></div>
+            <div class="cert-icon" style="background:rgba(255,181,71,0.07);border-color:rgba(255,181,71,0.2)"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb547" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+            <h4>eJPT / CEH</h4>
+            <div class="cert-status status-wip"><span class="cert-dot"></span>Target 2025</div>
+        </div>
+
+        <div class="cert-card" data-delay="480">
+            <div class="cert-ring-wrap cert-ring-wip"><svg class="cert-ring" width="20" height="20" viewBox="0 0 20 20"><circle class="cert-ring-bg" cx="10" cy="10" r="8"/><circle class="cert-ring-fill" cx="10" cy="10" r="8"/></svg></div>
+            <div class="cert-icon" style="background:rgba(255,181,71,0.07);border-color:rgba(255,181,71,0.2)"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb547" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+            <h4>CompTIA Security+</h4>
+            <div class="cert-status status-wip"><span class="cert-dot"></span>Planned</div>
+        </div>
+
     </div>
 </section>
 
@@ -553,9 +677,9 @@
 
 <script>
 // Cursor
-const cursor = document.getElementById('cursor'), ring = document.getElementById('cursorRing');
+const cursor=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
 let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove', e=>{mx=e.clientX;my=e.clientY;});
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
 (function ac(){cursor.style.left=mx+'px';cursor.style.top=my+'px';rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(ac);})();
 
 // Particles
@@ -587,6 +711,22 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
         setTimeout(()=>fireBars(panel),80);
     });
 });
+
+// ── Cert card staggered reveal ──
+const certObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+        if(e.isIntersecting){
+            const cards=document.querySelectorAll('.cert-card');
+            cards.forEach(card=>{
+                const delay=parseInt(card.dataset.delay||0);
+                setTimeout(()=>card.classList.add('cert-vis'),delay);
+            });
+            certObs.disconnect();
+        }
+    });
+},{threshold:0.15});
+const cg=document.getElementById('certsGrid');
+if(cg)certObs.observe(cg);
 
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
