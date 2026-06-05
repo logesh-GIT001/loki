@@ -1,821 +1,1434 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me | Logeshwaran S</title>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logeshwaran Sanmugam — The Full Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Exo+2:wght@300;400;600;700;900&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-        :root {
-            --bg: #060b18;
-            --bg2: #0d1425;
-            --bg3: #111827;
-            --g1: #00ffa3;
-            --g2: #00c3ff;
-            --g3: #7b61ff;
-            --gold: #f9c846;
-            --text: #e2e8f4;
-            --muted: #6b7a99;
-            --border: rgba(0,255,163,0.13);
-            --glow: rgba(0,255,163,0.06);
-        }
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            overflow-x: hidden;
-            cursor: none;
-        }
+    :root {
+      --bg:   #06080f;
+      --bg2:  #0b1020;
+      --bg3:  #111827;
+      --g1:   #00ffa3;
+      --g2:   #00c3ff;
+      --g3:   #7b61ff;
+      --gold: #f9c846;
+      --text: #e8edf8;
+      --muted:#5a6a88;
+      --border:rgba(255,255,255,0.07);
+    }
 
-        /* ── Cursor ── */
-        .cursor { position: fixed; top: 0; left: 0; width: 10px; height: 10px; background: var(--g1); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); mix-blend-mode: screen; }
-        .cursor-ring { position: fixed; top: 0; left: 0; width: 36px; height: 36px; border: 1.5px solid rgba(0,255,163,0.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: width 0.3s cubic-bezier(.22,1,.36,1), height 0.3s cubic-bezier(.22,1,.36,1); }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      cursor: none;
+    }
 
-        /* ── Background ── */
-        .bg-canvas { position: fixed; inset: 0; z-index: 0; overflow: hidden; }
-        .orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.15; animation: orbFloat 14s ease-in-out infinite; }
-        .o1 { width: 600px; height: 600px; background: var(--g1); top: -200px; left: -150px; animation-delay: 0s; }
-        .o2 { width: 400px; height: 400px; background: var(--gold); bottom: -100px; right: -100px; animation-delay: -5s; }
-        .o3 { width: 350px; height: 350px; background: var(--g3); top: 40%; left: 60%; animation-delay: -9s; }
-        @keyframes orbFloat { 0%,100% { transform: translate(0,0) scale(1); } 40% { transform: translate(25px,-35px) scale(1.05); } 70% { transform: translate(-15px,20px) scale(0.97); } }
+    /* ═══ CURSOR ═══ */
+    .cur {
+      position: fixed; width: 8px; height: 8px;
+      background: var(--g1); border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%,-50%);
+      mix-blend-mode: screen;
+      transition: width .25s, height .25s, background .25s;
+      will-change: left, top;
+    }
+    .cur-ring {
+      position: fixed; width: 34px; height: 34px;
+      border: 1px solid rgba(0,255,163,.45); border-radius: 50%;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%,-50%);
+      transition: width .3s cubic-bezier(.22,1,.36,1), height .3s cubic-bezier(.22,1,.36,1), border-color .3s;
+      will-change: left, top;
+    }
+    body.hovering .cur { width: 12px; height: 12px; background: var(--gold); }
+    body.hovering .cur-ring { width: 50px; height: 50px; border-color: rgba(249,200,70,.6); }
 
-        .particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-        .particle { position: absolute; width: 2px; height: 2px; border-radius: 50%; opacity: 0; animation: pfly var(--d,8s) var(--dl,0s) ease-in infinite; }
-        @keyframes pfly { 0% { transform: translateY(100vh); opacity: 0; } 10% { opacity: 0.5; } 90% { opacity: 0.2; } 100% { transform: translateY(-10vh) translateX(var(--dx,0px)); opacity: 0; } }
+    /* ═══ GRAIN OVERLAY ═══ */
+    body::after {
+      content: '';
+      position: fixed; inset: 0; z-index: 9997;
+      pointer-events: none;
+      opacity: .025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
 
-        /* ── Nav ── */
-        nav { position: fixed; top: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 100; width: calc(100% - 4rem); max-width: 860px; padding: 0.8rem 1.8rem; background: rgba(13,20,37,0.75); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 100px; display: flex; align-items: center; justify-content: space-between; animation: navIn 0.8s cubic-bezier(.22,1,.36,1) both; }
-        @keyframes navIn { from { transform: translateX(-50%) translateY(-80px); opacity: 0; } to { transform: translateX(-50%) translateY(0); opacity: 1; } }
-        .logo { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1rem; background: linear-gradient(135deg, var(--g1), var(--g2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; }
-        .nav-links { display: flex; gap: 1.8rem; list-style: none; }
-        .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.3s; }
-        .nav-links a:hover { color: var(--g1); }
-        .nav-back { padding: 0.5rem 1.2rem; border-radius: 100px; border: 1px solid var(--border); color: var(--text); text-decoration: none; font-size: 0.82rem; font-weight: 500; transition: all 0.3s; }
-        .nav-back:hover { border-color: var(--g1); color: var(--g1); }
+    /* ═══ NAV ═══ */
+    nav {
+      position: fixed; top: 1.4rem; left: 50%;
+      transform: translateX(-50%);
+      z-index: 100; width: calc(100% - 4rem); max-width: 920px;
+      padding: .7rem 1.6rem;
+      background: rgba(6,8,15,.88); backdrop-filter: blur(22px);
+      border: 1px solid var(--border); border-radius: 100px;
+      display: flex; align-items: center; justify-content: space-between;
+      animation: navIn .8s .1s cubic-bezier(.22,1,.36,1) both;
+    }
+    @keyframes navIn { from{transform:translateX(-50%) translateY(-60px);opacity:0} to{transform:translateX(-50%) translateY(0);opacity:1} }
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: .92rem;
+      background: linear-gradient(135deg,var(--g1),var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: .3rem; list-style: none; }
+    .nav-links a {
+      font-family: 'JetBrains Mono', monospace; font-size: .7rem;
+      color: var(--muted); text-decoration: none;
+      padding: .38rem .75rem; border-radius: 50px;
+      letter-spacing: .08em; transition: color .25s, background .25s;
+    }
+    .nav-links a:hover { color: var(--gold); background: rgba(249,200,70,.07); }
+    .nav-back {
+      padding: .42rem 1.1rem; border-radius: 100px;
+      border: 1px solid var(--border); color: var(--text);
+      text-decoration: none; font-size: .8rem; font-weight: 500;
+      transition: all .3s;
+    }
+    .nav-back:hover { border-color: var(--gold); color: var(--gold); }
 
-        /* ── Wrap ── */
-        .wrap { max-width: 1140px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 2; }
+    /* ═══ WRAP ═══ */
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 2; }
 
-        /* ── Hero ── */
-        .hero { min-height: 100vh; display: flex; align-items: center; padding: 9rem 0 5rem; }
-        .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    /* ═══════════════════════════════════════════
+       ████  HERO  ████
+    ═══════════════════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 9rem 0 6rem;
+    }
 
-        .hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--g1); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.8rem; animation: fadeUp 0.7s 0.3s both; }
-        .eyebrow-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--g1), transparent); max-width: 60px; }
+    /* Neon perspective field */
+    .field-scene {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 62vh;
+      overflow: hidden; pointer-events: none;
+    }
+    .field-plane {
+      position: absolute;
+      width: 300%; left: -100%;
+      height: 100%;
+      transform: rotateX(72deg);
+      transform-origin: top center;
+      will-change: transform;
+      background:
+        repeating-linear-gradient(0deg,
+          rgba(0,255,163,.05) 0, rgba(0,255,163,.05) 1px,
+          transparent 0, transparent 52px),
+        repeating-linear-gradient(90deg,
+          rgba(0,255,163,.05) 0, rgba(0,255,163,.05) 1px,
+          transparent 0, transparent 52px),
+        radial-gradient(ellipse at 50% 0%, rgba(0,255,163,.06) 0%, transparent 65%),
+        linear-gradient(180deg, #091c11 0%, #030a06 100%);
+    }
+    .field-plane::before {
+      content: '';
+      position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
+      background: rgba(0,255,163,.16); transform: translateX(-50%);
+    }
+    .field-plane::after {
+      content: '';
+      position: absolute; left: 50%; top: 22%;
+      width: 140px; height: 140px;
+      border: 1.5px solid rgba(0,255,163,.14);
+      border-radius: 50%;
+      transform: translate(-50%,-50%);
+    }
 
-        h1 { font-family: 'Syne', sans-serif; font-size: 4rem; font-weight: 800; line-height: 1.05; animation: fadeUp 0.7s 0.5s both; }
-        h1 em { display: block; font-style: normal; background: linear-gradient(135deg, var(--gold) 0%, #ffda7a 50%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; background-size: 200%; animation: fadeUp 0.7s 0.5s both, shimmer 3s ease infinite; }
-        @keyframes shimmer { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+    /* Moving glow spotlight on field */
+    .field-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 500px 200px at var(--gx,50%) var(--gy,85%),
+        rgba(0,255,163,.08) 0%, transparent 70%);
+    }
 
-        .hero-para { color: var(--muted); font-size: 1.05rem; line-height: 1.9; margin: 1.8rem 0 2.5rem; animation: fadeUp 0.7s 0.7s both; }
-        .hero-para strong { color: var(--text); font-weight: 500; }
+    /* Ambient orbs */
+    .hero-orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(100px); opacity: .12; pointer-events: none;
+    }
+    .hero-orb-1 { width: 500px; height: 500px; background: var(--gold); top: -100px; left: -120px; animation: orb1 16s ease-in-out infinite; }
+    .hero-orb-2 { width: 350px; height: 350px; background: var(--g1); bottom: 10%; right: 5%; animation: orb1 13s ease-in-out infinite reverse; }
+    @keyframes orb1 { 0%,100%{transform:translate(0,0)} 40%{transform:translate(30px,-40px)} 70%{transform:translate(-20px,25px)} }
 
-        /* Stat pills */
-        .stat-row { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.7s 0.9s both; }
-        .stat-pill { display: flex; flex-direction: column; padding: 1rem 1.5rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; min-width: 110px; transition: all 0.3s; }
-        .stat-pill:hover { border-color: var(--gold); transform: translateY(-3px); }
-        .stat-n { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--gold); line-height: 1; }
-        .stat-l { font-size: 0.72rem; color: var(--muted); margin-top: 0.3rem; font-weight: 500; }
+    .hero-content {
+      position: relative; z-index: 3;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 4rem; align-items: center; width: 100%;
+    }
 
-        /* Hero right — identity card */
-        .id-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.5); animation: fadeUp 0.8s 0.6s both; }
-        .id-card-top { padding: 2rem 2rem 1.5rem; background: linear-gradient(135deg, rgba(249,200,70,0.08), rgba(0,255,163,0.04)); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 1.5rem; }
-        .avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), #ff9a3c); display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0; box-shadow: 0 0 0 3px var(--bg2), 0 0 0 5px rgba(249,200,70,0.3); }
-        .id-name { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; }
-        .id-role { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--g1); margin-top: 0.2rem; }
-        .id-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
-        .badge { padding: 0.2rem 0.7rem; border-radius: 100px; font-size: 0.7rem; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
-        .badge-gold { background: rgba(249,200,70,0.12); color: var(--gold); border: 1px solid rgba(249,200,70,0.3); }
-        .badge-green { background: rgba(0,255,163,0.08); color: var(--g1); border: 1px solid rgba(0,255,163,0.25); }
-        .badge-blue { background: rgba(0,195,255,0.08); color: var(--g2); border: 1px solid rgba(0,195,255,0.25); }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .7rem;
+      font-family: 'JetBrains Mono', monospace; font-size: .7rem;
+      color: var(--g1); letter-spacing: .18em; text-transform: uppercase;
+      margin-bottom: 1.4rem; padding: .38rem 1rem .38rem .7rem;
+      background: rgba(0,255,163,.05); border: 1px solid rgba(0,255,163,.18);
+      border-radius: 100px;
+      opacity: 0; animation: fadeUp .6s .35s both;
+    }
+    .eyebrow-dot { width: 6px; height: 6px; background: var(--g1); border-radius: 50%; animation: eDot 2s ease-in-out infinite; flex-shrink: 0; }
+    @keyframes eDot { 0%,100%{box-shadow:0 0 0 0 rgba(0,255,163,.5)} 50%{box-shadow:0 0 0 6px rgba(0,255,163,0)} }
 
-        .id-body { padding: 1.5rem 2rem; }
-        .id-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 0.85rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
-        .id-row:last-child { border: none; }
-        .id-key { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--muted); }
-        .id-val { font-size: 0.88rem; font-weight: 500; text-align: right; max-width: 58%; }
-        .id-val.gold { color: var(--gold); }
-        .id-val.green { color: var(--g1); }
+    .hero-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4.5rem, 11vw, 9rem);
+      line-height: .92; letter-spacing: .025em;
+      opacity: 0; animation: fadeUp .7s .5s both;
+    }
+    .hero-name .n1 { display: block; color: var(--text); }
+    .hero-name .n2 {
+      display: block;
+      background: linear-gradient(135deg,var(--gold) 0%,#ffd55e 40%,var(--gold) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      background-size: 200%; animation: shimmer 4s ease infinite;
+    }
+    @keyframes shimmer { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
 
-        /* ── Section commons ── */
-        section { padding: 5.5rem 0; }
-        .s-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--g1); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.7rem; }
-        h2 { font-family: 'Syne', sans-serif; font-size: 2.6rem; font-weight: 700; margin-bottom: 1rem; }
-        .s-sub { color: var(--muted); font-size: 1rem; max-width: 520px; }
-        .s-head { margin-bottom: 3.5rem; }
+    .hero-role-row {
+      display: flex; align-items: center; gap: .7rem;
+      font-family: 'Exo 2', sans-serif; font-size: 1.05rem; font-weight: 300;
+      color: var(--muted); margin: 1.6rem 0 2.4rem;
+      opacity: 0; animation: fadeUp .6s .66s both;
+    }
+    .role-static { }
+    .role-dynamic {
+      color: var(--gold); font-weight: 600;
+      transition: opacity .3s, transform .3s;
+    }
 
-        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(.22,1,.36,1), transform 0.8s cubic-bezier(.22,1,.36,1); }
-        .reveal.vis { opacity: 1; transform: translateY(0); }
-        .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
+    .hero-pills { display: flex; gap: .7rem; flex-wrap: wrap; opacity: 0; animation: fadeUp .6s .8s both; }
+    .hpill {
+      display: flex; flex-direction: column;
+      padding: .8rem 1.2rem; border-radius: 14px;
+      background: rgba(249,200,70,.05); border: 1px solid rgba(249,200,70,.2);
+      transition: all .3s; min-width: 80px; text-align: center;
+    }
+    .hpill:hover { background: rgba(249,200,70,.1); border-color: var(--gold); transform: translateY(-4px); }
+    .hpill-n { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--gold); line-height: 1; letter-spacing: .04em; }
+    .hpill-l { font-family: 'JetBrains Mono', monospace; font-size: .62rem; color: var(--muted); margin-top: .2rem; text-transform: uppercase; letter-spacing: .08em; }
 
-        /* ── Sports Captain Section ── */
-        .captain-banner {
-            background: linear-gradient(135deg, rgba(249,200,70,0.06) 0%, rgba(0,255,163,0.04) 100%);
-            border: 1px solid rgba(249,200,70,0.2);
-            border-radius: 24px; padding: 3rem; margin-bottom: 3.5rem;
-            display: flex; align-items: center; gap: 3rem;
-            position: relative; overflow: hidden;
-        }
-        .captain-banner::before { content: ''; position: absolute; top: -50%; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(249,200,70,0.08) 0%, transparent 70%); pointer-events: none; }
-        .captain-icon { font-size: 4.5rem; flex-shrink: 0; }
-        .captain-text h3 { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .captain-text h3 span { color: var(--gold); }
-        .captain-text p { color: var(--muted); font-size: 0.98rem; line-height: 1.8; max-width: 560px; }
-        .captain-tags { display: flex; gap: 0.7rem; margin-top: 1.2rem; flex-wrap: wrap; }
-        .ctag { padding: 0.35rem 0.9rem; border-radius: 100px; font-size: 0.78rem; font-weight: 600; }
-        .ctag-gold { background: rgba(249,200,70,0.12); color: var(--gold); border: 1px solid rgba(249,200,70,0.3); }
-        .ctag-green { background: rgba(0,255,163,0.08); color: var(--g1); border: 1px solid rgba(0,255,163,0.25); }
+    /* Jersey Visual */
+    .hero-jersey { opacity: 0; animation: fadeUp .8s .6s both; }
+    .jersey-scene { perspective: 800px; }
+    .jersey-card {
+      width: 210px; height: 260px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform .1s ease-out;
+      cursor: none;
+    }
+    .jersey-body {
+      width: 100%; height: 100%;
+      background: linear-gradient(150deg, #111d35, #0c1528);
+      border: 1.5px solid rgba(249,200,70,.32);
+      clip-path: polygon(28% 0%,72% 0%,72% 5%,90% 16%,100% 8%,100% 35%,83% 41%,83% 100%,17% 100%,17% 41%,0% 35%,0% 8%,10% 16%,28% 5%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: 0 0 70px rgba(249,200,70,.12);
+      position: relative; overflow: hidden;
+    }
+    .jersey-body::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 35%, rgba(249,200,70,.07), transparent 65%);
+    }
+    .jersey-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 6.5rem; color: var(--gold);
+      text-shadow: 0 0 50px rgba(249,200,70,.45);
+      line-height: 1; margin-top: 18px; position: relative; z-index: 1;
+    }
+    .jersey-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem; letter-spacing: .28em;
+      color: rgba(249,200,70,.65); margin-top: 4px;
+      position: relative; z-index: 1;
+    }
+    .jersey-badge {
+      position: absolute; top: -14px; right: -14px;
+      width: 38px; height: 38px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), #f0a800);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.05rem;
+      box-shadow: 0 0 24px rgba(249,200,70,.5), 0 0 0 3px rgba(249,200,70,.15);
+      animation: badgeFloat 3.5s ease-in-out infinite;
+    }
+    @keyframes badgeFloat { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-8px) rotate(5deg)} }
+    .jersey-captain-label {
+      position: absolute; bottom: -32px; left: 50%; transform: translateX(-50%);
+      font-family: 'JetBrains Mono', monospace; font-size: .65rem;
+      color: var(--gold); letter-spacing: .15em; text-transform: uppercase;
+      white-space: nowrap; text-align: center;
+    }
 
-        /* Trophy cards */
-        .trophies-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
-        .trophy-card {
-            background: var(--bg2); border: 1px solid var(--border);
-            border-radius: 20px; overflow: hidden;
-            transition: all 0.35s cubic-bezier(.22,1,.36,1);
-            position: relative;
-        }
-        .trophy-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 25px 60px rgba(0,0,0,0.4), 0 0 40px rgba(249,200,70,0.07); }
-        .trophy-img { width: 100%; height: 240px; object-fit: cover; display: block; }
-        .trophy-img-placeholder { width: 100%; height: 240px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(249,200,70,0.06), rgba(0,255,163,0.04)); }
-        .trophy-img-placeholder .big-em { font-size: 4rem; margin-bottom: 0.5rem; }
-        .trophy-img-placeholder span { font-size: 0.75rem; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
-        .trophy-label { padding: 1.3rem 1.5rem; }
-        .trophy-label h4 { font-family: 'Syne', sans-serif; font-size: 1.05rem; margin-bottom: 0.3rem; color: var(--gold); }
-        .trophy-label p { color: var(--muted); font-size: 0.85rem; line-height: 1.6; }
+    /* Scroll indicator */
+    .scroll-ind {
+      position: absolute; bottom: 2.2rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+      font-family: 'JetBrains Mono', monospace; font-size: .6rem;
+      color: var(--muted); letter-spacing: .15em;
+      animation: fadeUp .7s 1.3s both;
+    }
+    .scroll-bar { width: 1px; height: 44px; background: linear-gradient(180deg,var(--muted),transparent); animation: sBar 2s ease-in-out infinite; }
+    @keyframes sBar { 0%,100%{opacity:.35;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.1)} }
 
-        /* Jersey card */
-        .jersey-section { display: grid; grid-template-columns: 1fr 2fr; gap: 2.5rem; align-items: center; margin-top: 2rem; }
-        .jersey-card {
-            background: var(--bg2); border: 1px solid rgba(249,200,70,0.2);
-            border-radius: 24px; padding: 2.5rem; text-align: center;
-            transition: all 0.3s;
-        }
-        .jersey-card:hover { border-color: var(--gold); box-shadow: 0 20px 50px rgba(249,200,70,0.08); }
-        .jersey-number { font-family: 'Syne', sans-serif; font-size: 7rem; font-weight: 800; color: var(--gold); line-height: 1; text-shadow: 0 0 60px rgba(249,200,70,0.3); }
-        .jersey-sub { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase; }
-        .jersey-name { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text); margin-top: 0.8rem; }
-        .field-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .fstat { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; text-align: center; transition: all 0.3s; }
-        .fstat:hover { border-color: var(--gold); transform: translateY(-3px); }
-        .fstat-n { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--gold); }
-        .fstat-l { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; font-weight: 500; }
+    /* ═══════════════════════════════════════════
+       COMMON SECTION STYLES
+    ═══════════════════════════════════════════ */
+    section { padding: 7.5rem 0; }
 
-        /* ── Sports Secretary ── */
-        .sec-card {
-            background: linear-gradient(135deg, rgba(123,97,255,0.06), rgba(0,195,255,0.04));
-            border: 1px solid rgba(123,97,255,0.25);
-            border-radius: 24px; padding: 3rem;
-            display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
-        }
-        .sec-icon-wrap { text-align: center; }
-        .sec-icon-big { font-size: 5rem; }
-        .sec-icon-label { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--g3); margin-top: 1rem; }
-        .sec-icon-sub { font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem; }
-        .sec-content h3 { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; }
-        .sec-content h3 span { color: var(--g3); }
-        .sec-content p { color: var(--muted); font-size: 0.95rem; line-height: 1.85; margin-bottom: 1.2rem; }
-        .sec-list { list-style: none; }
-        .sec-list li { color: var(--muted); font-size: 0.9rem; padding: 0.35rem 0 0.35rem 1.3rem; position: relative; }
-        .sec-list li::before { content: '›'; position: absolute; left: 0; color: var(--g3); font-weight: bold; font-size: 1.1rem; }
+    .sec-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem; color: var(--g1); letter-spacing: .18em;
+      text-transform: uppercase; margin-bottom: .7rem;
+      display: flex; align-items: center; gap: .65rem;
+    }
+    .sec-tag::before { content:''; width:18px; height:1px; background:var(--g1); flex-shrink:0; }
+    .sec-tag.c { justify-content: center; }
+    .sec-tag.c::before { display: none; }
+    .sec-tag.c::after { content:''; width:18px; height:1px; background:var(--g1); flex-shrink:0; }
 
-        /* ── Parallel quote ── */
-        .parallel-section { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        .quote-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; }
-        .quote-mark { font-size: 4rem; color: var(--g1); line-height: 0.8; margin-bottom: 1rem; font-family: 'Syne', sans-serif; }
-        .quote-text { font-size: 1.15rem; font-weight: 500; line-height: 1.7; margin-bottom: 1rem; font-style: italic; color: var(--text); }
-        .quote-attr { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--g1); }
-        .mindset-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; }
-        .mindset-title { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; }
-        .mindset-row { display: flex; align-items: center; gap: 1rem; padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
-        .mindset-row:last-child { border: none; }
-        .m-ico { font-size: 1.4rem; }
-        .m-text { font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
-        .m-text strong { color: var(--text); font-weight: 500; }
+    .sec-h {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      letter-spacing: .04em; line-height: .98;
+      margin-bottom: .9rem;
+    }
+    .sec-sub { color: var(--muted); font-size: .97rem; max-width: 500px; }
+    .s-head { margin-bottom: 3.5rem; }
+    .s-head.center { text-align: center; }
+    .s-head.center .sec-sub { margin: 0 auto; }
 
-        /* ── Interests ── */
-        .interests-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
-        .int-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 18px; padding: 2rem; transition: all 0.3s; }
-        .int-card:hover { transform: translateY(-4px); border-color: var(--g1); }
-        .int-ico { font-size: 2.2rem; margin-bottom: 1.2rem; }
-        .int-card h3 { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; }
-        .int-list { list-style: none; }
-        .int-list li { color: var(--muted); font-size: 0.88rem; padding: 0.3rem 0 0.3rem 1.1rem; position: relative; }
-        .int-list li::before { content: '›'; position: absolute; left: 0; color: var(--g1); }
+    /* ═══ REVEAL ═══ */
+    .reveal {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity .85s cubic-bezier(.22,1,.36,1), transform .85s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal.vis { opacity: 1; transform: translateY(0); }
+    .d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s} .d4{transition-delay:.4s}
 
-        /* ── Footer ── */
-        footer { padding: 2.5rem 0; text-align: center; border-top: 1px solid var(--border); margin-top: 4rem; }
-        footer p { color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; }
+    /* ═══════════════════════════════════════════
+       ████  DUALITY  ████
+    ═══════════════════════════════════════════ */
+    #duality { background: linear-gradient(160deg, rgba(249,200,70,.015), transparent 50%, rgba(0,255,163,.012)); }
 
-        /* ── Chess Section ── */
-        .chess-wrapper {
-            display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem;
-            align-items: center; padding: 4rem 0;
-        }
-        /* Board */
-        .chess-board { position: relative; width: 320px; height: 320px; flex-shrink: 0; }
-        .cb-grid {
-            width: 100%; height: 100%; display: grid;
-            grid-template-columns: repeat(8,1fr); grid-template-rows: repeat(8,1fr);
-            border-radius: 12px; overflow: hidden;
-            border: 2px solid rgba(0,255,163,0.2);
-            box-shadow: 0 0 40px rgba(0,255,163,0.06), 0 20px 60px rgba(0,0,0,0.5);
-        }
-        .cb-cell { width: 100%; height: 100%; }
-        .cb-cell.light { background: #1e2d40; }
-        .cb-cell.dark  { background: #0d1825; }
-        .cb-cell.light.highlight { background: rgba(0,255,163,0.18); }
-        .cb-cell.dark.highlight  { background: rgba(0,255,163,0.10); }
-        .cb-pieces { position: absolute; inset: 0; pointer-events: none; }
-        .cp {
-            position: absolute;
-            left: calc(var(--c) * 12.5%);
-            top:  calc(var(--r) * 12.5%);
-            width: 12.5%; height: 12.5%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.3rem; line-height: 1;
-            animation: pieceFloat 3s ease-in-out infinite;
-            animation-delay: calc(var(--c) * 0.15s + var(--r) * 0.1s);
-        }
-        @keyframes pieceFloat {
-            0%,100% { transform: translateY(0); }
-            50% { transform: translateY(-2px); }
-        }
+    .duality-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
 
-        /* Right content */
-        .chess-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--g1); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.8rem; }
-        .chess-h { font-family: 'Syne', sans-serif; font-size: 2.8rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.2rem; }
-        .chess-h span { background: linear-gradient(135deg, var(--g1), var(--g2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .chess-p { color: var(--muted); font-size: 0.95rem; line-height: 1.85; max-width: 460px; }
+    .dual-card {
+      border-radius: 24px; padding: 2.8rem;
+      position: relative; overflow: hidden;
+      transition: transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s, border-color .4s;
+      cursor: none;
+    }
+    .dual-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 100%; height: 3px; border-radius: 3px 3px 0 0;
+      transition: right .55s cubic-bezier(.22,1,.36,1);
+    }
+    .dual-card:hover::before { right: 0; }
+    .dual-card:hover { transform: translateY(-10px); }
 
-        .chess-stats { display: flex; gap: 1.2rem; margin: 2rem 0; flex-wrap: wrap; }
-        .cs-stat {
-            display: flex; align-items: center; gap: 0.8rem;
-            padding: 0.8rem 1.2rem; background: var(--bg2);
-            border: 1px solid var(--border); border-radius: 12px;
-            transition: border-color 0.3s;
-        }
-        .cs-stat:hover { border-color: var(--g1); }
-        .cs-ico { font-size: 1.4rem; }
-        .cs-val { display: block; font-family: 'Syne', sans-serif; font-size: 0.92rem; font-weight: 700; color: var(--text); }
-        .cs-lbl { display: block; font-size: 0.7rem; color: var(--muted); margin-top: 0.1rem; font-family: 'JetBrains Mono', monospace; }
+    .dual-card.field {
+      background: linear-gradient(145deg, rgba(249,200,70,.07), rgba(249,200,70,.025));
+      border: 1px solid rgba(249,200,70,.22);
+    }
+    .dual-card.field::before { background: linear-gradient(90deg,var(--gold),#ffa520); }
+    .dual-card.field:hover { box-shadow: 0 35px 80px rgba(249,200,70,.1); border-color: rgba(249,200,70,.5); }
 
-        /* CTA Button */
-        .chess-btn {
-            display: inline-flex; align-items: center; gap: 0.8rem;
-            padding: 1rem 2rem; border-radius: 14px;
-            background: linear-gradient(135deg, rgba(0,255,163,0.12), rgba(0,195,255,0.08));
-            border: 1.5px solid rgba(0,255,163,0.35);
-            color: var(--g1); text-decoration: none;
-            font-weight: 700; font-size: 1rem;
-            transition: all 0.35s cubic-bezier(.22,1,.36,1);
-            position: relative; overflow: hidden;
-        }
-        .chess-btn::before {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(135deg, var(--g1), var(--g2));
-            opacity: 0; transition: opacity 0.35s;
-        }
-        .chess-btn:hover { border-color: var(--g1); color: var(--bg); transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0,255,163,0.25); }
-        .chess-btn:hover::before { opacity: 1; }
-        .chess-btn-icon, .chess-btn-arrow, .chess-btn span { position: relative; z-index: 1; }
-        .chess-btn-icon { font-size: 1.3rem; transition: transform 0.3s; }
-        .chess-btn:hover .chess-btn-icon { transform: rotate(-15deg) scale(1.2); }
-        .chess-btn-arrow { transition: transform 0.3s; margin-left: auto; }
-        .chess-btn:hover .chess-btn-arrow { transform: translateX(4px); }
+    .dual-card.lab {
+      background: linear-gradient(145deg, rgba(0,255,163,.05), rgba(0,195,255,.03));
+      border: 1px solid rgba(0,255,163,.18);
+    }
+    .dual-card.lab::before { background: linear-gradient(90deg,var(--g1),var(--g2)); }
+    .dual-card.lab:hover { box-shadow: 0 35px 80px rgba(0,255,163,.08); border-color: rgba(0,255,163,.42); }
 
-        /* Text inside button needs z-index too */
-        .chess-btn > span:not(.chess-btn-icon):not(.chess-btn-arrow) { position: relative; z-index: 1; }
+    .dual-icon { font-size: 3.2rem; display: block; margin-bottom: 1.4rem; }
+    .dual-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; margin-bottom: .55rem; }
+    .field .dual-eyebrow { color: var(--gold); }
+    .lab .dual-eyebrow { color: var(--g1); }
+    .dual-h { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; letter-spacing: .04em; margin-bottom: 1rem; line-height: 1; }
+    .dual-p { color: var(--muted); font-size: .9rem; line-height: 1.85; margin-bottom: 1.6rem; }
+    .dual-list { list-style: none; display: flex; flex-direction: column; gap: .45rem; }
+    .dual-list li { font-size: .87rem; padding: .38rem 0 .38rem 1.2rem; position: relative; color: var(--muted); transition: color .25s, transform .25s; }
+    .dual-list li::before { content:'▸'; position:absolute; left:0; font-size:.62rem; top:.55rem; }
+    .field .dual-list li::before { color: var(--gold); }
+    .lab .dual-list li::before { color: var(--g1); }
+    .dual-list li:hover { color: var(--text); transform: translateX(4px); }
+    .dual-bg-num {
+      position: absolute; bottom: 1.2rem; right: 2rem;
+      font-family: 'Bebas Neue', sans-serif; font-size: 5.5rem; line-height: 1;
+      opacity: .05; transition: opacity .4s; user-select: none;
+    }
+    .dual-card:hover .dual-bg-num { opacity: .1; }
 
-        @media (max-width: 900px) {
-            .chess-wrapper { grid-template-columns: 1fr; gap: 2rem; }
-            .chess-board { width: 260px; height: 260px; margin: 0 auto; }
-            .chess-h { font-size: 2.2rem; }
-        }
+    /* ═══════════════════════════════════════════
+       ████  CAPTAIN  ████
+    ═══════════════════════════════════════════ */
+    #captain { position: relative; overflow: hidden; }
 
-        /* ── Life Beyond Code ── */
-        .life-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
-        .life-big { grid-column: span 3; display: grid; grid-template-columns: auto 1fr; align-items: start; gap: 1.8rem; }
-        .life-big .life-icon { font-size: 3.5rem; padding-top: 0.3rem; }
-        .life-big h3 { font-size: 1.5rem; margin-bottom: 0.6rem; }
-        .life-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; transition: all 0.35s cubic-bezier(.22,1,.36,1); }
-        .life-card:hover { transform: translateY(-5px); border-color: var(--g1); box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 30px rgba(0,255,163,0.06); }
-        .life-icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
-        .life-card h3 { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.7rem; }
-        .life-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.8; margin-bottom: 1.2rem; }
-        .life-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .ltag { padding: 0.22rem 0.7rem; border-radius: 100px; font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; background: var(--bg3); border: 1px solid var(--border); color: var(--muted); }
-        .life-closing { display: flex; align-items: center; gap: 1.5rem; margin-top: 3.5rem; }
-        .lc-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
-        .life-closing p { font-style: italic; color: var(--muted); font-size: 1rem; white-space: nowrap; }
+    .bg-numeral {
+      position: absolute; pointer-events: none; user-select: none;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 45vw; line-height: 1; color: rgba(249,200,70,.022);
+      top: 50%; right: -4%; transform: translateY(-50%);
+      letter-spacing: -.03em;
+      animation: numFloat 8s ease-in-out infinite;
+    }
+    @keyframes numFloat { 0%,100%{transform:translateY(-50%) scale(1)} 50%{transform:translateY(-52%) scale(1.01)} }
 
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .captain-layout { display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem; align-items: start; }
 
-        @media (max-width: 900px) {
-            .life-grid { grid-template-columns: 1fr 1fr; }
-            .life-big { grid-column: span 2; }
-            .hero-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 2.8rem; }
-            .trophies-grid { grid-template-columns: 1fr 1fr; }
-            .jersey-section { grid-template-columns: 1fr; }
-            .sec-card { grid-template-columns: 1fr; gap: 1.5rem; }
-            .parallel-section { grid-template-columns: 1fr; }
-            .interests-grid { grid-template-columns: 1fr 1fr; }
-            .captain-banner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-            nav .nav-links { display: none; }
-        }
-        @media (max-width: 600px) {
-            h1 { font-size: 2.2rem; }
-            h2 { font-size: 2rem; }
-            .trophies-grid { grid-template-columns: 1fr; }
-            .interests-grid { grid-template-columns: 1fr; }
-            .field-stats { grid-template-columns: 1fr 1fr; }
-            .life-grid { grid-template-columns: 1fr; }
-            .life-big { grid-column: span 1; grid-template-columns: 1fr; }
-            .life-closing p { white-space: normal; text-align: center; }
-        }
-    </style>
+    .captain-text .sec-h span { color: var(--gold); }
+    .captain-p { color: var(--muted); font-size: .93rem; line-height: 1.9; max-width: 500px; margin: 1.1rem 0 2rem; }
+
+    .cap-tags { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 2.5rem; }
+    .ctag { padding: .3rem .9rem; border-radius: 100px; font-size: .75rem; font-weight: 600; transition: all .3s; }
+    .ctag-gold { background: rgba(249,200,70,.1); color: var(--gold); border: 1px solid rgba(249,200,70,.3); }
+    .ctag-gold:hover { background: rgba(249,200,70,.2); }
+    .ctag-g { background: rgba(0,255,163,.07); color: var(--g1); border: 1px solid rgba(0,255,163,.25); }
+
+    /* Mini hockey pitch (top-down) */
+    .pitch-wrap {
+      position: relative; width: 100%; padding-bottom: 54%;
+      background: linear-gradient(180deg, #091c11, #050e08);
+      border: 1.5px solid rgba(0,255,163,.14); border-radius: 16px;
+      overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,.5);
+    }
+    .pitch-inner { position: absolute; inset: 0; }
+    .p-boundary {
+      position: absolute;
+      left: 6%; right: 6%;
+      top: 5%; bottom: 5%;
+      border: 1px solid rgba(255,255,255,.12);
+      pointer-events: none;
+    }
+    .p-line-v { position: absolute; left: 50%; top: 5%; bottom: 5%; width: 1px; background: rgba(255,255,255,.12); transform: translateX(-50%); }
+    .p-center-spot {
+      position: absolute;
+      left: 50%; top: 50%;
+      width: 5px; height: 5px;
+      background: rgba(255,255,255,.4);
+      border-radius: 50%;
+      transform: translate(-50%,-50%);
+    }
+    .p-line-23-l {
+      position: absolute;
+      left: 28%; top: 5%; bottom: 5%;
+      width: 1px;
+      background: rgba(255,255,255,.08);
+    }
+    .p-line-23-r {
+      position: absolute;
+      left: 72%; top: 5%; bottom: 5%;
+      width: 1px;
+      background: rgba(255,255,255,.08);
+    }
+    .p-d-l {
+      position: absolute;
+      left: 6%; top: 50%;
+      width: 14%; height: 54%;
+      transform: translateY(-50%);
+      border: 1px solid rgba(255,255,255,.12);
+      border-left: none;
+      border-top-right-radius: 100% 40%;
+      border-bottom-right-radius: 100% 40%;
+      pointer-events: none;
+    }
+    .p-d-r {
+      position: absolute;
+      right: 6%; top: 50%;
+      width: 14%; height: 54%;
+      transform: translateY(-50%);
+      border: 1px solid rgba(255,255,255,.12);
+      border-right: none;
+      border-top-left-radius: 100% 40%;
+      border-bottom-left-radius: 100% 40%;
+      pointer-events: none;
+    }
+    .p-spot-l {
+      position: absolute;
+      left: 12.2%; top: 50%;
+      width: 4px; height: 4px;
+      background: rgba(255,255,255,.35);
+      border-radius: 50%;
+      transform: translate(-50%,-50%);
+    }
+    .p-spot-r {
+      position: absolute;
+      left: 87.8%; top: 50%;
+      width: 4px; height: 4px;
+      background: rgba(255,255,255,.35);
+      border-radius: 50%;
+      transform: translate(-50%,-50%);
+    }
+    .p-goal-l { position: absolute; left: 1%; top: 30%; bottom: 30%; width: 5%; border: 1px solid rgba(255,255,255,.14); border-right: none; border-radius: 6px 0 0 6px; }
+    .p-goal-r { position: absolute; right: 1%; top: 30%; bottom: 30%; width: 5%; border: 1px solid rgba(255,255,255,.14); border-left: none; border-radius: 0 6px 6px 0; }
+
+    .p-player {
+      position: absolute; width: 11px; height: 11px;
+      border-radius: 50%;
+      transform: translate(-50%,-50%);
+      z-index: 10;
+    }
+    .p-player::after {
+      content: attr(data-jersey);
+      position: absolute; top: -17px; left: 50%;
+      transform: translateX(-50%);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .55rem; color: #fff; white-space: nowrap;
+      opacity: 0.85;
+    }
+    .p-player.captain {
+      background: var(--g1);
+      box-shadow: 0 0 14px var(--g1);
+      animation: capMove 12s ease-in-out infinite;
+    }
+    .p-player.captain::before {
+      content: '';
+      position: absolute;
+      bottom: -4px; right: -5px;
+      width: 2px; height: 8px;
+      background: #d4af37;
+      border-radius: 1px;
+      border-bottom: 2px solid #fff;
+      transform: rotate(35deg);
+      transform-origin: top center;
+      animation: stickSwing 12s ease-in-out infinite;
+    }
+    .p-player.teammate {
+      background: var(--g2);
+      box-shadow: 0 0 14px var(--g2);
+      animation: teamMove 12s ease-in-out infinite;
+    }
+    .p-player.defender {
+      background: var(--g3);
+      box-shadow: 0 0 14px var(--g3);
+      animation: defMove 12s ease-in-out infinite;
+    }
+    .p-player.goalkeeper {
+      background: var(--gold);
+      box-shadow: 0 0 14px var(--gold);
+      animation: gkMove 12s ease-in-out infinite;
+    }
+    .p-ball {
+      position: absolute; width: 6px; height: 6px;
+      background: #fff; border-radius: 50%;
+      box-shadow: 0 0 10px #fff;
+      transform: translate(-50%,-50%);
+      z-index: 11;
+      animation: ballMove 12s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+    }
+
+    @keyframes capMove {
+      0%, 15% { left: 48%; top: 30%; }
+      25%, 35% { left: 60%; top: 35%; }
+      45% { left: 68%; top: 30%; }
+      55% { left: 75%; top: 42%; }
+      65%, 70% { left: 81%; top: 45%; }
+      80%, 92% { left: 83%; top: 55%; }
+      100% { left: 48%; top: 30%; }
+    }
+    @keyframes teamMove {
+      0%, 15% { left: 45%; top: 65%; }
+      20%, 25% { left: 45%; top: 65%; }
+      35% { left: 55%; top: 60%; }
+      55% { left: 65%; top: 58%; }
+      70% { left: 70%; top: 55%; }
+      80%, 92% { left: 77%; top: 55%; }
+      100% { left: 45%; top: 65%; }
+    }
+    @keyframes defMove {
+      0%, 15% { left: 72%; top: 40%; }
+      25% { left: 70%; top: 45%; }
+      35% { left: 68%; top: 38%; }
+      45% { left: 70%; top: 32%; }
+      55% { left: 73%; top: 38%; }
+      70% { left: 78%; top: 43%; }
+      80%, 92% { left: 75%; top: 45%; }
+      100% { left: 72%; top: 40%; }
+    }
+    @keyframes gkMove {
+      0%, 35% { left: 92.5%; top: 50%; }
+      45% { left: 92%; top: 45%; }
+      55% { left: 92%; top: 52%; }
+      65% { left: 91.5%; top: 48%; }
+      70% { left: 92.5%; top: 39%; }
+      80%, 92% { left: 92.5%; top: 45%; }
+      100% { left: 92.5%; top: 50%; }
+    }
+    @keyframes ballMove {
+      0%, 20% { left: 45%; top: 65%; }
+      25% { left: 45%; top: 65%; }
+      30% { left: 52%; top: 50%; }
+      35% { left: 60%; top: 35%; }
+      45% { left: 69%; top: 31%; }
+      55% { left: 76%; top: 43%; }
+      65% { left: 82%; top: 46%; }
+      70% { left: 82%; top: 46%; }
+      74% { left: 89%; top: 39%; }
+      77% { left: 94.5%; top: 34%; }
+      80%, 92% { left: 95%; top: 38%; }
+      100% { left: 45%; top: 65%; }
+    }
+    @keyframes stickSwing {
+      0%, 65% { transform: rotate(35deg); }
+      70% { transform: rotate(-50deg); }
+      75%, 92% { transform: rotate(35deg); }
+      100% { transform: rotate(35deg); }
+    }
+
+    /* Scoreboard */
+    .scoreboard {
+      background: var(--bg2); border: 1px solid rgba(249,200,70,.18);
+      border-radius: 22px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+      position: sticky; top: 120px;
+    }
+    .sb-header {
+      padding: .85rem 1.6rem; background: rgba(249,200,70,.06);
+      border-bottom: 1px solid rgba(249,200,70,.1);
+      display: flex; align-items: center; gap: .7rem;
+    }
+    .sb-live { width: 7px; height: 7px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 8px var(--gold); animation: eDot 2s infinite; }
+    .sb-title { font-family: 'JetBrains Mono', monospace; font-size: .68rem; color: var(--gold); letter-spacing: .1em; }
+    .sb-cells { display: grid; grid-template-columns: 1fr 1fr; }
+    .sb-cell { padding: 1.8rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,.04); }
+    .sb-cell:nth-child(odd) { border-right: 1px solid rgba(255,255,255,.04); }
+    .sb-n {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem; color: var(--gold); letter-spacing: .04em; line-height: 1;
+    }
+    .sb-l { font-family: 'JetBrains Mono', monospace; font-size: .64rem; color: var(--muted); margin-top: .4rem; text-transform: uppercase; letter-spacing: .09em; }
+    .sb-bottom { padding: 1.2rem 1.6rem; border-top: 1px solid rgba(249,200,70,.08); display: flex; align-items: center; gap: .6rem; }
+    .sb-pos { font-family: 'JetBrains Mono', monospace; font-size: .72rem; color: var(--muted); }
+    .sb-pos strong { color: var(--g1); }
+
+    /* ═══════════════════════════════════════════
+       ████  SPORTS SECRETARY  ████
+    ═══════════════════════════════════════════ */
+    #secretary { background: linear-gradient(135deg,rgba(123,97,255,.025),transparent 60%); }
+
+    .sec-command {
+      background: var(--bg2);
+      border: 1px solid rgba(123,97,255,.22);
+      border-radius: 26px; padding: 3rem;
+      display: grid; grid-template-columns: 1fr 1.6fr;
+      gap: 3.5rem; align-items: start;
+      box-shadow: 0 30px 80px rgba(0,0,0,.3);
+    }
+    .cmd-icon-block { text-align: center; }
+    .cmd-big-icon { font-size: 4.5rem; display: block; margin-bottom: .8rem; }
+    .cmd-role { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--g3); letter-spacing: .06em; }
+    .cmd-org { font-family: 'JetBrains Mono', monospace; font-size: .7rem; color: var(--muted); margin-top: .3rem; }
+    .cmd-bars { margin-top: 1.8rem; display: flex; flex-direction: column; gap: 1.1rem; }
+    .bar-row { }
+    .bar-meta { display: flex; justify-content: space-between; margin-bottom: .45rem; }
+    .bar-name { font-size: .84rem; }
+    .bar-pct { font-family: 'JetBrains Mono', monospace; font-size: .74rem; color: var(--g3); }
+    .bar-track { height: 4px; background: rgba(255,255,255,.05); border-radius: 4px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg,var(--g3),var(--g2)); width: 0; transition: width 1.5s cubic-bezier(.22,1,.36,1); }
+
+    .cmd-content h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: .04em; margin-bottom: 1rem; }
+    .cmd-content h3 span { color: var(--g3); }
+    .cmd-content p { color: var(--muted); font-size: .92rem; line-height: 1.88; margin-bottom: 1.5rem; }
+    .duty-list { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+    .duty-item {
+      display: flex; align-items: center; gap: .9rem;
+      font-size: .87rem; padding: .55rem .9rem;
+      background: rgba(123,97,255,.05); border: 1px solid rgba(123,97,255,.1);
+      border-radius: 10px; transition: all .3s;
+    }
+    .duty-item:hover { background: rgba(123,97,255,.1); border-color: rgba(123,97,255,.28); transform: translateX(5px); }
+    .duty-em { font-size: 1.1rem; }
+
+    /* ═══════════════════════════════════════════
+       ████  MINDSET BRIDGE  ████
+    ═══════════════════════════════════════════ */
+    #mindset { padding: 5.5rem 0; }
+
+    .mindset-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.3rem; }
+    .mc {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 22px; padding: 2rem;
+      position: relative; overflow: hidden;
+      transition: all .45s cubic-bezier(.22,1,.36,1);
+    }
+    .mc::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 100%; height: 2px;
+      background: linear-gradient(90deg,var(--gold),var(--g1));
+      transition: right .5s cubic-bezier(.22,1,.36,1);
+    }
+    .mc:hover::before { right: 0; }
+    .mc:hover { transform: translateY(-8px); border-color: rgba(249,200,70,.22); box-shadow: 0 22px 55px rgba(0,0,0,.3); }
+    .mc-icon { font-size: 2.2rem; display: block; margin-bottom: 1.2rem; }
+    .mc-sport { font-family: 'JetBrains Mono', monospace; font-size: .65rem; color: var(--gold); letter-spacing: .1em; margin-bottom: .2rem; }
+    .mc-arrow { font-size: .72rem; color: var(--muted); margin: .15rem 0; }
+    .mc-sec { font-family: 'JetBrains Mono', monospace; font-size: .65rem; color: var(--g1); letter-spacing: .1em; margin-bottom: .8rem; }
+    .mc-h { font-family: 'Exo 2', sans-serif; font-size: 1.02rem; font-weight: 700; margin-bottom: .5rem; }
+    .mc-p { color: var(--muted); font-size: .84rem; line-height: 1.78; }
+
+    /* ═══════════════════════════════════════════
+       ████  CHESS  ████
+    ═══════════════════════════════════════════ */
+    #chess { background: linear-gradient(135deg,rgba(0,195,255,.02),transparent 55%); }
+
+    .chess-layout { display: grid; grid-template-columns: 1fr 1.05fr; gap: 5rem; align-items: center; }
+
+    .board-label { font-family: 'JetBrains Mono', monospace; font-size: .68rem; color: var(--muted); text-align: center; margin-bottom: .9rem; letter-spacing: .1em; }
+    .chess-board {
+      width: 100%; max-width: 340px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(8,1fr);
+      border-radius: 12px; overflow: hidden;
+      border: 2px solid rgba(0,255,163,.22);
+      box-shadow: 0 0 60px rgba(0,255,163,.07), 0 28px 70px rgba(0,0,0,.55);
+      transition: box-shadow .4s;
+    }
+    .chess-board:hover { box-shadow: 0 0 90px rgba(0,255,163,.13), 0 32px 80px rgba(0,0,0,.6); }
+    .chess-cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; transition: background .22s; cursor: none; }
+    .chess-cell.light { background: #1b2f42; }
+    .chess-cell.dark  { background: #0d1c2a; }
+    .chess-cell:hover { background: rgba(0,255,163,.2) !important; }
+    .chess-cell.selected { background: rgba(249,200,70,.22) !important; }
+    .chess-cell .piece { display: block; animation: pFloat 3.5s ease-in-out infinite; }
+    @keyframes pFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
+
+    .chess-text .sec-h span { color: var(--g2); }
+    .chess-text p { color: var(--muted); font-size: .92rem; line-height: 1.88; margin-bottom: 1rem; }
+    .chess-chips { display: flex; gap: .8rem; flex-wrap: wrap; margin: 1.8rem 0; }
+    .chip {
+      display: flex; align-items: center; gap: .7rem;
+      padding: .65rem 1.1rem; background: var(--bg2);
+      border: 1px solid var(--border); border-radius: 12px;
+      transition: border-color .3s;
+    }
+    .chip:hover { border-color: var(--g2); }
+    .chip-icon { font-size: 1.25rem; }
+    .chip-val { font-family: 'Exo 2', sans-serif; font-size: .9rem; font-weight: 700; }
+    .chip-lbl { font-family: 'JetBrains Mono', monospace; font-size: .63rem; color: var(--muted); margin-top: .1rem; }
+
+    .chess-cta {
+      display: inline-flex; align-items: center; gap: .8rem;
+      padding: .9rem 1.9rem; border-radius: 14px;
+      background: linear-gradient(135deg,rgba(0,255,163,.1),rgba(0,195,255,.07));
+      border: 1.5px solid rgba(0,255,163,.32);
+      color: var(--g1); text-decoration: none;
+      font-weight: 600; font-size: .93rem;
+      transition: all .38s cubic-bezier(.22,1,.36,1);
+      position: relative; overflow: hidden;
+    }
+    .chess-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg,var(--g1),var(--g2));
+      opacity: 0; transition: opacity .35s;
+    }
+    .chess-cta:hover { color: var(--bg); transform: translateY(-3px); box-shadow: 0 16px 45px rgba(0,255,163,.22); border-color: transparent; }
+    .chess-cta:hover::before { opacity: 1; }
+    .chess-cta span { position: relative; z-index: 1; }
+
+    /* ═══════════════════════════════════════════
+       ████  LIFESTYLE  ████
+    ═══════════════════════════════════════════ */
+    #lifestyle { background: linear-gradient(180deg,transparent,rgba(249,200,70,.012),transparent); }
+
+    .loadout { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.4rem; }
+    .load-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 22px; padding: 2rem;
+      position: relative; overflow: hidden;
+      transition: all .45s cubic-bezier(.22,1,.36,1);
+    }
+    .load-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(0,255,163,.04), transparent 60%);
+      opacity: 0; transition: opacity .4s;
+    }
+    .load-card:hover { transform: translateY(-7px); border-color: rgba(0,255,163,.28); box-shadow: 0 22px 60px rgba(0,0,0,.3), 0 0 40px rgba(0,255,163,.05); }
+    .load-card:hover::after { opacity: 1; }
+    .load-icon { font-size: 2.4rem; display: block; margin-bottom: 1.2rem; }
+    .load-cat { font-family: 'JetBrains Mono', monospace; font-size: .66rem; color: var(--g1); letter-spacing: .16em; text-transform: uppercase; margin-bottom: .4rem; }
+    .load-h { font-family: 'Exo 2', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 1.1rem; }
+    .load-items { list-style: none; display: flex; flex-direction: column; gap: .15rem; }
+    .load-items li {
+      color: var(--muted); font-size: .86rem;
+      padding: .32rem 0 .32rem 1.1rem; position: relative;
+      border-bottom: 1px solid rgba(255,255,255,.03);
+    }
+    .load-items li:last-child { border: none; }
+    .load-items li::before { content:'›'; position:absolute; left:0; color:var(--g1); }
+
+    /* ═══════════════════════════════════════════
+       ████  CLOSING  ████
+    ═══════════════════════════════════════════ */
+    #closing { padding: 9rem 0; text-align: center; position: relative; overflow: hidden; }
+
+    .close-bg {
+      position: absolute; inset: 0; pointer-events: none; user-select: none;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 23vw; line-height: 1; color: rgba(255,255,255,.013);
+      letter-spacing: .02em; white-space: nowrap;
+    }
+    .scan { position: absolute; left: 0; right: 0; height: 2px; pointer-events: none; background: linear-gradient(90deg,transparent,var(--g1),transparent); opacity: 0; animation: scan 6s ease-in-out 3s infinite; }
+    @keyframes scan { 0%{top:0;opacity:0} 5%{opacity:.5} 95%{opacity:.25} 100%{top:100%;opacity:0} }
+
+    .close-wrap { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+    .close-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: .7rem; color: var(--g1); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 1.6rem; }
+    .close-h { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.4rem,5.5vw,4.5rem); letter-spacing: .04em; line-height: 1.02; margin-bottom: 1.5rem; }
+    .close-h em { display: block; font-style: normal; background: linear-gradient(135deg,var(--gold),var(--g1)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .close-p { color: var(--muted); font-size: 1rem; line-height: 1.88; margin-bottom: 3rem; }
+    .close-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .cbtn { padding: .9rem 2.1rem; border-radius: 100px; font-weight: 600; font-size: .9rem; text-decoration: none; transition: all .3s; display: inline-flex; align-items: center; gap: .5rem; }
+    .cbtn-p { background: linear-gradient(135deg,var(--g1),var(--g2)); color: var(--bg); box-shadow: 0 0 30px rgba(0,255,163,.25); }
+    .cbtn-p:hover { transform: translateY(-3px); box-shadow: 0 0 50px rgba(0,255,163,.4); }
+    .cbtn-o { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .cbtn-o:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ═══ FOOTER ═══ */
+    footer { padding: 2rem 0; text-align: center; border-top: 1px solid var(--border); }
+    footer p { font-family: 'JetBrains Mono', monospace; font-size: .72rem; color: var(--muted); }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media(max-width:960px) {
+      .hero-content { grid-template-columns: 1fr; }
+      .hero-jersey { display: none; }
+      .duality-grid { grid-template-columns: 1fr; }
+      .captain-layout { grid-template-columns: 1fr; }
+      .chess-layout { grid-template-columns: 1fr; }
+      .sec-command { grid-template-columns: 1fr; gap:2rem; }
+      .mindset-cards { grid-template-columns: 1fr 1fr; }
+      .loadout { grid-template-columns: 1fr 1fr; }
+      nav .nav-links { display: none; }
+    }
+    @media(max-width:600px) {
+      section { padding: 5rem 0; }
+      .mindset-cards, .loadout { grid-template-columns: 1fr; }
+      .chess-board { max-width: 280px; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<div class="bg-canvas">
-    <div class="orb o1"></div>
-    <div class="orb o2"></div>
-    <div class="orb o3"></div>
-</div>
-<div class="particles" id="particles"></div>
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curRing"></div>
 
 <!-- NAV -->
 <nav>
-    <a href="index.html" class="logo">&lt;/LOGESH&gt;</a>
-    <ul class="nav-links">
-        <li><a href="index.html#skills">Skills</a></li>
-        <li><a href="index.html#experience">Experience</a></li>
-        <li><a href="index.html#projects">Projects</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-    </ul>
-    <a href="index.html" class="nav-back">← Portfolio</a>
+  <a href="index.html" class="nav-logo">&lt;/LOGESH&gt;</a>
+  <ul class="nav-links">
+    <li><a href="#captain">Captain</a></li>
+    <li><a href="#chess">Chess</a></li>
+    <li><a href="#lifestyle">Lifestyle</a></li>
+    <li><a href="#closing">Contact</a></li>
+  </ul>
+  <a href="index.html" class="nav-back">← Portfolio</a>
 </nav>
 
-<div class="wrap">
+<!-- ████ HERO ████ -->
+<section class="hero" id="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-grid">
-            <div>
-                <div class="hero-eyebrow">
-                    <span class="eyebrow-line"></span>
-                    Beyond the terminal
-                </div>
-                <h1>
-                    More Than<br>Just a
-                    <em>Hacker.</em>
-                </h1>
-                <p class="hero-para">
-                    I'm <strong>Logeshwaran S</strong> — a cybersecurity analyst who leads on the field just as much as behind a screen. 
-                    <strong>Sports Secretary</strong> of my college, <strong>Hockey Captain</strong>, marathon runner, 
-                    and someone who believes the discipline of sport and security are the same game with different tools.
-                </p>
-                <div class="stat-row">
-                    <div class="stat-pill">
-                        <span class="stat-n">#17</span>
-                        <span class="stat-l">Jersey No.</span>
-                    </div>
-                    <div class="stat-pill">
-                        <span class="stat-n">3+</span>
-                        <span class="stat-l">Championships</span>
-                    </div>
-                    <div class="stat-pill">
-                        <span class="stat-n">2x</span>
-                        <span class="stat-l">Sports Sec.</span>
-                    </div>
-                    <div class="stat-pill">
-                        <span class="stat-n">∞</span>
-                        <span class="stat-l">Drive</span>
-                    </div>
-                </div>
-            </div>
+  <!-- Neon perspective field -->
+  <div class="field-scene">
+    <div class="field-plane" id="fieldPlane"></div>
+    <div class="field-glow" id="fieldGlow"></div>
+  </div>
 
-            <!-- ID Card -->
-            <div class="id-card">
-                <div class="id-card-top">
-                    <div class="avatar">🏑</div>
-                    <div>
-                        <div class="id-name">Logeshwaran S</div>
-                        <div class="id-role">// Player Profile</div>
-                        <div class="id-badges">
-                            <span class="badge badge-gold">Captain</span>
-                            <span class="badge badge-green">Sports Secretary</span>
-                            <span class="badge badge-blue">Analyst</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="id-body">
-                    <div class="id-row">
-                        <span class="id-key">SPORT</span>
-                        <span class="id-val">Field Hockey</span>
-                    </div>
-                    <div class="id-row">
-                        <span class="id-key">JERSEY</span>
-                        <span class="id-val gold">#17 LOGESH</span>
-                    </div>
-                    <div class="id-row">
-                        <span class="id-key">ROLE</span>
-                        <span class="id-val gold">Captain · Forward</span>
-                    </div>
-                    <div class="id-row">
-                        <span class="id-key">COLLEGE ROLE</span>
-                        <span class="id-val">Sports Secretary, ESEC</span>
-                    </div>
-                    <div class="id-row">
-                        <span class="id-key">TITLES WON</span>
-                        <span class="id-val green">Inter-College Champion ✓</span>
-                    </div>
-                    <div class="id-row">
-                        <span class="id-key">OTHER</span>
-                        <span class="id-val">Marathon · Calisthenics</span>
-                    </div>
-                    <div class="id-row">
-                        <span class="id-key">STATUS</span>
-                        <span class="id-val green">Active · Competing</span>
-                    </div>
-                </div>
-            </div>
+  <!-- Ambient particles -->
+  <div id="heroParts" style="position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden;"></div>
+
+  <div class="wrap">
+    <div class="hero-content">
+      <div>
+        <div class="hero-eyebrow">
+          <span class="eyebrow-dot"></span>
+          Beyond the terminal — the full story
         </div>
-    </section>
-
-    <!-- HOCKEY / CAPTAIN -->
-    <section id="hockey">
-        <div class="s-head reveal">
-            <div class="s-tag">// on the field</div>
-            <h2>Captain on the Field</h2>
-            <p class="s-sub">Leading from the front — in hockey and in life.</p>
+        <h1 class="hero-name">
+          <span class="n1" id="scrambleEl">LOGESHWARAN</span>
+          <span class="n2">SANMUGAM</span>
+        </h1>
+        <div class="hero-role-row">
+          <span class="role-static">Security Analyst &amp; </span>
+          <span class="role-dynamic" id="roleDynamic">Hockey Captain</span>
         </div>
-
-        <!-- Captain Banner -->
-        <div class="captain-banner reveal">
-            <div class="captain-icon">🏆</div>
-            <div class="captain-text">
-                <h3>Hockey <span>Captain</span> — Erode Sengunthar Engineering College</h3>
-                <p>
-                    As captain, my job is never just to score — it's to read the game, elevate my teammates, and make hard decisions under pressure. 
-                    The same qualities I bring to incident response and security operations. Leadership isn't a title, it's a commitment you prove every match.
-                </p>
-                <div class="captain-tags">
-                    <span class="ctag ctag-gold">🏑 Hockey Captain</span>
-                    <span class="ctag ctag-gold">🏅 Inter-College Winner</span>
-                    <span class="ctag ctag-green">📋 Sports Secretary (College)</span>
-                    <span class="ctag ctag-green">🏃 Marathon Runner</span>
-                </div>
-            </div>
+        <div class="hero-pills">
+          <div class="hpill">
+            <span class="hpill-n">#17</span>
+            <span class="hpill-l">Jersey</span>
+          </div>
+          <div class="hpill">
+            <span class="hpill-n" data-count="3" data-sfx="+">0</span>
+            <span class="hpill-l">Titles</span>
+          </div>
+          <div class="hpill">
+            <span class="hpill-n" data-count="6">0</span>
+            <span class="hpill-l">Disclosures</span>
+          </div>
+          <div class="hpill">
+            <span class="hpill-n">2×</span>
+            <span class="hpill-l">Sports Sec.</span>
+          </div>
         </div>
+      </div>
 
-        <!-- Trophy Cards -->
-        <div class="trophies-grid">
-            <div class="trophy-card reveal">
-                <div class="trophy-img-placeholder">
-                    <div class="big-em">🥇</div>
-                    <span>trophy-closeup.jpeg</span>
-                </div>
-                <div class="trophy-label">
-                    <h4>Championship Trophy</h4>
-                    <p>Secured the championship trophy in inter-college competition — the result of months of training, strategy, and team cohesion.</p>
-                </div>
+      <!-- Jersey -->
+      <div class="hero-jersey">
+        <div class="jersey-scene">
+          <div class="jersey-card" id="jerseyCard">
+            <div class="jersey-body">
+              <span class="jersey-num">17</span>
+              <span class="jersey-name">LOGESH</span>
             </div>
-            <div class="trophy-card reveal d1">
-                <div class="trophy-img-placeholder">
-                    <div class="big-em">🏆</div>
-                    <span>hockey-trophy-2.jpeg</span>
-                </div>
-                <div class="trophy-label">
-                    <h4>Tournament Champion</h4>
-                    <p>Led the team as captain to tournament victory. Proud to represent ESEC and bring home the gold.</p>
-                </div>
-            </div>
-            <div class="trophy-card reveal d2">
-                <div class="trophy-img-placeholder">
-                    <div class="big-em">👥</div>
-                    <span>team-photo.jpeg</span>
-                </div>
-                <div class="trophy-label">
-                    <h4>The Team Behind It</h4>
-                    <p>No captain wins alone. Every trophy is a team trophy — built on trust, discipline, and showing up for each other.</p>
-                </div>
-            </div>
+            <div class="jersey-badge">🏆</div>
+            <div class="jersey-captain-label">Captain · ESEC · Field Hockey</div>
+          </div>
         </div>
-
-        <!-- Jersey + Stats -->
-        <div class="jersey-section" style="margin-top: 2.5rem;">
-            <div class="jersey-card reveal">
-                <div class="jersey-number">17</div>
-                <div class="jersey-sub">Jersey Number</div>
-                <div class="jersey-name">LOGESH</div>
-            </div>
-            <div class="field-stats reveal d1">
-                <div class="fstat">
-                    <div class="fstat-n">3+</div>
-                    <div class="fstat-l">Championships Won</div>
-                </div>
-                <div class="fstat">
-                    <div class="fstat-n">⚡</div>
-                    <div class="fstat-l">Forward Position</div>
-                </div>
-                <div class="fstat">
-                    <div class="fstat-n">100%</div>
-                    <div class="fstat-l">Field Presence</div>
-                </div>
-                <div class="fstat">
-                    <div class="fstat-n">∞</div>
-                    <div class="fstat-l">Competitive Drive</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SPORTS SECRETARY -->
-    <section id="secretary">
-        <div class="s-head reveal">
-            <div class="s-tag">// leadership</div>
-            <h2>Sports Secretary</h2>
-            <p class="s-sub">Managing college-wide sports as the elected Sports Secretary of ESEC.</p>
-        </div>
-        <div class="sec-card reveal">
-            <div class="sec-icon-wrap">
-                <div class="sec-icon-big">📋</div>
-                <div class="sec-icon-label">Sports Secretary</div>
-                <div class="sec-icon-sub">Erode Sengunthar Engineering College</div>
-            </div>
-            <div class="sec-content">
-                <h3>Running Sport <span>College-Wide</span></h3>
-                <p>
-                    As Sports Secretary, I don't just play — I organize, coordinate, and lead the sports ecosystem across the entire college. 
-                    From scheduling inter-department tournaments to liaising with college management for facilities and budgets, 
-                    I run operations that keep hundreds of student-athletes competing.
-                </p>
-                <ul class="sec-list">
-                    <li>Coordinate inter-college and inter-department tournaments</li>
-                    <li>Manage team registrations, schedules, and logistics</li>
-                    <li>Liaise with college management for sports funding and facilities</li>
-                    <li>Represent student athletes in college administrative decisions</li>
-                    <li>Organize college sports events and cultural meets</li>
-                    <li>Captain of the college hockey team simultaneously</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- QUOTE + MINDSET -->
-    <section>
-        <div class="parallel-section">
-            <div class="quote-card reveal">
-                <div class="quote-mark">"</div>
-                <div class="quote-text">The same discipline, strategy, and pressure management that wins championships — also defends networks at 3AM.</div>
-                <div class="quote-attr">— My philosophy on sport & security</div>
-            </div>
-            <div class="mindset-card reveal d1">
-                <div class="mindset-title">How sport shaped my security mindset</div>
-                <div class="mindset-row">
-                    <span class="m-ico">🎯</span>
-                    <div class="m-text"><strong>Pattern Recognition</strong> — Reading opponents' moves is the same skill as reading attack patterns in logs.</div>
-                </div>
-                <div class="mindset-row">
-                    <span class="m-ico">⚡</span>
-                    <div class="m-text"><strong>Fast Decision-Making</strong> — Seconds matter in hockey and in incident response.</div>
-                </div>
-                <div class="mindset-row">
-                    <span class="m-ico">🧠</span>
-                    <div class="m-text"><strong>Calm Under Pressure</strong> — A penalty shootout trains you for high-stakes SOC alerts.</div>
-                </div>
-                <div class="mindset-row">
-                    <span class="m-ico">🤝</span>
-                    <div class="m-text"><strong>Team Trust</strong> — No captain succeeds alone. Neither does a SOC analyst.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- INTERESTS -->
-    <section id="interests">
-        <div class="s-head center reveal" style="text-align:center;">
-            <div class="s-tag">// off the field</div>
-            <h2>What I'm Into</h2>
-        </div>
-        <div class="interests-grid">
-            <div class="int-card reveal">
-                <div class="int-ico">📚</div>
-                <h3>Books I Live By</h3>
-                <ul class="int-list">
-                    <li>Atomic Habits — James Clear</li>
-                    <li>The Subtle Art of Not Giving a F*ck</li>
-                    <li>Rich Dad Poor Dad — Kiyosaki</li>
-                    <li>The 48 Laws of Power — R. Greene</li>
-                </ul>
-            </div>
-            <div class="int-card reveal d1">
-                <div class="int-ico">🎮</div>
-                <h3>Games I Love</h3>
-                <ul class="int-list">
-                    <li>Red Dead Redemption 2</li>
-                    <li>God of War</li>
-                    <li>Detroit: Become Human</li>
-                    <li>GTA V · WWE 2K25 · Cricket 26</li>
-                </ul>
-            </div>
-            <div class="int-card reveal d2">
-                <div class="int-ico">🏃</div>
-                <h3>How I Stay Sharp</h3>
-                <ul class="int-list">
-                    <li>Hockey — competitive & training</li>
-                    <li>Calisthenics & fitness training</li>
-                    <li>Marathon running</li>
-                    <li>CTF challenges & bug bounty</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- CHESS -->
-    <section id="chess">
-        <div class="chess-wrapper reveal">
-            <div class="chess-left">
-                <div class="chess-board" aria-hidden="true">
-                    <div class="cb-grid" id="chessBoard"></div>
-                    <div class="cb-pieces">
-                        <span class="cp" style="--r:0;--c:0;">♜</span>
-                        <span class="cp" style="--r:0;--c:2;">♝</span>
-                        <span class="cp" style="--r:0;--c:4;">♛</span>
-                        <span class="cp" style="--r:0;--c:7;">♜</span>
-                        <span class="cp" style="--r:1;--c:0;">♟</span>
-                        <span class="cp" style="--r:1;--c:1;">♟</span>
-                        <span class="cp" style="--r:1;--c:3;">♟</span>
-                        <span class="cp" style="--r:1;--c:5;">♟</span>
-                        <span class="cp" style="--r:1;--c:7;">♟</span>
-                        <span class="cp" style="--r:6;--c:0;">♙</span>
-                        <span class="cp" style="--r:6;--c:2;">♙</span>
-                        <span class="cp" style="--r:6;--c:4;">♙</span>
-                        <span class="cp" style="--r:6;--c:6;">♙</span>
-                        <span class="cp" style="--r:6;--c:7;">♙</span>
-                        <span class="cp" style="--r:7;--c:0;">♖</span>
-                        <span class="cp" style="--r:7;--c:4;">♕</span>
-                        <span class="cp" style="--r:7;--c:5;">♗</span>
-                        <span class="cp" style="--r:7;--c:7;">♖</span>
-                    </div>
-                </div>
-            </div>
-            <div class="chess-right">
-                <div class="chess-tag">// make your move</div>
-                <h2 class="chess-h">Play Chess<br><span>With Me</span></h2>
-                <p class="chess-p">
-                    Chess is strategy at its purest — reading the board, anticipating moves, and outthinking the opponent. Sound familiar? It's the same mindset I bring to threat hunting and incident response.
-                </p>
-                <p class="chess-p" style="margin-top:0.8rem;">
-                    Find me on Chess.com as <strong style="color:var(--g1);">loki_1718</strong>. Whether you want a casual game or a real battle — I'm game.
-                </p>
-                <div class="chess-stats">
-                    <div class="cs-stat">
-                        <span class="cs-ico">♟</span>
-                        <div class="cs-txt">
-                            <span class="cs-val">loki_1718</span>
-                            <span class="cs-lbl">Chess.com Handle</span>
-                        </div>
-                    </div>
-                    <div class="cs-stat">
-                        <span class="cs-ico">⚡</span>
-                        <div class="cs-txt">
-                            <span class="cs-val">Blitz</span>
-                            <span class="cs-lbl">Favourite Format</span>
-                        </div>
-                    </div>
-                    <div class="cs-stat">
-                        <span class="cs-ico">🧠</span>
-                        <div class="cs-txt">
-                            <span class="cs-val">Attacker</span>
-                            <span class="cs-lbl">Playing Style</span>
-                        </div>
-                    </div>
-                </div>
-                <a href="https://www.chess.com/member/loki_1718" target="_blank" class="chess-btn">
-                    <span class="chess-btn-icon">♞</span>
-                    Challenge Me on Chess.com
-                    <span class="chess-btn-arrow">→</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- LIFE BEYOND CODE -->
-    <section id="lifestyle">
-            <div class="section-header">
-                <div class="section-tag">&lt;lifestyle/&gt;</div>
-                <h2>Life Beyond Code</h2>
-            </div>
-
-            <div class="photo-gallery">
-                <div class="gallery-item">
-                    <img src="assets/images/beach-photo.jpeg" alt="Beach Sunset" style="height: 400px;">
-                    <div class="gallery-overlay">
-                        <p>Finding peace and inspiration in nature 🌊</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <p>&lt;/&gt; Crafted with passion • © 2026 Logeshwaran S</p>
-        </footer>
+      </div>
     </div>
+  </div>
 
-        <!-- Closing line -->
-        <div class="life-closing reveal">
-            <span class="lc-line"></span>
-            <p>Security analyst by trade. Captain by choice. Human by design.</p>
-            <span class="lc-line"></span>
+  <div class="scroll-ind">
+    <span class="scroll-bar"></span>
+    SCROLL
+  </div>
+</section>
+
+<!-- ████ DUALITY ████ -->
+<section id="duality">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <div class="sec-tag">// same brain, two arenas</div>
+      <h2 class="sec-h">One Player.<br>Two Battlefields.</h2>
+      <p class="sec-sub">The discipline that wins championships is the exact same discipline that defends networks.</p>
+    </div>
+    <div class="duality-grid">
+      <div class="dual-card field reveal">
+        <span class="dual-icon">🏑</span>
+        <div class="dual-eyebrow">On the Field</div>
+        <h3 class="dual-h">Captain &<br>Champion</h3>
+        <p class="dual-p">Leading from the front — reading the game, elevating teammates, making hard calls in seconds. Every match is an incident with a countdown clock.</p>
+        <ul class="dual-list">
+          <li>Hockey Captain — ESEC (#17 · Forward)</li>
+          <li>3+ Inter-college championships won</li>
+          <li>Sports Secretary — ESEC (elected 2×)</li>
+          <li>Marathon runner & calisthenics athlete</li>
+          <li>Managing tournaments & ops college-wide</li>
+        </ul>
+        <span class="dual-bg-num">17</span>
+      </div>
+      <div class="dual-card lab reveal d2">
+        <span class="dual-icon">💻</span>
+        <div class="dual-eyebrow">In the Lab</div>
+        <h3 class="dual-h">Hunter &<br>Builder</h3>
+        <p class="dual-p">Breaking systems to understand them, then engineering defenses that hold. Every vulnerability found is a match won before the attacker even arrives.</p>
+        <ul class="dual-list">
+          <li>Google Android VRP — Validated ✓</li>
+          <li>NVIDIA PSIRT — Disclosed ✓</li>
+          <li>CERT-In Government — Resolved ✓</li>
+          <li>6 total acknowledged disclosures</li>
+          <li>SOC analyst · VAPT · ML security tools</li>
+        </ul>
+        <span class="dual-bg-num">0x</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ████ CAPTAIN ████ -->
+<section id="captain">
+  <div class="bg-numeral" aria-hidden="true">17</div>
+  <div class="wrap">
+    <div class="captain-layout">
+      <!-- Left: text + pitch -->
+      <div class="reveal">
+        <div class="sec-tag">// on the pitch</div>
+        <h2 class="sec-h">Captain<br><span>#17</span></h2>
+        <p class="captain-p">
+          As captain, my job is never just to score — it's to read the game, elevate my teammates, and make the hard call before the opponent does. The same qualities I bring to incident response and threat hunting at 3AM. Leadership isn't a title. It's what you prove every single match.
+        </p>
+        <div class="cap-tags">
+          <span class="ctag ctag-gold">🏑 Hockey Captain</span>
+          <span class="ctag ctag-gold">🥇 Inter-College Champion</span>
+          <span class="ctag ctag-g">📋 Sports Secretary</span>
+          <span class="ctag ctag-g">🏃 Marathon Runner</span>
         </div>
-    </section>
 
-    <footer>
-        <p>&lt;/&gt; Built by Logeshwaran S · © 2026 · Athlete · Analyst · Leader</p>
-    </footer>
+        <!-- Mini hockey pitch -->
+        <div class="pitch-wrap">
+          <div class="pitch-inner">
+            <div class="p-boundary"></div>
+            <div class="p-line-v"></div>
+            <div class="p-center-spot"></div>
+            <div class="p-line-23-l"></div>
+            <div class="p-line-23-r"></div>
+            <div class="p-d-l"></div>
+            <div class="p-d-r"></div>
+            <div class="p-spot-l"></div>
+            <div class="p-spot-r"></div>
+            <div class="p-goal-l"></div>
+            <div class="p-goal-r"></div>
+            <div class="p-player captain" data-jersey="17"></div>
+            <div class="p-player teammate" data-jersey="8"></div>
+            <div class="p-player defender" data-jersey="4"></div>
+            <div class="p-player goalkeeper" data-jersey="1"></div>
+            <div class="p-ball"></div>
+          </div>
+        </div>
+      </div>
 
-</div>
+      <!-- Right: scoreboard -->
+      <div class="reveal d2">
+        <div class="scoreboard">
+          <div class="sb-header">
+            <span class="sb-live"></span>
+            <span class="sb-title">PLAYER STATS — LIVE</span>
+          </div>
+          <div class="sb-cells">
+            <div class="sb-cell">
+              <div class="sb-n" data-count="3" data-sfx="+">0</div>
+              <div class="sb-l">Championships</div>
+            </div>
+            <div class="sb-cell">
+              <div class="sb-n">#17</div>
+              <div class="sb-l">Jersey No.</div>
+            </div>
+            <div class="sb-cell">
+              <div class="sb-n">2×</div>
+              <div class="sb-l">Sports Secretary</div>
+            </div>
+            <div class="sb-cell">
+              <div class="sb-n" data-count="6">0</div>
+              <div class="sb-l">Bug Disclosures</div>
+            </div>
+            <div class="sb-cell">
+              <div class="sb-n">∞</div>
+              <div class="sb-l">Competitive Drive</div>
+            </div>
+            <div class="sb-cell">
+              <div class="sb-n">100%</div>
+              <div class="sb-l">Field Presence</div>
+            </div>
+          </div>
+          <div class="sb-bottom">
+            <span class="sb-pos">Position: <strong>Captain · Forward</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ████ SPORTS SECRETARY ████ -->
+<section id="secretary">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <div class="sec-tag">// operations</div>
+      <h2 class="sec-h">Running the Game.<br>College-Wide.</h2>
+    </div>
+    <div class="sec-command reveal">
+      <div class="cmd-icon-block">
+        <span class="cmd-big-icon">📋</span>
+        <div class="cmd-role">Sports Secretary</div>
+        <div class="cmd-org">Erode Sengunthar Engineering College</div>
+        <div class="cmd-bars" id="cmdBars">
+          <div class="bar-row">
+            <div class="bar-meta"><span class="bar-name">Tournament Management</span><span class="bar-pct">95%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-w="95"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-meta"><span class="bar-name">Team Coordination</span><span class="bar-pct">92%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-w="92"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-meta"><span class="bar-name">Budget & Logistics</span><span class="bar-pct">85%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-w="85"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-meta"><span class="bar-name">Athlete Advocacy</span><span class="bar-pct">90%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-w="90"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="cmd-content">
+        <h3>Running Sport <span>College-Wide</span></h3>
+        <p>As Sports Secretary, I don't just play — I organize, coordinate, and lead the entire sports ecosystem across the college. From scheduling inter-department tournaments to liaising with management for facilities and budgets — I run operations that keep hundreds of student-athletes competing. Same skill set as a SOC team lead: resource allocation, crisis handling, team trust.</p>
+        <ul class="duty-list">
+          <li class="duty-item"><span class="duty-em">🏟</span> Coordinate inter-college & inter-department tournaments</li>
+          <li class="duty-item"><span class="duty-em">📅</span> Manage schedules, registrations, and logistics</li>
+          <li class="duty-item"><span class="duty-em">💰</span> Liaise with management for sports funding and facilities</li>
+          <li class="duty-item"><span class="duty-em">🏆</span> Represent student athletes in college decisions</li>
+          <li class="duty-item"><span class="duty-em">⚽</span> Organize college-wide sports events and cultural meets</li>
+          <li class="duty-item"><span class="duty-em">🏑</span> Captain the college hockey team simultaneously</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ████ MINDSET BRIDGE ████ -->
+<section id="mindset">
+  <div class="wrap">
+    <div class="s-head center reveal">
+      <div class="sec-tag c">// the connection</div>
+      <h2 class="sec-h">Sport Trained<br>My Security Brain</h2>
+    </div>
+    <div class="mindset-cards">
+      <div class="mc reveal">
+        <span class="mc-icon">🎯</span>
+        <div class="mc-sport">FIELD → Reading opponents' moves</div>
+        <div class="mc-arrow">↕ same skill</div>
+        <div class="mc-sec">LAB → Reading attacker patterns in logs</div>
+        <h4 class="mc-h">Pattern Recognition</h4>
+        <p class="mc-p">Reading how a forward cuts to the goal is the same cognitive skill as reading lateral movement in a SIEM. Both require instant pattern analysis without full information.</p>
+      </div>
+      <div class="mc reveal d1">
+        <span class="mc-icon">⚡</span>
+        <div class="mc-sport">FIELD → Penalty shootout. 3 seconds.</div>
+        <div class="mc-arrow">↕ same pressure</div>
+        <div class="mc-sec">LAB → Active breach. Respond now.</div>
+        <h4 class="mc-h">Fast Decision-Making</h4>
+        <p class="mc-p">Sport trains you to make the right call before your rational mind fully catches up. Incident response demands the exact same reflex. You don't think — you react correctly.</p>
+      </div>
+      <div class="mc reveal d2">
+        <span class="mc-icon">🤝</span>
+        <div class="mc-sport">FIELD → No captain wins alone</div>
+        <div class="mc-arrow">↕ same truth</div>
+        <div class="mc-sec">LAB → No SOC analyst works solo</div>
+        <h4 class="mc-h">Team Trust</h4>
+        <p class="mc-p">The best sports teams and the best SOC teams share one thing: every person trusts that every other person will do their job when it counts. Leadership builds that.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ████ CHESS ████ -->
+<section id="chess">
+  <div class="wrap">
+    <div class="chess-layout">
+      <div class="reveal">
+        <div class="board-label">// interactive board — click a cell</div>
+        <div class="chess-board" id="chessBoard"></div>
+      </div>
+      <div class="chess-text reveal d2">
+        <div class="sec-tag">// the mind game</div>
+        <h2 class="sec-h">Chess Is<br><span>Threat Hunting</span></h2>
+        <p>Chess is strategy at its purest — reading the board moves ahead, anticipating patterns, controlling key positions before the opponent establishes them. That exact mindset drives how I approach threat hunting and vulnerability research.</p>
+        <p>Find me on Chess.com as <strong style="color:var(--g1)">loki_1718</strong>. Casual game or full battle — I'm always game.</p>
+        <div class="chess-chips">
+          <div class="chip">
+            <span class="chip-icon">♟</span>
+            <div><span class="chip-val">loki_1718</span><span class="chip-lbl">Chess.com</span></div>
+          </div>
+          <div class="chip">
+            <span class="chip-icon">⚡</span>
+            <div><span class="chip-val">Blitz</span><span class="chip-lbl">Format</span></div>
+          </div>
+          <div class="chip">
+            <span class="chip-icon">🧠</span>
+            <div><span class="chip-val">Attacker</span><span class="chip-lbl">Style</span></div>
+          </div>
+        </div>
+        <a href="https://www.chess.com/member/loki_1718" target="_blank" class="chess-cta">
+          <span>♞ Challenge Me on Chess.com →</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ████ LIFESTYLE ████ -->
+<section id="lifestyle">
+  <div class="wrap">
+    <div class="s-head center reveal">
+      <div class="sec-tag c">// off the grid</div>
+      <h2 class="sec-h">What Fuels Me</h2>
+      <p class="sec-sub" style="margin:0 auto;">The inputs that keep the engine running between matches and incidents.</p>
+    </div>
+    <div class="loadout">
+      <div class="load-card reveal">
+        <span class="load-icon">📚</span>
+        <div class="load-cat">Mental Loadout</div>
+        <h3 class="load-h">Books I Live By</h3>
+        <ul class="load-items">
+          <li>Atomic Habits — James Clear</li>
+          <li>The 48 Laws of Power — Greene</li>
+          <li>Rich Dad Poor Dad — Kiyosaki</li>
+          <li>The Subtle Art of Not Giving a F*ck</li>
+        </ul>
+      </div>
+      <div class="load-card reveal d1">
+        <span class="load-icon">🏃</span>
+        <div class="load-cat">Physical Loadout</div>
+        <h3 class="load-h">How I Stay Sharp</h3>
+        <ul class="load-items">
+          <li>Hockey — competitive + daily training</li>
+          <li>Marathon running (long-form grit)</li>
+          <li>Calisthenics & bodyweight training</li>
+          <li>CTF challenges & live bug hunting</li>
+        </ul>
+      </div>
+      <div class="load-card reveal d2">
+        <span class="load-icon">🎮</span>
+        <div class="load-cat">Creative Loadout</div>
+        <h3 class="load-h">Games I Love</h3>
+        <ul class="load-items">
+          <li>Red Dead Redemption 2</li>
+          <li>God of War</li>
+          <li>Detroit: Become Human</li>
+          <li>GTA V · WWE 2K25 · Cricket 26</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ████ CLOSING ████ -->
+<section id="closing">
+  <div class="close-bg" aria-hidden="true">LOGESH</div>
+  <div class="scan"></div>
+  <div class="wrap">
+    <div class="close-wrap reveal">
+      <div class="close-eyebrow">// the full picture</div>
+      <h2 class="close-h">
+        Security Analyst by Trade.
+        <em>Captain by Choice. Human by Design.</em>
+      </h2>
+      <p class="close-p">
+        I'm not just a resume. I'm the person who leads a team onto the field at dawn, manages sports for hundreds of students, hunts bugs in his spare time, and plays chess like a threat analyst. If you want someone who brings that whole equation to your team — let's work.
+      </p>
+      <div class="close-btns">
+        <a href="index.html#contact" class="cbtn cbtn-p">Let's Work Together →</a>
+        <a href="https://github.com/logesh-GIT001" target="_blank" class="cbtn cbtn-o">GitHub ↗</a>
+        <a href="https://linkedin.com/in/logeshwaran-s-b5aa5b27b" target="_blank" class="cbtn cbtn-o">LinkedIn ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>&lt;/&gt; Built by Logeshwaran Sanmugam · © 2026 · Athlete · Analyst · Leader</p>
+  </div>
+</footer>
 
 <script>
-// ── Cursor ──
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursorRing');
+/* ═══ CURSOR ═══ */
+const cur = document.getElementById('cur');
+const curRing = document.getElementById('curRing');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
 (function loop(){
-    cursor.style.left=mx+'px';cursor.style.top=my+'px';
-    rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;
-    ring.style.left=rx+'px';ring.style.top=ry+'px';
-    requestAnimationFrame(loop);
+  cur.style.left=mx+'px';cur.style.top=my+'px';
+  rx+=(mx-rx)*0.11;ry+=(my-ry)*0.11;
+  curRing.style.left=rx+'px';curRing.style.top=ry+'px';
+  requestAnimationFrame(loop);
 })();
-
-// ── Chess Board ──
-const board = document.getElementById('chessBoard');
-if (board) {
-    for (let r = 0; r < 8; r++) {
-        for (let c = 0; c < 8; c++) {
-            const cell = document.createElement('div');
-            const isLight = (r + c) % 2 === 0;
-            cell.className = 'cb-cell ' + (isLight ? 'light' : 'dark');
-            cell.dataset.r = r; cell.dataset.c = c;
-            board.appendChild(cell);
-        }
-    }
-    // Animate random cell highlights
-    const cells = board.querySelectorAll('.cb-cell');
-    const highlights = [[2,3],[3,4],[4,5],[5,2],[3,2]];
-    let hi = 0;
-    setInterval(() => {
-        cells.forEach(c => c.classList.remove('highlight'));
-        const [r,c] = highlights[hi % highlights.length];
-        const target = board.querySelector(`[data-r="${r}"][data-c="${c}"]`);
-        if (target) target.classList.add('highlight');
-        hi++;
-    }, 1800);
-}
-
-
-const pc=document.getElementById('particles');
-const colors=['#00ffa3','#f9c846','#7b61ff'];
-for(let i=0;i<30;i++){
-    const p=document.createElement('div');
-    p.className='particle';
-    p.style.cssText=`left:${Math.random()*100}%;--d:${6+Math.random()*10}s;--dl:${Math.random()*10}s;--dx:${(Math.random()-.5)*100}px;background:${colors[Math.floor(Math.random()*3)]}`;
-    pc.appendChild(p);
-}
-
-// ── Reveal on scroll ──
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-// Replace placeholder images with real ones if they exist
-// Trophy images load from assets/images/
-const imgMap = {
-    0: 'assets/images/trophy-closeup.jpeg',
-    1: 'assets/images/hockey-trophy-2.jpeg',
-    2: 'assets/images/team-photo.jpeg',
-};
-document.querySelectorAll('.trophy-img-placeholder').forEach((ph, i) => {
-    const img = new Image();
-    img.src = imgMap[i];
-    img.onload = () => {
-        const el = document.createElement('img');
-        el.className = 'trophy-img';
-        el.src = imgMap[i];
-        el.alt = ph.querySelector('span')?.textContent || 'Hockey';
-        ph.parentNode.replaceChild(el, ph);
-    };
+document.querySelectorAll('a,button,.hpill,.dual-card,.chess-cell,.chip,.mc,.load-card,.duty-item,.sb-cell,.ctag').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));
 });
+
+/* ═══ FIELD PARALLAX + GLOW ═══ */
+const fieldPlane = document.getElementById('fieldPlane');
+const fieldGlow  = document.getElementById('fieldGlow');
+document.addEventListener('mousemove',e=>{
+  const xPct = (e.clientX/window.innerWidth*100).toFixed(1);
+  const yPct = ((e.clientY/window.innerHeight)*50+75).toFixed(1);
+  if(fieldGlow) fieldGlow.style.setProperty('--gx',xPct+'%');
+  if(fieldGlow) fieldGlow.style.setProperty('--gy',yPct+'%');
+  if(fieldPlane){
+    const tx = (e.clientX/window.innerWidth-.5)*7;
+    const ty = (e.clientY/window.innerHeight-.5)*4;
+    fieldPlane.style.transform=`rotateX(${72+ty}deg) skewY(${tx*.25}deg)`;
+  }
+});
+
+/* ═══ JERSEY 3D TILT ═══ */
+const jerseyCard = document.getElementById('jerseyCard');
+if(jerseyCard){
+  const scene = jerseyCard.closest('.jersey-scene');
+  scene.addEventListener('mousemove',e=>{
+    const r=jerseyCard.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    jerseyCard.style.transform=`rotateY(${x*26}deg) rotateX(${-y*20}deg) scale(1.04)`;
+    jerseyCard.style.transition='transform .05s ease-out';
+  });
+  scene.addEventListener('mouseleave',()=>{
+    jerseyCard.style.transform='rotateY(0) rotateX(0) scale(1)';
+    jerseyCard.style.transition='transform .6s cubic-bezier(.22,1,.36,1)';
+  });
+}
+
+/* ═══ ROLE CYCLER ═══ */
+const roles=['Hockey Captain','Bug Hunter','Chess Player','Sports Secretary','Marathon Runner','SOC Analyst','Team Leader'];
+const roleDyn = document.getElementById('roleDynamic');
+let ri=0;
+if(roleDyn){
+  roleDyn.style.transition='opacity .3s,transform .3s';
+  setInterval(()=>{
+    roleDyn.style.opacity='0';
+    roleDyn.style.transform='translateY(-10px)';
+    setTimeout(()=>{
+      ri=(ri+1)%roles.length;
+      roleDyn.textContent=roles[ri];
+      roleDyn.style.opacity='1';
+      roleDyn.style.transform='translateY(0)';
+    },300);
+  },2400);
+}
+
+/* ═══ TEXT SCRAMBLE ═══ */
+const scrambleEl = document.getElementById('scrambleEl');
+if(scrambleEl){
+  const original=scrambleEl.textContent.trim();
+  const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&*';
+  let f=0;
+  const go=()=>{
+    let out='';
+    for(let i=0;i<original.length;i++){
+      if(original[i]===' '){ out+=' '; continue; }
+      if(f>i*3.5) out+=original[i];
+      else out+=chars[Math.floor(Math.random()*chars.length)];
+    }
+    scrambleEl.textContent=out;
+    f++;
+    if(f<original.length*3.5+12) requestAnimationFrame(go);
+    else scrambleEl.textContent=original;
+  };
+  setTimeout(go,700);
+}
+
+/* ═══ PARTICLES ═══ */
+const pCont=document.getElementById('heroParts');
+const pCols=['#00ffa3','#f9c846','#7b61ff','#00c3ff'];
+for(let i=0;i<28;i++){
+  const p=document.createElement('div');
+  const col=pCols[i%4];
+  const dur=7+Math.random()*10;
+  const del=Math.random()*12;
+  const dx=(Math.random()-.5)*120;
+  p.style.cssText=`position:absolute;width:2px;height:2px;border-radius:50%;background:${col};left:${Math.random()*100}%;opacity:0;animation:pFly${i%4} ${dur}s ${del}s ease-in infinite;`;
+  pCont.appendChild(p);
+}
+const pSt=document.createElement('style');
+[0,1,2,3].forEach(n=>{
+  const dx=(Math.random()-.5)*120;
+  pSt.textContent+=`@keyframes pFly${n}{0%{transform:translateY(100vh);opacity:0}10%{opacity:.5}90%{opacity:.2}100%{transform:translateY(-10vh) translateX(${(Math.random()-.5)*100}px);opacity:0}}`;
+});
+document.head.appendChild(pSt);
+
+/* ═══ CHESS BOARD ═══ */
+const boardEl=document.getElementById('chessBoard');
+const PIECES={
+  '0,0':'♜','0,1':'♞','0,2':'♝','0,3':'♛','0,4':'♚','0,5':'♝','0,6':'♞','0,7':'♜',
+  '1,0':'♟','1,1':'♟','1,2':'♟','1,3':'♟','1,4':'♟','1,5':'♟','1,6':'♟','1,7':'♟',
+  '6,0':'♙','6,1':'♙','6,2':'♙','6,3':'♙','6,4':'♙','6,5':'♙','6,6':'♙','6,7':'♙',
+  '7,0':'♖','7,1':'♘','7,2':'♗','7,3':'♕','7,4':'♔','7,5':'♗','7,6':'♘','7,7':'♖',
+};
+if(boardEl){
+  for(let r=0;r<8;r++){
+    for(let c=0;c<8;c++){
+      const cell=document.createElement('div');
+      cell.className='chess-cell '+((r+c)%2===0?'light':'dark');
+      const piece=PIECES[`${r},${c}`];
+      if(piece){
+        const sp=document.createElement('span');
+        sp.className='piece';
+        sp.textContent=piece;
+        sp.style.animationDelay=`${(r*8+c)*.07}s`;
+        cell.appendChild(sp);
+      }
+      cell.addEventListener('click',()=>{
+        boardEl.querySelectorAll('.chess-cell').forEach(x=>x.classList.remove('selected'));
+        cell.classList.add('selected');
+      });
+      boardEl.appendChild(cell);
+    }
+  }
+  // Ambient cell highlight cycle
+  const cells=[...boardEl.querySelectorAll('.chess-cell')];
+  const highlights=[27,28,35,36,19,20,43,44];
+  let hi=0;
+  setInterval(()=>{
+    cells.forEach(c=>{ if(!c.classList.contains('selected')) c.style.background=''; });
+    const target=cells[highlights[hi%highlights.length]];
+    if(target&&!target.classList.contains('selected')){
+      target.style.background='rgba(0,255,163,.14)';
+      setTimeout(()=>{if(!target.classList.contains('selected'))target.style.background='';},1700);
+    }
+    hi++;
+  },2000);
+}
+
+/* ═══ COUNTUP ═══ */
+function countUp(el){
+  if(el.dataset.done) return;
+  el.dataset.done='1';
+  const target=parseInt(el.dataset.count);
+  const sfx=el.dataset.sfx||'';
+  const dur=1600;
+  const start=Date.now();
+  const tick=()=>{
+    const p=Math.min((Date.now()-start)/dur,1);
+    const eased=1-Math.pow(1-p,3);
+    el.textContent=Math.round(eased*target)+sfx;
+    if(p<1)requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+
+/* ═══ INTERSECTION OBSERVER ═══ */
+const revObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('vis');
+      e.target.querySelectorAll('[data-count]').forEach(countUp);
+      e.target.querySelectorAll('.bar-fill[data-w]').forEach(bar=>{bar.style.width=bar.dataset.w+'%';});
+    }
+  });
+},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+// Hero pills count on load (they're in view)
+const heroObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('[data-count]').forEach(countUp);
+      heroObs.unobserve(e.target);
+    }
+  });
+},{threshold:.3});
+document.querySelectorAll('.hero-pills,.scoreboard').forEach(el=>heroObs.observe(el));
+
+// Bars trigger on sec-command
+const barObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.bar-fill').forEach(b=>{b.style.width=b.dataset.w+'%';});
+      barObs.unobserve(e.target);
+    }
+  });
+},{threshold:.2});
+document.querySelectorAll('.sec-command').forEach(el=>barObs.observe(el));
 </script>
 </body>
 </html>
