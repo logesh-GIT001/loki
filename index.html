@@ -1,0 +1,1378 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logeshwaran S — Security Researcher &amp; SOC Analyst</title>
+    <meta
+      name="description"
+      content="Portfolio of Logeshwaran S — cybersecurity analyst, SOC analyst and vulnerability researcher. Acknowledged disclosures to Google, NVIDIA and CERT-In. Builder of ML-powered security tooling."
+    />
+    <meta name="theme-color" content="#f2f0e9" />
+    <script>
+      try {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        if (savedTheme === "dark" || savedTheme === "light") {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch (error) {}
+    </script>
+    <meta property="og:title" content="Logeshwaran S — Security Researcher &amp; SOC Analyst" />
+    <meta
+      property="og:description"
+      content="I find the cracks before they do — and build the tools that close them."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <noscript>
+    <style>.preloader,.cursor,.scroll-progress,.noise{display:none!important}body{overflow:auto!important}</style>
+  </noscript>
+  <script type="module" crossorigin src="/loki/assets/main-C4PtnWYj.js"></script>
+  <link rel="modulepreload" crossorigin href="/loki/assets/ScrollTrigger-DZm16XVF.js">
+  <link rel="stylesheet" crossorigin href="/loki/assets/main-BhgDRWNR.css">
+</head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <button
+      class="lamp"
+      type="button"
+      data-theme-toggle
+      data-cursor="Pull"
+      aria-label="Pull the cord for dark mode"
+      aria-pressed="false"
+    >
+      <span class="lamp-wire" aria-hidden="true"></span>
+      <span class="lamp-sway" aria-hidden="true">
+        <span class="lamp-head">
+          <span class="lamp-shade"></span>
+          <span class="lamp-bulb"></span>
+        </span>
+        <span class="lamp-cord"></span>
+      </span>
+      <span class="lamp-hint" aria-hidden="true">PULL</span>
+    </button>
+
+    <div class="ambient" aria-hidden="true">
+      <span class="ambient-blob ambient-blob-a"></span>
+      <span class="ambient-blob ambient-blob-b"></span>
+    </div>
+
+    <div class="noise" aria-hidden="true"></div>
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+    <div class="cursor" aria-hidden="true">
+      <div class="cursor-dot"></div>
+      <div class="cursor-ring"><span class="cursor-label"></span></div>
+    </div>
+
+    <div class="preloader" aria-hidden="true">
+      <div class="preloader-top">
+        <span>LOGESHWARAN S</span>
+        <span>PORTFOLIO / VOL. 01</span>
+      </div>
+      <div class="preloader-center">
+        <div class="preloader-word">
+          <span>SECURING</span>
+          <span class="preloader-count">00</span>
+        </div>
+        <div class="preloader-track"><i></i></div>
+      </div>
+      <div class="preloader-bottom">
+        <span>INITIALISING SECURE SESSION</span>
+        <span>EST. TAMIL NADU, IN</span>
+      </div>
+    </div>
+
+    <div class="wipe-screen" data-wipe aria-hidden="true">
+      <div class="wipe-inner">
+        <span class="wipe-kicker">KERNEL / FATAL SIGNAL</span>
+        <p class="wipe-title" data-wipe-title>SYSTEM PURGE INITIATED</p>
+        <div class="wipe-log" data-wipe-log aria-live="polite"></div>
+        <div class="wipe-count">
+          <span data-wipe-count>000</span>
+          <span data-wipe-label>SNAPSHOT RECOVERY ARMED</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="proof-flash" data-proof-flash aria-hidden="true">
+      <div class="proof-flash-backdrop" data-proof-flash-backdrop></div>
+      <article
+        class="proof-flash-card"
+        data-proof-flash-card
+        data-tone="paper"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="proof-flash-title"
+        tabindex="-1"
+      >
+        <div class="proof-flash-meta">
+          <span data-proof-flash-index>01</span>
+          <span data-proof-flash-status>Acknowledged</span>
+          <span data-proof-flash-year>2025</span>
+        </div>
+        <h3 class="proof-flash-title" id="proof-flash-title" data-proof-flash-title>Google</h3>
+        <span class="proof-flash-program" data-proof-flash-program>Android VRP</span>
+        <p class="proof-flash-copy" data-proof-flash-copy></p>
+        <span class="proof-flash-tag" data-proof-flash-tag></span>
+        <span class="proof-flash-hint">CLICK OUTSIDE TO RETURN · ESC</span>
+        <span class="proof-flash-watermark-layer" aria-hidden="true">
+          <span class="proof-flash-watermark" data-proof-flash-watermark>01</span>
+        </span>
+      </article>
+    </div>
+
+    <button class="terminal-launcher" type="button" data-terminal-launcher aria-label="Open terminal" hidden>
+      <span class="terminal-launcher-mark" aria-hidden="true">&gt;_</span>
+      <span>OPEN TTY</span>
+    </button>
+
+    <div class="session-clock" data-session-clock aria-label="Time spent on this site">
+      <span class="session-clock-label">UPTIME</span>
+      <span class="session-clock-time">
+        <span data-session-h>00</span><i>:</i><span data-session-m>00</span><i>:</i
+        ><span data-session-s>00</span>
+      </span>
+    </div>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="#top" class="brand" aria-label="Logeshwaran — home">
+          <span class="brand-mark">LS<span class="brand-dot"></span></span>
+          <span class="brand-text">LOGESHWARAN<br />S</span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Primary">
+          <a href="#about" data-nav>About</a>
+          <a href="#work" data-nav>Work</a>
+          <a href="#proof" data-nav>Proof</a>
+          <a href="#arsenal" data-nav>Arsenal</a>
+          <a href="#contact" data-nav>Contact</a>
+        </nav>
+
+        <div class="header-side">
+          <span class="header-time"><span data-time>00:00</span> IST</span>
+          <span class="status-pill"><i></i>Open to work</span>
+          <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="mobile-menu" aria-hidden="true">
+      <div class="mobile-menu-inner">
+        <span class="mobile-menu-label">MENU / 2026</span>
+        <nav class="mobile-nav" aria-label="Mobile">
+          <a href="#about" class="menu-link"><span>01</span>About</a>
+          <a href="#work" class="menu-link"><span>02</span>Work</a>
+          <a href="#proof" class="menu-link"><span>03</span>Proof</a>
+          <a href="#arsenal" class="menu-link"><span>04</span>Arsenal</a>
+          <a href="#contact" class="menu-link"><span>05</span>Contact</a>
+        </nav>
+        <div class="mobile-menu-foot">
+          <a href="mailto:logesh.spy@gmail.com">logesh.spy@gmail.com</a>
+          <a href="https://github.com/logesh-GIT001" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero" id="top">
+        <div class="hero-bg" aria-hidden="true">
+          <div class="hero-grid"></div>
+          <div class="hero-glow"></div>
+          <div class="hero-rings">
+            <span class="orbit-ring orbit-ring-outer"></span>
+            <span class="orbit-ring orbit-ring-middle"></span>
+            <span class="orbit-ring orbit-ring-inner"></span>
+          </div>
+        </div>
+
+        <div class="hero-meta">
+          <span>PORTFOLIO — 2026</span>
+          <span class="hero-meta-mid">CYBER SECURITY / VULN RESEARCH / SOC</span>
+          <span>TAMIL NADU, IN — 11.12°N 77.34°E</span>
+        </div>
+
+        <div class="hero-title-wrap">
+          <h1 class="hero-title" aria-label="Security is a craft, not a feature.">
+            <span class="line"><span class="line-inner">SECURITY</span></span>
+            <span class="line"
+              ><span class="line-inner">IS A <em class="serif highlight">craft</em><span class="punct">.</span></span></span
+            >
+            <span class="line"
+              ><span class="line-inner">NOT A <em class="serif">feature</em><span class="punct">.</span></span></span
+            >
+          </h1>
+          <div class="hero-side-note" aria-hidden="true">
+            <span>SCROLL</span>
+            <i></i>
+          </div>
+        </div>
+
+        <div class="hero-bottom">
+          <div class="hero-copy-wrap">
+            <p class="hero-copy">
+              I'm <strong>Logeshwaran</strong> — a vulnerability researcher and SOC analyst.
+              I find what's broken, disclose it responsibly, and engineer the tools that keep it
+              from happening again.
+            </p>
+            <div class="hero-actions">
+              <a href="#work" class="magnetic btn btn-ink" data-cursor="Explore">
+                <span>See the work</span>
+                <span class="btn-arrow">↓</span>
+              </a>
+              <a href="#contact" class="text-link" data-cursor="Say hi">
+                Start a conversation <span>↗</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="terminal-orbit" data-terminal-orbit>
+            <div class="terminal-window" data-terminal-window>
+              <div class="terminal-card" data-terminal aria-label="Interactive portfolio terminal">
+                <div class="terminal-bar" data-terminal-drag>
+                  <span class="terminal-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <span class="terminal-title">visitor@logesh:~</span>
+                  <span class="terminal-badge" data-terminal-badge hidden>FLAG</span>
+                  <span class="terminal-live"><i></i>TTY 01</span>
+                  <span class="terminal-controls">
+                    <button
+                      class="terminal-control"
+                      type="button"
+                      data-terminal-minimize
+                      aria-label="Minimize terminal"
+                      aria-pressed="false"
+                    >
+                      −
+                    </button>
+                    <button
+                      class="terminal-control terminal-control-close"
+                      type="button"
+                      data-terminal-close
+                      aria-label="Close terminal"
+                    >
+                      ×
+                    </button>
+                  </span>
+                </div>
+                <div class="terminal-body" data-terminal-scroll>
+                  <div class="terminal-output" data-terminal-output aria-live="polite">
+                    <p class="terminal-line"><span class="t-ok">[ok]</span> secure shell established</p>
+                    <p class="terminal-line t-muted">session: visitor@logesh — tty01</p>
+                    <p class="terminal-line t-muted">filesystem: /home/visitor</p>
+                    <p class="terminal-line t-muted">type <span class="t-acid">help</span> to begin, or <span class="t-acid">ctf</span> for the hidden challenge.</p>
+                  </div>
+                  <form class="terminal-form" data-terminal-form>
+                    <label class="terminal-prompt" for="terminal-input" data-terminal-prompt>visitor@logesh:~$</label>
+                    <input
+                      id="terminal-input"
+                      class="terminal-input"
+                      data-terminal-input
+                      type="text"
+                      autocomplete="off"
+                      autocapitalize="off"
+                      spellcheck="false"
+                      aria-label="Terminal command"
+                    />
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <div class="ticker ticker-acid" aria-hidden="true">
+        <div class="ticker-track">
+          <span>GOOGLE ANDROID VRP</span><i>✦</i><span>NVIDIA PSIRT</span><i>✦</i
+          ><span>CERT-IN — GOVT. OF INDIA</span><i>✦</i><span>UNIVERSITY OF ILLINOIS</span><i>✦</i
+          ><span>VYRO.AI</span><i>✦</i><span>URBANPIPER</span><i>✦</i>
+          <span>GOOGLE ANDROID VRP</span><i>✦</i><span>NVIDIA PSIRT</span><i>✦</i
+          ><span>CERT-IN — GOVT. OF INDIA</span><i>✦</i><span>UNIVERSITY OF ILLINOIS</span><i>✦</i
+          ><span>VYRO.AI</span><i>✦</i><span>URBANPIPER</span><i>✦</i>
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <section class="section about" id="about">
+        <div class="section-head">
+          <span class="section-index">01</span>
+          <span class="section-label">The Operator</span>
+          <span class="section-rule"></span>
+          <span class="section-note">ABOUT / PROFILE</span>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-main">
+            <h2 class="display reveal-heading">
+              Security is a practice<br />of <em>attention.</em>
+            </h2>
+            <p class="about-lead reveal">
+              I work between offense and defense — hunting flaws in live systems, documenting them
+              with precision, and building tooling that helps SOC teams act faster.
+            </p>
+            <p class="about-body scrub">
+              I'm a cybersecurity analyst and vulnerability researcher from Tamil Nadu. My work
+              sits at the intersection of vulnerability research, SOC operations and detection
+              engineering. I've had findings acknowledged by Google's Android VRP, NVIDIA PSIRT and
+              CERT-In. I don't chase noise. I chase the signal.
+            </p>
+            <div class="about-links">
+              <a href="#proof" class="text-link about-link" data-cursor="Proof">
+                See the acknowledgement log <span>↗</span>
+              </a>
+            </div>
+          </div>
+
+          <aside class="id-card" data-parallax>
+            <div class="id-card-top">
+              <span>OPERATOR PROFILE</span>
+              <span>LS—001</span>
+            </div>
+            <div class="id-photo">
+              <div class="id-monogram">LS</div>
+              <div class="id-scan"></div>
+              <div class="id-barcode"></div>
+            </div>
+            <div class="id-name">LOGESHWARAN S</div>
+            <div class="id-role">CYBER SECURITY ANALYST</div>
+            <dl class="id-data">
+              <div><dt>FOCUS</dt><dd>VULN RESEARCH / SOC</dd></div>
+              <div><dt>BASE</dt><dd>TAMIL NADU, IN</dd></div>
+              <div><dt>STATUS</dt><dd class="id-status"><i></i>OPEN TO WORK</dd></div>
+            </dl>
+            <div class="id-foot">
+              <span>CLEARANCE: RESEARCHER</span>
+              <span>VALID 2026</span>
+            </div>
+          </aside>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat">
+            <span class="stat-number" data-count="6" data-pad="2">00</span>
+            <span class="stat-label">Acknowledged<br />disclosures</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-count="3" data-pad="2">00</span>
+            <span class="stat-label">Global security<br />teams</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-count="27" data-pad="2">00</span>
+            <span class="stat-label">Detection rules<br />shipped</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-count="74" data-pad="2">00</span>
+            <span class="stat-label">ML detection<br />accuracy</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- WORK -->
+      <section class="section work" id="work">
+        <div class="section-head">
+          <span class="section-index">02</span>
+          <span class="section-label">Selected Work</span>
+          <span class="section-rule"></span>
+          <span class="section-note">BUILT / SHIPPED</span>
+        </div>
+
+        <div class="work-intro">
+          <h2 class="display reveal-heading">Tools for the <em>front line.</em></h2>
+          <p class="work-intro-copy reveal">
+            Three systems built around a simple idea: security tooling should make the next
+            decision obvious. Each one is designed for the analyst, not the demo.
+          </p>
+        </div>
+
+        <div class="projects">
+          <!-- PROJECT 01 -->
+          <article class="project-card project-dark" data-project data-index="01">
+            <div class="project-meta">
+              <span>PROJECT (i)</span>
+              <span>ML / SOC / XAI</span>
+              <span>2026</span>
+            </div>
+            <div class="project-body">
+              <div class="project-copy">
+                <h3 class="project-name">Smart-SOC</h3>
+                <p class="project-tagline">Alerts that <em>explain themselves.</em></p>
+                <p class="project-desc">
+                  An XGBoost-based network attack classifier paired with SHAP explanations, a
+                  FastAPI backend and a Streamlit triage dashboard. Built so L1 analysts can act on
+                  ML-driven alerts without a data science background.
+                </p>
+                <ul class="project-stack">
+                  <li>Python</li>
+                  <li>XGBoost</li>
+                  <li>SHAP</li>
+                  <li>FastAPI</li>
+                  <li>Streamlit</li>
+                </ul>
+                <a
+                  href="https://github.com/logesh-GIT001/Smart-SOC"
+                  target="_blank"
+                  rel="noopener"
+                  class="project-cta"
+                  data-cursor="Open"
+                >
+                  View repository <span>↗</span>
+                </a>
+              </div>
+
+              <div class="project-visual" aria-hidden="true">
+                <div class="ui-window soc-window">
+                  <div class="ui-bar">
+                    <span class="ui-dots"><i></i><i></i><i></i></span>
+                    <span class="ui-title">smart-soc / triage console</span>
+                    <span class="ui-live"><i></i>LIVE</span>
+                  </div>
+                  <div class="soc-grid">
+                    <div class="soc-score">
+                      <span class="mono">THREAT SCORE</span>
+                      <strong>87</strong>
+                      <span class="chip chip-high">HIGH</span>
+                    </div>
+                    <div class="soc-bars">
+                      <div class="bar-row">
+                        <span>Port scan</span>
+                        <div class="bar"><i style="--w: 92%"></i></div>
+                        <span>0.92</span>
+                      </div>
+                      <div class="bar-row">
+                        <span>Brute force</span>
+                        <div class="bar"><i style="--w: 78%"></i></div>
+                        <span>0.78</span>
+                      </div>
+                      <div class="bar-row">
+                        <span>Exfil</span>
+                        <div class="bar"><i style="--w: 44%"></i></div>
+                        <span>0.44</span>
+                      </div>
+                    </div>
+                    <div class="soc-shap">
+                      <span class="mono">SHAP / WHY THIS ALERT</span>
+                      <div class="shap-row">
+                        <span>dst_port</span>
+                        <div class="shap-bar"><i style="--w: 78%"></i></div>
+                        <span>+0.31</span>
+                      </div>
+                      <div class="shap-row">
+                        <span>flow_dur</span>
+                        <div class="shap-bar"><i style="--w: 56%"></i></div>
+                        <span>+0.22</span>
+                      </div>
+                      <div class="shap-row">
+                        <span>pkt_size</span>
+                        <div class="shap-bar"><i style="--w: 34%"></i></div>
+                        <span>+0.14</span>
+                      </div>
+                    </div>
+                    <div class="soc-feed">
+                      <span class="mono">LIVE FEED</span>
+                      <div class="feed-row"><i></i><span>Brute force attempt</span><span>now</span></div>
+                      <div class="feed-row"><i></i><span>Anomalous port sweep</span><span>2m</span></div>
+                      <div class="feed-row"><i></i><span>Beaconing pattern</span><span>6m</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 02 -->
+          <article class="project-card project-light" data-project data-index="02">
+            <div class="project-meta">
+              <span>PROJECT (ii)</span>
+              <span>SECURITY / DEVTOOLS</span>
+              <span>2026</span>
+            </div>
+            <div class="project-body">
+              <div class="project-copy">
+                <h3 class="project-name">ScriptSnoop</h3>
+                <p class="project-tagline">Shift security left, <em>one commit at a time.</em></p>
+                <p class="project-desc">
+                  A multi-language static analysis engine with 27 custom detection rules for RCE,
+                  SQL and command injection, hardcoded secrets and path traversal. Severity-based
+                  triage, multi-format reporting and CI/CD security gates.
+                </p>
+                <ul class="project-stack">
+                  <li>Python</li>
+                  <li>Regex</li>
+                  <li>CLI</li>
+                  <li>CI/CD</li>
+                </ul>
+                <a
+                  href="https://github.com/logesh-GIT001/ScriptSnoop"
+                  target="_blank"
+                  rel="noopener"
+                  class="project-cta"
+                  data-cursor="Open"
+                >
+                  View repository <span>↗</span>
+                </a>
+              </div>
+
+              <div class="project-visual" aria-hidden="true">
+                <div class="ui-window code-window">
+                  <div class="ui-bar">
+                    <span class="ui-dots"><i></i><i></i><i></i></span>
+                    <span class="ui-title">scriptsnoop / scan</span>
+                    <span class="ui-live ui-live-warn"><i></i>3 FINDINGS</span>
+                  </div>
+                  <pre class="code"><code><span class="c-comment"># scriptsnoop scan ./app --format html</span>
+<span class="c-key">def</span> <span class="c-fn">analyze</span>(path):
+    rules = load_rules(<span class="c-str">"rules/"</span>)
+    findings = []
+    <span class="c-key">for</span> rule <span class="c-key">in</span> rules:
+        hit = rule.match(path)
+        <span class="c-key">if</span> hit:
+            findings.append({
+                <span class="c-str">"severity"</span>: hit.severity,
+                <span class="c-str">"line"</span>: hit.line
+            })
+    <span class="c-key">return</span> findings</code></pre>
+                  <div class="scan-beam"></div>
+                  <div class="findings">
+                    <div class="finding finding-high">
+                      <span class="finding-sev">HIGH</span>
+                      <span class="finding-name">Command injection</span>
+                      <span class="finding-line">line 42</span>
+                    </div>
+                    <div class="finding finding-med">
+                      <span class="finding-sev">MED</span>
+                      <span class="finding-name">Hardcoded secret</span>
+                      <span class="finding-line">line 18</span>
+                    </div>
+                    <div class="finding finding-low">
+                      <span class="finding-sev">LOW</span>
+                      <span class="finding-name">Path traversal</span>
+                      <span class="finding-line">line 67</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 03 -->
+          <article class="project-card project-acid" data-project data-index="03">
+            <div class="project-meta">
+              <span>PROJECT (iii)</span>
+              <span>DECEPTION / DETECTION</span>
+              <span>2026</span>
+            </div>
+            <div class="project-body">
+              <div class="project-copy">
+                <h3 class="project-name">Signal-Flare</h3>
+                <p class="project-tagline">Deception as an <em>early warning system.</em></p>
+                <p class="project-desc">
+                  A honeytoken credential system that detects post-exploitation activity and
+                  unauthorised credential misuse. Behavioural logic separates legitimate access
+                  from suspicious usage — reducing false positives and alert fatigue.
+                </p>
+                <ul class="project-stack">
+                  <li>Python</li>
+                  <li>Deception Tech</li>
+                  <li>Security Automation</li>
+                </ul>
+                <a
+                  href="https://github.com/logesh-GIT001/Signal-Flare"
+                  target="_blank"
+                  rel="noopener"
+                  class="project-cta project-cta-ink"
+                  data-cursor="Open"
+                >
+                  View repository <span>↗</span>
+                </a>
+              </div>
+
+              <div class="project-visual" aria-hidden="true">
+                <div class="ui-window flare-window">
+                  <div class="ui-bar">
+                    <span class="ui-dots"><i></i><i></i><i></i></span>
+                    <span class="ui-title">signal-flare / honeytoken mesh</span>
+                    <span class="ui-live"><i></i>ARMED</span>
+                  </div>
+                  <div class="flare-grid">
+                    <div class="flare-radar">
+                      <div class="flare-ring"></div>
+                      <div class="flare-sweep"></div>
+                      <div class="flare-blip f1"></div>
+                      <div class="flare-blip f2"></div>
+                      <div class="flare-blip f3"></div>
+                    </div>
+                    <div class="flare-panel">
+                      <span class="mono">HONEYTOKENS</span>
+                      <div class="flare-stat"><strong>12</strong><span>deployed</span></div>
+                      <div class="flare-stat"><strong>02</strong><span>triggered</span></div>
+                      <div class="flare-alert">
+                        <i></i>
+                        <div><span>UNUSUAL CREDENTIAL USE</span><small>svc_backup · 03:14:22</small></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="work-pan" aria-hidden="true">
+          <span>SCROLL TO PAN</span>
+          <div class="work-pan-track"><i></i></div>
+          <span>03 PROJECTS</span>
+        </div>
+      </section>
+
+      <!-- PROOF -->
+      <section class="section proof dark-section" id="proof">
+        <div class="section-head section-head-dark">
+          <span class="section-index">03</span>
+          <span class="section-label">The Proof</span>
+          <span class="section-rule"></span>
+          <span class="section-note">ACKNOWLEDGED / NOT ASSUMED</span>
+        </div>
+
+        <div class="proof-grid">
+          <div class="proof-intro">
+            <h2 class="display reveal-heading">Acknowledged,<br /><em>not assumed.</em></h2>
+            <p class="reveal">
+              Responsible disclosure is the cleanest proof of work in security. These findings were
+              reviewed, reproduced and acknowledged by the teams that own the systems.
+            </p>
+            <div class="proof-note reveal">
+              <span class="proof-note-dot"></span>
+              <span>All reports followed coordinated disclosure processes.</span>
+            </div>
+          </div>
+
+          <div class="disclosure-list">
+            <div class="disclosure">
+              <button class="disclosure-row" data-tone="acid" aria-expanded="false" aria-haspopup="dialog">
+                <span class="d-index">01</span>
+                <span class="d-org">Google</span>
+                <span class="d-program">Android VRP</span>
+                <span class="d-status"><i></i>Acknowledged</span>
+                <span class="d-year">2025</span>
+                <span class="d-toggle">+</span>
+              </button>
+              <div class="d-panel">
+                <div>
+                  <p>
+                    Independently discovered and reported a live Android vulnerability through
+                    Google's official issue tracker. Marked as a duplicate — confirming independent
+                    discovery of a real, live issue. Received written response from the Android
+                    Security Team.
+                  </p>
+                  <span class="d-tag">RESPONSIBLE DISCLOSURE</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="disclosure">
+              <button class="disclosure-row" data-tone="ink" aria-expanded="false" aria-haspopup="dialog">
+                <span class="d-index">02</span>
+                <span class="d-org">NVIDIA</span>
+                <span class="d-program">PSIRT / Omniverse</span>
+                <span class="d-status"><i></i>Classified</span>
+                <span class="d-year">2025</span>
+                <span class="d-toggle">+</span>
+              </button>
+              <div class="d-panel">
+                <div>
+                  <p>
+                    Reported an exposed system monitor log issue in NVIDIA Omniverse. NVIDIA PSIRT
+                    opened an official ticket, conducted a full engineering investigation and
+                    formally reviewed and classified the finding.
+                  </p>
+                  <span class="d-tag">COORDINATED DISCLOSURE</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="disclosure">
+              <button class="disclosure-row" data-tone="paper" aria-expanded="false" aria-haspopup="dialog">
+                <span class="d-index">03</span>
+                <span class="d-org">CERT-In</span>
+                <span class="d-program">Govt. of India</span>
+                <span class="d-status"><i></i>Reference issued</span>
+                <span class="d-year">2024</span>
+                <span class="d-toggle">+</span>
+              </button>
+              <div class="d-panel">
+                <div>
+                  <p>
+                    Discovered and reported a critical credential exposure on an Indian government
+                    website. Received an official CERT-In reference number confirming registration
+                    and active action by the national computer emergency response team.
+                  </p>
+                  <span class="d-tag">CRITICAL / GOVERNMENT</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="disclosure">
+              <button class="disclosure-row" data-tone="ink" aria-expanded="false" aria-haspopup="dialog">
+                <span class="d-index">04</span>
+                <span class="d-org">Univ. of Illinois</span>
+                <span class="d-program">Web Security</span>
+                <span class="d-status"><i></i>Resolved</span>
+                <span class="d-year">2025</span>
+                <span class="d-toggle">+</span>
+              </button>
+              <div class="d-panel">
+                <div>
+                  <p>
+                    Reported a web vulnerability to the University of Illinois security team.
+                    Acknowledged, investigated and fully resolved.
+                  </p>
+                  <span class="d-tag">WEB VULNERABILITY</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="disclosure">
+              <button class="disclosure-row" data-tone="acid" aria-expanded="false" aria-haspopup="dialog">
+                <span class="d-index">05</span>
+                <span class="d-org">Vyro.ai</span>
+                <span class="d-program">Imagine Art</span>
+                <span class="d-status"><i></i>Resolved</span>
+                <span class="d-year">2025</span>
+                <span class="d-toggle">+</span>
+              </button>
+              <div class="d-panel">
+                <div>
+                  <p>
+                    Identified and disclosed a security issue in Vyro.ai / Imagine Art. Marked
+                    resolved with formal appreciation from the team.
+                  </p>
+                  <span class="d-tag">SECURITY ISSUE</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="disclosure">
+              <button class="disclosure-row" data-tone="paper" aria-expanded="false" aria-haspopup="dialog">
+                <span class="d-index">06</span>
+                <span class="d-org">UrbanPiper</span>
+                <span class="d-program">Platform Security</span>
+                <span class="d-status"><i></i>Commended</span>
+                <span class="d-year">2025</span>
+                <span class="d-toggle">+</span>
+              </button>
+              <div class="d-panel">
+                <div>
+                  <p>
+                    Responsibly disclosed a vulnerability in UrbanPiper's platform. Acknowledged by
+                    the internal security team with commendation.
+                  </p>
+                  <span class="d-tag">PLATFORM SECURITY</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ARSENAL -->
+      <section class="section arsenal" id="arsenal">
+        <div class="section-head">
+          <span class="section-index">04</span>
+          <span class="section-label">The Arsenal</span>
+          <span class="section-rule"></span>
+          <span class="section-note">DEPTH / NOT DECORATION</span>
+        </div>
+
+        <div class="arsenal-intro">
+          <h2 class="display reveal-heading">Depth, not <em>decoration.</em></h2>
+          <p class="reveal">
+            The stack I use to investigate, automate and defend — from raw logs to production
+            tooling.
+          </p>
+        </div>
+
+        <div class="arsenal-grid">
+          <article class="arsenal-card card-wide reveal">
+            <span class="arsenal-index">01</span>
+            <h3>SOC &amp; Detection</h3>
+            <ul>
+              <li>SIEM — Splunk / Microsoft Sentinel</li>
+              <li>Alert triage &amp; incident response</li>
+              <li>Log analysis &amp; threat hunting</li>
+              <li>MITRE ATT&amp;CK mapping</li>
+            </ul>
+          </article>
+
+          <article class="arsenal-card reveal">
+            <span class="arsenal-index">02</span>
+            <h3>Systems &amp; Logs</h3>
+            <ul>
+              <li>Windows Event Logs / Sysmon</li>
+              <li>Linux auth logs &amp; hardening</li>
+              <li>Web server logs</li>
+              <li>Process monitoring</li>
+            </ul>
+          </article>
+
+          <article class="arsenal-card reveal">
+            <span class="arsenal-index">03</span>
+            <h3>Network</h3>
+            <ul>
+              <li>TCP/IP, DNS, HTTP/S</li>
+              <li>Traffic &amp; packet analysis</li>
+              <li>Wireshark</li>
+            </ul>
+          </article>
+
+          <article class="arsenal-card reveal">
+            <span class="arsenal-index">04</span>
+            <h3>Offense / Web</h3>
+            <ul>
+              <li>Burp Suite</li>
+              <li>XSS &amp; misconfiguration</li>
+              <li>Recon &amp; parameter fuzzing</li>
+              <li>Responsible disclosure</li>
+            </ul>
+          </article>
+
+          <article class="arsenal-card reveal">
+            <span class="arsenal-index">05</span>
+            <h3>Code &amp; Automation</h3>
+            <ul>
+              <li>Python — parsing &amp; automation</li>
+              <li>Bash scripting</li>
+              <li>ML-driven security tooling</li>
+              <li>CI/CD security gates</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="cert-strip" aria-hidden="true">
+          <div class="ticker-track ticker-track-slow">
+            <span>CISCO NETWORKING BASICS</span><i>✦</i><span>CISCO CYBERSECURITY FUNDAMENTALS</span><i>✦</i
+            ><span>CISCO NTA</span><i>✦</i><span>CISCO LINUX ESSENTIALS</span><i>✦</i
+            ><span>SECURITY ANALYST+</span><i>✦</i><span>INFOSYS ETHICAL HACKING</span><i>✦</i
+            ><span>PYTHON FOR SECURITY AUTOMATION</span><i>✦</i>
+            <span>CISCO NETWORKING BASICS</span><i>✦</i><span>CISCO CYBERSECURITY FUNDAMENTALS</span><i>✦</i
+            ><span>CISCO NTA</span><i>✦</i><span>CISCO LINUX ESSENTIALS</span><i>✦</i
+            ><span>SECURITY ANALYST+</span><i>✦</i><span>INFOSYS ETHICAL HACKING</span><i>✦</i
+            ><span>PYTHON FOR SECURITY AUTOMATION</span><i>✦</i>
+          </div>
+        </div>
+      </section>
+
+      <!-- PATH -->
+      <section class="section path" id="path">
+        <div class="section-head">
+          <span class="section-index">05</span>
+          <span class="section-label">The Path</span>
+          <span class="section-rule"></span>
+          <span class="section-note">EXPERIENCE / EDUCATION</span>
+        </div>
+
+        <div class="path-intro">
+          <h2 class="display reveal-heading">Where the reps <em>came from.</em></h2>
+        </div>
+
+        <div class="experience-vault" data-experience-vault>
+          <aside class="vault-rail" aria-hidden="true">
+            <span class="vault-kicker">Access log</span>
+            <div class="vault-line">
+              <i class="vault-line-fill" data-vault-fill></i>
+              <span class="vault-scanner" data-vault-scanner></span>
+              <span class="vault-node is-active" data-vault-node style="top: 0%">01</span>
+              <span class="vault-node" data-vault-node style="top: 33.33%">02</span>
+              <span class="vault-node" data-vault-node style="top: 66.66%">03</span>
+              <span class="vault-node" data-vault-node style="top: 100%">04</span>
+            </div>
+            <div class="vault-dial">
+              <span class="vault-dial-ticks" data-vault-dial></span>
+              <span class="vault-dial-core" data-vault-index>01</span>
+            </div>
+            <span class="vault-status" data-vault-status>Access 01 / 04</span>
+          </aside>
+
+          <div class="vault-stage">
+            <div class="vault-cards" data-experience-track>
+              <article class="project-card project-dark experience-card vault-card is-active" data-experience-card data-index="01">
+                <div class="project-meta">
+                  <span>EXPERIENCE (i)</span>
+                  <span>INTERNSHIP / AI + SECURITY</span>
+                  <span>SEP 2026 — PRESENT</span>
+                </div>
+                <div class="project-body">
+                  <div class="project-copy">
+                    <h3 class="project-name">Hanodale</h3>
+                    <p class="project-tagline">
+                      AI, DevSecOps &amp; VAPT Intern <em>at Hanodale Solutions Private Limited.</em>
+                    </p>
+                    <p class="project-desc">
+                      Worked across AI, DevSecOps and VAPT workstreams in a hands-on role. Performed
+                      web application vulnerability assessment using Burp Suite and manual validation,
+                      then applied security practices inside CI/CD workflows.
+                    </p>
+                    <ul class="project-stack">
+                      <li>AI</li>
+                      <li>DevSecOps</li>
+                      <li>VAPT</li>
+                      <li>Burp Suite</li>
+                      <li>CI/CD</li>
+                    </ul>
+                    <span class="experience-status"><i aria-hidden="true"></i>Current role</span>
+                  </div>
+
+                  <div class="project-visual" aria-hidden="true">
+                    <div class="ui-window exp-window">
+                      <div class="ui-bar">
+                        <span class="ui-dots"><i></i><i></i><i></i></span>
+                        <span class="ui-title">hanodale / role dossier</span>
+                        <span class="ui-live"><i></i>CURRENT</span>
+                      </div>
+                      <div class="exp-panel">
+                        <div class="exp-head">
+                          <span class="exp-monogram">H</span>
+                          <div class="exp-role">
+                            <span class="mono">INTERNSHIP / AI + SECURITY</span>
+                            <strong>AI · DEVSECOPS · VAPT</strong>
+                          </div>
+                        </div>
+                        <div class="exp-metrics">
+                          <div class="exp-metric"><span>Web VAPT</span><div class="bar"><i style="--w: 88%"></i></div><span>88</span></div>
+                          <div class="exp-metric"><span>CI/CD</span><div class="bar"><i style="--w: 76%"></i></div><span>76</span></div>
+                          <div class="exp-metric"><span>AI tooling</span><div class="bar"><i style="--w: 72%"></i></div><span>72</span></div>
+                        </div>
+                        <div class="exp-foot">
+                          <span>SEP 2026 — PRESENT</span>
+                          <span class="chip chip-high">CURRENT</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="project-card project-light experience-card vault-card" data-experience-card data-index="02">
+                <div class="project-meta">
+                  <span>EXPERIENCE (ii)</span>
+                  <span>SOC / VAPT</span>
+                  <span>JAN 2026 — APR 2026</span>
+                </div>
+                <div class="project-body">
+                  <div class="project-copy">
+                    <h3 class="project-name">Aarvion</h3>
+                    <p class="project-tagline">
+                      Cybersecurity Analyst &amp; VAPT Intern <em>at Aarvion Services.</em>
+                    </p>
+                    <p class="project-desc">
+                      Conducted VAPT on web applications and documented weaknesses with remediation
+                      recommendations. Supported security monitoring, alert triage and incident
+                      investigation with clear log analysis and escalation notes.
+                    </p>
+                    <ul class="project-stack">
+                      <li>VAPT</li>
+                      <li>SOC</li>
+                      <li>Log Analysis</li>
+                      <li>Triage</li>
+                    </ul>
+                    <a
+                      href="https://aarvionservices.com/"
+                      target="_blank"
+                      rel="noopener"
+                      class="project-cta"
+                      data-cursor="Aarvion ↗"
+                    >
+                      Visit Aarvion <span>↗</span>
+                    </a>
+                  </div>
+
+                  <div class="project-visual" aria-hidden="true">
+                    <div class="ui-window exp-window">
+                      <div class="ui-bar">
+                        <span class="ui-dots"><i></i><i></i><i></i></span>
+                        <span class="ui-title">aarvion / analyst console</span>
+                        <span class="ui-live"><i></i>COMPLETE</span>
+                      </div>
+                      <div class="exp-panel">
+                        <div class="exp-head">
+                          <span class="exp-monogram">A</span>
+                          <div class="exp-role">
+                            <span class="mono">INTERNSHIP / SOC + VAPT</span>
+                            <strong>SOC · VAPT · TRIAGE</strong>
+                          </div>
+                        </div>
+                        <div class="exp-metrics">
+                          <div class="exp-metric"><span>Web VAPT</span><div class="bar"><i style="--w: 84%"></i></div><span>84</span></div>
+                          <div class="exp-metric"><span>SOC triage</span><div class="bar"><i style="--w: 78%"></i></div><span>78</span></div>
+                          <div class="exp-metric"><span>Log analysis</span><div class="bar"><i style="--w: 81%"></i></div><span>81</span></div>
+                        </div>
+                        <div class="exp-foot">
+                          <span>JAN 2026 — APR 2026</span>
+                          <span class="chip">COMPLETE</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="project-card project-acid experience-card vault-card" data-experience-card data-index="03">
+                <div class="project-meta">
+                  <span>EXPERIENCE (iii)</span>
+                  <span>BUG BOUNTY / DISCLOSURE</span>
+                  <span>2025 — PRESENT</span>
+                </div>
+                <div class="project-body">
+                  <div class="project-copy">
+                    <h3 class="project-name">Independent</h3>
+                    <p class="project-tagline">
+                      Bug Hunter <em>&amp; responsible disclosure.</em>
+                    </p>
+                    <p class="project-desc">
+                      Reported vulnerabilities to Google Android VRP, NVIDIA PSIRT and CERT-In, with
+                      additional acknowledgements from University of Illinois, Vyro.ai and UrbanPiper.
+                      Every finding went through a coordinated disclosure process.
+                    </p>
+                    <ul class="project-stack">
+                      <li>Android VRP</li>
+                      <li>NVIDIA PSIRT</li>
+                      <li>CERT-In</li>
+                      <li>Disclosure</li>
+                    </ul>
+                    <a href="#proof" class="project-cta project-cta-ink" data-cursor="Proof">
+                      See acknowledgement log <span>↗</span>
+                    </a>
+                  </div>
+
+                  <div class="project-visual" aria-hidden="true">
+                    <div class="ui-window exp-window">
+                      <div class="ui-bar">
+                        <span class="ui-dots"><i></i><i></i><i></i></span>
+                        <span class="ui-title">independent / disclosure log</span>
+                        <span class="ui-live"><i></i>ACTIVE</span>
+                      </div>
+                      <div class="exp-panel">
+                        <div class="exp-head">
+                          <span class="exp-monogram">B</span>
+                          <div class="exp-role">
+                            <span class="mono">BUG BOUNTY / RESEARCH</span>
+                            <strong>FIND · VALIDATE · DISCLOSE</strong>
+                          </div>
+                        </div>
+                        <div class="exp-metrics">
+                          <div class="exp-metric"><span>Android VRP</span><div class="bar"><i style="--w: 92%"></i></div><span>92</span></div>
+                          <div class="exp-metric"><span>NVIDIA PSIRT</span><div class="bar"><i style="--w: 86%"></i></div><span>86</span></div>
+                          <div class="exp-metric"><span>CERT-In</span><div class="bar"><i style="--w: 90%"></i></div><span>90</span></div>
+                        </div>
+                        <div class="exp-foot">
+                          <span>2025 — PRESENT</span>
+                          <span class="chip chip-high">ACTIVE</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="project-card project-light experience-card vault-card" data-experience-card data-index="04">
+                <div class="project-meta">
+                  <span>EXPERIENCE (iv)</span>
+                  <span>BLUE TEAM / LABS</span>
+                  <span>2024 — PRESENT</span>
+                </div>
+                <div class="project-body">
+                  <div class="project-copy">
+                    <h3 class="project-name">TryHackMe</h3>
+                    <p class="project-tagline">
+                      SOC &amp; Blue Team Labs <em>on repeat.</em>
+                    </p>
+                    <p class="project-desc">
+                      Completed SOC labs covering brute-force detection, phishing analysis and alert
+                      triage. Applied SIEM-style queries and mapped attacker techniques to MITRE
+                      ATT&amp;CK across Windows Event Logs, Sysmon and web logs.
+                    </p>
+                    <ul class="project-stack">
+                      <li>SOC</li>
+                      <li>MITRE ATT&amp;CK</li>
+                      <li>Sysmon</li>
+                      <li>Windows Logs</li>
+                    </ul>
+                    <span class="experience-status"><i aria-hidden="true"></i>Ongoing practice</span>
+                  </div>
+
+                  <div class="project-visual" aria-hidden="true">
+                    <div class="ui-window exp-window">
+                      <div class="ui-bar">
+                        <span class="ui-dots"><i></i><i></i><i></i></span>
+                        <span class="ui-title">tryhackme / blue team lab</span>
+                        <span class="ui-live"><i></i>ONGOING</span>
+                      </div>
+                      <div class="exp-panel">
+                        <div class="exp-head">
+                          <span class="exp-monogram">T</span>
+                          <div class="exp-role">
+                            <span class="mono">LABS / BLUE TEAM</span>
+                            <strong>DETECT · MAP · INVESTIGATE</strong>
+                          </div>
+                        </div>
+                        <div class="exp-metrics">
+                          <div class="exp-metric"><span>SOC labs</span><div class="bar"><i style="--w: 80%"></i></div><span>80</span></div>
+                          <div class="exp-metric"><span>MITRE</span><div class="bar"><i style="--w: 74%"></i></div><span>74</span></div>
+                          <div class="exp-metric"><span>Log analysis</span><div class="bar"><i style="--w: 82%"></i></div><span>82</span></div>
+                        </div>
+                        <div class="exp-foot">
+                          <span>2024 — PRESENT</span>
+                          <span class="chip">ONGOING</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <div class="education reveal">
+          <div class="edu-left">
+            <span class="mono">EDUCATION / M.TECH</span>
+            <h3>M.Tech — Computer<br />Science Engineering</h3>
+            <p>5-Year Integrated Programme</p>
+          </div>
+          <div class="edu-right">
+            <span>ERODE SENGUNTHAR<br />ENGINEERING COLLEGE</span>
+            <span>TAMIL NADU, INDIA</span>
+            <p>Academic focus: web application security, network security, vulnerability assessment &amp; penetration testing.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="contact dark-section" id="contact">
+        <canvas class="contact-liquid" data-contact-liquid aria-hidden="true"></canvas>
+        <div class="contact-top">
+          <div class="section-head section-head-dark">
+            <span class="section-index">06</span>
+            <span class="section-label">Open Channel</span>
+            <span class="section-rule"></span>
+            <span class="section-note">AVAILABLE FOR WORK</span>
+          </div>
+
+          <div class="contact-main">
+            <h2 class="contact-title">
+              <span class="contact-line"><span class="line-inner">LET'S MAKE</span></span>
+              <span class="contact-line"><span class="line-inner">IT <em>unbreakable.</em></span></span>
+            </h2>
+
+            <div class="contact-side">
+              <p>
+                I'm open to SOC analyst, vulnerability research and security engineering roles —
+                or a conversation about something you're building.
+              </p>
+              <a class="orb" href="mailto:logesh.spy@gmail.com" aria-label="Email Logeshwaran">
+                <svg viewBox="0 0 200 200" aria-hidden="true">
+                  <defs>
+                    <path id="orbPath" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0" />
+                  </defs>
+                  <text>
+                    <textPath href="#orbPath">OPEN FOR WORK · OPEN FOR WORK · OPEN FOR WORK · </textPath>
+                  </text>
+                </svg>
+                <span>↗</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="letter-station reveal">
+            <div class="letter-station-copy">
+              <span class="letter-kicker">PRIVATE CHANNEL / 06.1</span>
+              <h3>Send me a <em>letter.</em></h3>
+              <p>
+                A proper note, folded by hand. Tell me what you're building, what you found,
+                or what you want to break next.
+              </p>
+              <div class="letter-notes">
+                <span><i aria-hidden="true"></i> Direct to my inbox</span>
+                <span><i aria-hidden="true"></i> Replies within 48 hours</span>
+              </div>
+            </div>
+
+            <div class="letter-stage" data-letter-stage>
+              <div class="letter-scene" data-letter-scene>
+                <div class="letter-card-float">
+                  <div class="letter-card" data-letter-card>
+                    <div class="letter-card-head">
+                      <span class="letter-card-monogram">LS</span>
+                      <span class="letter-card-caption">A NOTE FOR LOGESH / 2026</span>
+                      <span class="letter-card-stamp" aria-hidden="true">✦</span>
+                    </div>
+
+                    <form class="letter-form" data-letter-form novalidate>
+                      <div class="letter-fields">
+                        <label class="letter-field">
+                          <span>Your name</span>
+                          <input
+                            type="text"
+                            name="name"
+                            autocomplete="name"
+                            placeholder="Ada Lovelace"
+                            aria-describedby="letter-error"
+                            required
+                          />
+                        </label>
+                        <label class="letter-field">
+                          <span>Your email</span>
+                          <input
+                            type="email"
+                            name="email"
+                            autocomplete="email"
+                            placeholder="ada@example.com"
+                            aria-describedby="letter-error"
+                            required
+                          />
+                        </label>
+                      </div>
+
+                      <label class="letter-field letter-field-message">
+                        <span>Message</span>
+                        <textarea
+                          name="message"
+                          rows="3"
+                          placeholder="Tell me what you're building..."
+                          aria-describedby="letter-error"
+                          required
+                        ></textarea>
+                      </label>
+
+                      <div class="letter-form-foot">
+                        <span
+                          class="letter-error"
+                          id="letter-error"
+                          data-letter-error
+                          role="status"
+                          aria-live="polite"
+                        ></span>
+                        <button class="letter-send magnetic" type="submit" data-cursor="Seal">
+                          <span>Seal &amp; send</span>
+                          <span class="letter-send-arrow" aria-hidden="true">↗</span>
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+                <div class="letter-envelope" data-letter-envelope aria-hidden="true">
+                  <div class="envelope-shadow"></div>
+                  <div class="envelope-back"></div>
+                  <div class="envelope-front"></div>
+                  <div class="envelope-flap"></div>
+                  <div class="envelope-seal"><span>LS</span></div>
+                </div>
+
+                <div class="dove-flight" data-letter-dove aria-hidden="true">
+                  <svg class="dove-svg" viewBox="0 0 160 120" fill="none">
+                    <path
+                      d="M22 72c19-9 35-11 54-5 7-15 20-24 39-28-5 11-5 20-1 28 11 3 19 9 26 19-14-3-23-1-33 5-12 9-28 12-47 7-14-4-26-12-38-26Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      class="dove-wing"
+                      d="M60 69C69 45 92 29 122 25c-9 9-16 21-17 35 9 1 17 5 24 12-16 1-28 5-37 13-11-3-20-8-32-16Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M44 83c-5 5-9 11-11 19 8-3 15-7 20-12"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                    />
+                    <circle cx="111" cy="40" r="2.1" fill="var(--ink)" />
+                    <path d="M123 43l11-3-10 7" fill="var(--ink)" />
+                  </svg>
+                  <span class="dove-letter"><span>LS</span></span>
+                  <span class="dove-copy">I'LL DELIVER IT.</span>
+                </div>
+
+                <div
+                  class="letter-success"
+                  data-letter-success
+                  aria-hidden="true"
+                  aria-live="polite"
+                  inert
+                >
+                  <span class="letter-success-mark" aria-hidden="true">✦</span>
+                  <p>Sealed and ready.</p>
+                  <span>Your note is folded and wax-sealed. Open the draft to send it from your inbox.</span>
+                  <div class="letter-success-actions">
+                    <a
+                      class="letter-draft"
+                      data-letter-draft
+                      href="mailto:logesh.spy@gmail.com"
+                      data-cursor="Open"
+                    >
+                      Open mail draft <span aria-hidden="true">↗</span>
+                    </a>
+                    <button class="letter-again" type="button" data-letter-again>
+                      Write another
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-actions">
+            <a class="magnetic btn btn-acid" href="mailto:logesh.spy@gmail.com" data-cursor="Email">
+              <span>logesh.spy@gmail.com</span>
+              <span class="btn-arrow">↗</span>
+            </a>
+            <button class="copy-email" type="button" data-cursor="Copy">
+              <span class="copy-label" aria-live="polite">Copy email</span>
+            </button>
+            <a class="magnetic btn btn-ghost" href="./Logeshwaran_Resume.docx" download data-cursor="Download">
+              <span>Download résumé</span>
+              <span class="btn-arrow">↓</span>
+            </a>
+          </div>
+
+          <div class="contact-links">
+            <a href="https://github.com/logesh-GIT001" target="_blank" rel="noopener" data-cursor="GitHub">
+              <span>GitHub</span><span>github.com/logesh-GIT001 ↗</span>
+            </a>
+            <a href="tel:+917418549258" data-cursor="Call">
+              <span>Phone</span><span>+91 74185 49258 ↗</span>
+            </a>
+            <a href="mailto:logesh.spy@gmail.com" data-cursor="Email">
+              <span>Email</span><span>logesh.spy@gmail.com ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- CTF-01 // ghost protocol: the shell knows. type `ctf` -->
+        <footer class="footer">
+          <div class="footer-row">
+            <span>© 2026 LOGESHWARAN S</span>
+            <span>DESIGNED &amp; BUILT IN TAMIL NADU</span>
+            <span class="footer-time"><span data-time>00:00</span> IST</span>
+            <button class="back-top" type="button" data-cursor="Top">
+              BACK TO TOP <span>↑</span>
+            </button>
+          </div>
+          <div class="footer-name" aria-hidden="true">LOGESHWARAN</div>
+        </footer>
+      </section>
+    </main>
+
+  </body>
+</html>
